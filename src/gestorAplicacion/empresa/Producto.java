@@ -3,84 +3,82 @@ package gestorAplicacion.empresa;
 import java.util.ArrayList;
 
 public class Producto {
-    // Atributos de instancia
+    // ATRIBUTOS
+    // De clase
+    private static int numProductos = 0;
+    private static ArrayList<Producto> listaProductos = new ArrayList<>();
+
+    // De instancia
     private String nombre;
-    private String categoria;
     private String descripcion;
     private double valor;
     private double peso;
     private double tamano;
     private double costoProduccion;
-    private int numProductos;
+    private String categoria;
+    private boolean devuelto;
 
-    // Atributos de clase
-    private static ArrayList<Producto> listaProductos = new ArrayList<>();
 
-    // Constructor
-    public Producto(String nombre, String categoria, String descripcion, double valor, double peso, double tamano, double costoProduccion, int numProductos) {
+    // CONSTRUCTORES
+    // Constructor con todos los parametros
+    public Producto(String nombre, String descripcion, double valor, double peso, double tamano, double costoProduccion, String categoria) {
         this.nombre = nombre;
-        this.categoria = categoria;
         this.descripcion = descripcion;
         this.valor = valor;
         this.peso = peso;
         this.tamano = tamano;
         this.costoProduccion = costoProduccion;
-        this.numProductos = numProductos;
+        this.categoria = categoria.toLowerCase(); //Pone todo el String en letras minusculas
+        numProductos++;
         listaProductos.add(this); // Agregar este producto a la lista de productos
+        this.devuelto = false;
     }
 
-    // Método para descontar el producto cuando es comprado
-    public void productoComprado() {
-        numProductos--;
-        if (numProductos == 0) {
-            listaProductos.remove(this);
-        }
+    // Constructor para los parametros nombre, valor, peso, tamano, categoria
+    public Producto(String nombre, double valor, double peso, double tamano, String categoria){
+        this(nombre, "Sin descripción", valor, peso, tamano, 10.0, categoria);
     }
 
-    // Método para agregar una cantidad específica de productos
-    public void agregarCantidad(int cantidad) {
-        numProductos += cantidad;
+    // Constructor sin parametros 
+    public Producto(){}
+
+
+    // MÉTODOS
+    // Método para crear el mensaje que se mostrará al imprimir la clase
+    @Override
+    public String toString() {
+        return "\nNombre: "            + nombre           + "\n"
+        +      "Descripción: "         + descripcion      + "\n"
+        +      "Valor: "               + valor            + "\n"
+        +      "Peso: "                + peso             + "\n"
+        +      "Tamaño: "              + tamano           + "\n"
+        +      "Costo de produccion: " + costoProduccion  + "\n";
     }
 
-    // Método para obtener un resumen de las ventas del producto en un periodo determinado
-    public static String resumenProductos(int inicioPeriodo, int finPeriodo) {
-        StringBuilder resumen = new StringBuilder();
-        resumen.append("Resumen de ventas del producto en el periodo ");
-        resumen.append(inicioPeriodo);
-        resumen.append(" - ");
-        resumen.append(finPeriodo);
-        resumen.append(":\n");
 
-        for (Producto producto : listaProductos) {
-            resumen.append("Producto: ");
-            resumen.append(producto.nombre);
-            resumen.append(", Categoría: ");
-            resumen.append(producto.categoria);
-            resumen.append(", Num. de productos vendidos: ");
-            //obtener el número de productos vendidos ???
-            resumen.append("Número total de productos disponibles: ");
-            resumen.append(producto.numProductos);
-            resumen.append("\n");
-        }
-
-        return resumen.toString();
+    // GETTERS Y SETTERS
+    public int getNumProductos() {
+        return numProductos;
     }
 
-    // Getters y setters
+    public void setNumProductos(int numProductos) {
+        Producto.numProductos = numProductos;
+    }
+
+    public static ArrayList<Producto> getListaProductos() {
+        return listaProductos;
+    }
+
+    public static void setListaProductos(ArrayList<Producto> listaProductos) {
+        Producto.listaProductos = listaProductos;
+    }
+
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
     }
 
     public String getDescripcion() {
@@ -123,19 +121,19 @@ public class Producto {
         this.costoProduccion = costoProduccion;
     }
 
-    public int getNumProductos() {
-        return numProductos;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setNumProductos(int numProductos) {
-        this.numProductos = numProductos;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
-    public static ArrayList<Producto> getListaProductos() {
-        return listaProductos;
+    public boolean isDevuelto() {
+        return devuelto;
     }
 
-    public static void setListaProductos(ArrayList<Producto> listaProductos) {
-        Producto.listaProductos = listaProductos;
+    public void setDevuelto(boolean devuelto) {
+        this.devuelto = devuelto;
     }
 }

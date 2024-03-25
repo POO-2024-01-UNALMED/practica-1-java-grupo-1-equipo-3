@@ -4,55 +4,70 @@ import gestorAplicacion.empleados.Transportador;
 import gestorAplicacion.empleados.Vendedor;
 
 public class CuentaBancaria {
-        // Atributos de instancia
-        private int numeroCuenta;
-        private int saldo;
+    // ATRIBUTOS
+    // De instancia
+    private int numeroCuenta;
+    private int saldo;
     
-        // Constructor
-        public CuentaBancaria(int numeroCuenta, int saldo) {
-            this.numeroCuenta = numeroCuenta;
-            this.saldo = saldo;
-        }
-    
-        // Método para incrementar el saldo de la cuenta
-        public void incrementarSaldo(int cantidad) {
-            saldo += cantidad;
-        }
-    
-        // Método para disminuir el saldo de la cuenta
-        public void disminuirSaldo(int cantidad) {
-            saldo -= cantidad;
-        }
-    
-        // Método estático para calcular el pago de un Operario
-        public static int calcularPago(Operario persona, double comision) {
-            return (int) (Operario.getSALARIO() + comision);
-        }
 
-        // Método estático para calcular el pago de un Transportador
-        public static int calcularPago(Transportador persona, double comision) {
-            return (int) (Transportador.getSALARIO() + comision);
-        }
+    // CONSTRUCTOR
+    public CuentaBancaria(int numeroCuenta, int saldo) {
+        this.numeroCuenta = numeroCuenta;
+        this.saldo = saldo;
+    }
+    
 
-        // Método estático para calcular el pago de un Vendedor
-        public static int calcularPago(Vendedor persona, double comision) {
-            return (int) (Vendedor.getSALARIO() + comision);
-        }
+    // MÉTODOS
+    // Método para incrementar el saldo de la cuenta
+    public void incrementarSaldo(double cantidad) {
+        saldo += cantidad;
+    }
     
-        // Getters y setters
-        public int getNumeroCuenta() {
-            return numeroCuenta;
-        }
+    // Método para disminuir el saldo de la cuenta
+    public void disminuirSaldo(double cantidad) {
+        saldo -= cantidad;
+    }
     
-        public void setNumeroCuenta(int numeroCuenta) {
-            this.numeroCuenta = numeroCuenta;
+    // Método estático para calcular el pago de los empleados
+    public static int calcularPago(Persona persona){
+        int trabajo = persona.getTrabajado();
+        int salario = Persona.getSalario();
+        int total = 0;     
+
+        //Diferentes pagos según el salario para cada uno de los tipos
+        if (persona instanceof Operario){
+            total =+ (salario + 150000)*trabajo;
         }
+        else if (persona instanceof Vendedor){
+            total =+ (salario + 200000)*trabajo;
+        }
+        else if(persona instanceof Transportador){
+            total =+ (salario + 100000)*trabajo;
+        }
+        return total;
+    }
+
+    // Método para devolver dinero
+    public void devolverDinero(double cantidad, Cliente cliente){
+        CuentaBancaria cuenta = cliente.getCuentaBancaria();
+        cuenta.incrementarSaldo(cantidad);
+    }
     
-        public int getSaldo() {
-            return saldo;
-        }
+
+    // GETTERS Y SETTERS
+    public int getNumeroCuenta() {
+        return numeroCuenta;
+    }
     
-        public void setSaldo(int saldo) {
-            this.saldo = saldo;
-        }
+    public void setNumeroCuenta(int numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
+    }
+    
+    public int getSaldo() {
+        return saldo;
+    }
+    
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
+    }
 }
