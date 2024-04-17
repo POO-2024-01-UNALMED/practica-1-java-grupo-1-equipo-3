@@ -6,6 +6,7 @@ import gestorAplicacion.empresa.Tienda;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Vendedor extends Persona {
     // ATRIBUTOS
     // De clase
@@ -21,7 +22,8 @@ public class Vendedor extends Persona {
     //CONSTRUCTORES
     // Constructor que recibe todos los parametros
     public Vendedor(String nombre, int edad, int identificacion, CuentaBancaria cuentaBancaria,Tienda tienda) {
-		super(nombre, edad, identificacion, cuentaBancaria);
+		
+        super(nombre, edad, identificacion, cuentaBancaria);
 		this.tienda=tienda;
 	}
 	
@@ -30,38 +32,44 @@ public class Vendedor extends Persona {
 
 
     // MÉTODOS
-    //Método sobreescrito de la clase Persona
+    // Método sobreescrito de la clase Persona para realizar el pago de salario a un objeto de tipo vendedor
     @Override
-    public void recibirPagos(int cantidad){
-        tienda.getCuentaBancaria().disminuirSaldo(cantidad);
-        super.getCuentaBancaria().incrementarSaldo(cantidad);
+    public void recibirPagos(double pago){
+
+        tienda.getCuentaBancaria().disminuirSaldo(pago);
+        super.getCuentaBancaria().incrementarSaldo(pago);
     }
 
-    //Método para estipular el mensaje que se mostrará al imprimir un objeto de la clase
+    //Método para definir el mensaje que se mostrará al imprimir un objeto de la clase
     @Override
 	public String toString() {
-		return "\nNombre: "            + getNombre()              + "\n"
-		+      "Edad: "                + getEdad()                + "\n"
-		+      "Cedula: "              + getIdentificacion()      + "\n"
-		+      "Tienda: "              + getTienda().getNombre()  + "\n";
-		
+
+		return "\n"
+        + "Nombre:             " + getNombre() + "\n"
+		+ "Edad:               " + getEdad() + "\n"
+		+ "Cedula:             " + getIdentificacion() + "\n"
+		+ "Tienda:             " + getTienda().getNombre() + "\n";
 	}
 
 
     //GETTERS Y SETTERS
     public static ArrayList<Meta> getMetas(){
-		return metas;
+		
+        return metas;
 	}
 
 	public static void setMetas(ArrayList<Meta> metas){
-		Vendedor.metas = metas;
+		
+        Vendedor.metas = metas;
 	}
 	
     public Tienda getTienda() {
-		return tienda;
+		
+        return tienda;
 	}
     
 	public void setTienda(Tienda tienda) {
-		this.tienda = tienda;
+		
+        this.tienda = tienda;
     }
 }

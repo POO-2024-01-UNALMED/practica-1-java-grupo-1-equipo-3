@@ -8,6 +8,7 @@ import gestorAplicacion.externo.CuentaBancaria;
 import gestorAplicacion.externo.Persona;
 import gestorAplicacion.externo.Transporte;
 
+
 public class Transportador extends Persona{
     // ATRIBUTOS
     // De clase
@@ -23,8 +24,9 @@ public class Transportador extends Persona{
 
     
     // CONSTRUCTORES
-	/*Constructor que recibe todos los parametros*/
+	// Constructor que recibe todos los parametros
 	public Transportador(String nombre, int edad, int identificacion, CuentaBancaria cuentaBancaria,Transporte transporte) {
+		
 		super(nombre, edad, identificacion, cuentaBancaria);
 		this.transporte = transporte;
 		listaTransportadores.add(this);
@@ -35,56 +37,65 @@ public class Transportador extends Persona{
 	
 
     // MÉTODOS
-	
-	
-    // Método sobreescrito de la clase Persona
+    // Método sobreescrito de la clase Persona para realizar el pago de salario a un objeto de tipo transportador
     @Override
-	public void recibirPagos(int cantidad) {
-		fabrica.getCuentaBancaria().disminuirSaldo(cantidad);
-		super.getCuentaBancaria().incrementarSaldo(cantidad);
+	public void recibirPagos(double pago) {
+		
+		fabrica.getCuentaBancaria().disminuirSaldo(pago);
+		super.getCuentaBancaria().incrementarSaldo(pago);
 	}
 	
 
 	@Override
 	public String toString() {
-		return "\nNombre: "            + getNombre()               + "\n"
-        +      "Edad: "                + getEdad()                 + "\n"
-        +      "Cedula: "              + getIdentificacion()       + "\n"
-		+      "Transporte: "          + getTransporte().getTipo() + "\n";
+		
+		return "\n"
+		+ "Nombre: 			" + getNombre() + "\n"
+        + "Edad: 			" + getEdad() + "\n"
+        + "Cedula:			" + getIdentificacion() + "\n"
+		+ "Transporte:	    " + getTransporte().getTipo() + "\n";
 		
 	}
 	
     
     // GETTERS Y SETTERS
     public static ArrayList<Meta> getMetas(){
+		
 		return metas;
 	}
 
 	public static void setMetas(ArrayList<Meta> metas){
+		
 		Transportador.metas = metas;
 	}
 
 	public static ArrayList<Transportador> getListaTransportadores() {
+		
 		return listaTransportadores;
 	}
 
 	public static void setListaTransportadores(ArrayList<Transportador> listaTransportadores) {
+		
 		Transportador.listaTransportadores = listaTransportadores;
 	}
 
 	public Transporte getTransporte() {
+		
 		return transporte;
 	}
 
     public void setTransporte(Transporte transporte) {
+		
 		this.transporte = transporte;
 	}
 
     public Fabrica getFabrica() {
+		
 		return fabrica;
 	}
 
 	public void setFabrica(Fabrica fabrica) {
+		
 		this.fabrica = fabrica;
 	}
 }

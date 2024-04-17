@@ -12,6 +12,7 @@ public class CuentaBancaria {
 
     // CONSTRUCTOR
     public CuentaBancaria(int numeroCuenta, int saldo) {
+        
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
     }
@@ -20,16 +21,19 @@ public class CuentaBancaria {
     // MÉTODOS
     // Método para incrementar el saldo de la cuenta
     public void incrementarSaldo(double cantidad) {
+        
         saldo += cantidad;
     }
     
     // Método para disminuir el saldo de la cuenta
     public void disminuirSaldo(double cantidad) {
+        
         saldo -= cantidad;
     }
     
     // Método estático para calcular el pago de los empleados
     public static int calcularPago(Persona persona){
+        
         int trabajo = persona.getTrabajado();
         int salario = Persona.getSalario();
         int total = 0;     
@@ -44,11 +48,13 @@ public class CuentaBancaria {
         else if(persona instanceof Transportador){
             total =+ (salario + 100000)*trabajo;
         }
+
         return total;
     }
 
     // Método para devolver dinero
     public void devolverDinero(double cantidad, Cliente cliente){
+
         CuentaBancaria cuenta = cliente.getCuentaBancaria();
         cuenta.incrementarSaldo(cantidad);
     }
@@ -56,18 +62,22 @@ public class CuentaBancaria {
 
     // GETTERS Y SETTERS
     public int getNumeroCuenta() {
+
         return numeroCuenta;
     }
     
     public void setNumeroCuenta(int numeroCuenta) {
+
         this.numeroCuenta = numeroCuenta;
     }
     
     public int getSaldo() {
+
         return saldo;
     }
     
     public void setSaldo(int saldo) {
+        
         this.saldo = saldo;
     }
 }
