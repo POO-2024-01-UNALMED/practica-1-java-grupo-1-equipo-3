@@ -3,11 +3,12 @@ package gestorAplicacion.externo;
 import java.util.ArrayList;
 
 import gestorAplicacion.empleados.Transportador;
+import gestorAplicacion.empresa.Moda;
 import gestorAplicacion.empresa.Producto;
 import gestorAplicacion.empresa.Tienda;
 //import gestorAplicacion.externo.TipoTransporte;
 
-public class Transporte {
+public class Transporte implements Moda{
     // ATRIBUTOS 
     // De instancia
     private TipoTransporte tipo;
@@ -160,5 +161,9 @@ public class Transporte {
         this.listaProductos = listaProductos;
     }
 
-
+    //De la interfaz Moda
+    public String getNombre(){
+        
+        return tipo.getNombre();
+    }
 }

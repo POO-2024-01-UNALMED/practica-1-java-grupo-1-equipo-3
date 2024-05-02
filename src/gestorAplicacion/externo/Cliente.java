@@ -2,10 +2,11 @@ package gestorAplicacion.externo;
 
 import java.util.ArrayList;
 
+import gestorAplicacion.empresa.Moda;
 import gestorAplicacion.empresa.Producto;
 
 
-public class Cliente {
+public class Cliente implements Moda {
     // ATRIBUTOS 
     // De clase 
     private static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();

@@ -1,8 +1,11 @@
 package gestorAplicacion.empresa;
 
+import java.util.Map.Entry;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import gestorAplicacion.empleados.Operario;
 import gestorAplicacion.externo.Cliente;
@@ -14,6 +17,7 @@ public class Factura {
     // De clase
     private static ArrayList<Factura> listaFacturas = new ArrayList<>();
     private static int facturasCreadas = 0;
+    private static HashMap<String, Moda> infoAtributos = new HashMap<String,Moda>();
 
     // De instancia
     private Tienda tienda;
@@ -36,6 +40,10 @@ public class Factura {
         this.listaProductos = listaProductos;
         this.fecha = fecha;
         this.operario = operario;
+
+        infoAtributos.put("tienda", tienda);
+        infoAtributos.put("transporte", transporte);
+        infoAtributos.put("cliente", cliente);
         
         this.total = calcularTotal();
         this.identificacionCompra = ++facturasCreadas;
@@ -151,10 +159,37 @@ public class Factura {
         return porcentajeDeAumento;
     }
 
-    public Producto masComprado() {
-        Producto productoMasComprado = null;
-        // FALTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        return productoMasComprado; // Temporal
+    // Obtiene el elemento más común en una lista de elementos 
+    private static <T> T masComun(List<T> list) { // T indica que los elementos son genéricos
+        
+        Map<T, Integer> map = new HashMap<>();
+
+        for (T t : list) {
+            Integer val = map.get(t);
+            map.put(t, val == null ? 1 : val + 1);
+        }
+
+        Entry<T, Integer> max = null;
+
+        for (Entry<T, Integer> e : map.entrySet()) {
+            if (max == null || e.getValue() > max.getValue())
+                max = e;
+        }
+
+        return max.getKey();
+    }
+
+    // Obtiene la moda de un atributo específico de las facturas en un periodo especifico
+    public static Moda moda(int inicio, int fin, String atributo){
+
+        ArrayList<Factura> facturas = Factura.facturasPorPeriodo(inicio, fin);
+        ArrayList<Moda> objetos = new ArrayList<Moda>(); 
+    
+        for(Factura factura: facturas){
+            objetos.add(factura.getAtributos().get(atributo));
+        }
+    
+        return Factura.masComun(objetos);
     }
 
     // Muestra información de los clientes en las facturas que han sido creadas
@@ -372,5 +407,20 @@ public class Factura {
     public void setOperario(Operario operario) {
         
         this.operario = operario;
+    }
+
+    public HashMap<String, Moda> getAtributos(){
+
+        return infoAtributos;
+    }
+
+    public static HashMap<String, Moda> getInfoAtributos(){
+        
+        return infoAtributos;
+    }
+
+    public void setInfoAtributos(HashMap<String, Moda> infoAtributos) {
+        
+        Factura.infoAtributos = infoAtributos;
     }
 }

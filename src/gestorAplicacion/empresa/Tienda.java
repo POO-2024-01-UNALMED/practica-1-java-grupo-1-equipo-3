@@ -13,7 +13,7 @@ import gestorAplicacion.externo.TipoTransporte;
 import gestorAplicacion.externo.Transporte;
 
 
-public class Tienda {
+public class Tienda implements Moda{
     // ATRIBUTOS
     // De clase
     private static int numTiendas = 0; 
