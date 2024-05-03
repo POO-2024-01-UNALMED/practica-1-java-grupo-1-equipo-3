@@ -22,8 +22,8 @@ public class Tienda implements Moda{
     private String nombre;
     private Vendedor vendedor;
     private CuentaBancaria cuentaBancaria;
-    private ArrayList<Producto> listaProductos;
-    private HashMap<Producto, Integer> cantidadProductos;
+    static private ArrayList<Producto> listaProductos;
+    static public HashMap<Producto, Integer> cantidadProductos;
     private Map<String, Integer> cantidadPorCategoria = new HashMap<String, Integer>() {{
         put("frutas y verduras", (int) (new Random().nextInt(51) + 50));
         put("panaderia", (int) (new Random().nextInt(51) + 50));
@@ -51,7 +51,7 @@ public class Tienda implements Moda{
 
     // MÉTODOS
     // Muestra los productos disponibles en la tienda
-    public String mostrarProductos() {
+    public static String mostrarProductos() {
         
         String mensaje = "";
         

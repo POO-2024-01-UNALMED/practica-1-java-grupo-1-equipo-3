@@ -10,7 +10,7 @@ public class Fabrica {
     //ATRIBUTOS
     // De instancia
     private ArrayList<Producto> listaProductos;
-    private ArrayList<Tienda> listaTienda;
+    static private ArrayList<Tienda> listaTienda;
     private CuentaBancaria cuentaBancaria;
     private Operario operario;
 
@@ -54,7 +54,7 @@ public class Fabrica {
     }
 
     // Muestra las tiendas disponibles
-    public String mostrarTienda() {
+    public static String mostrarTienda() {
         
         String mensaje = "";
 		int numero = 1;
@@ -71,7 +71,7 @@ public class Fabrica {
     }
 
     // Permite seleccionar una de las tiendas disponibles
-    public Tienda seleccionarTienda(int indice) {
+    public static Tienda seleccionarTienda(int indice) {
         
         Tienda tienda = listaTienda.get(indice - 1);
 		

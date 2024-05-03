@@ -13,7 +13,7 @@ public class Producto {
     private String nombre;
     private String descripcion;
     private double valor;
-    private double peso;
+    public double peso;
     private double tamano;
     private double costoProduccion;
     private String categoria;
