@@ -1,5 +1,6 @@
 package gestorAplicacion.empresa;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +14,10 @@ import gestorAplicacion.externo.TipoTransporte;
 import gestorAplicacion.externo.Transporte;
 
 
-public class Tienda implements Moda{
+public class Tienda implements Moda, Serializable{
     // ATRIBUTOS
     // De clase
+    private static final long serialVersionUID = 1538904L; // Versión del serializado asociada a esta clase
     private static int numTiendas = 0; 
 
     // De instancia

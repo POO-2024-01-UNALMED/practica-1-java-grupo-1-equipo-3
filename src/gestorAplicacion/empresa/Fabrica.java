@@ -1,14 +1,16 @@
 package gestorAplicacion.empresa;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import gestorAplicacion.empleados.Operario;
 import gestorAplicacion.externo.CuentaBancaria;
 import gestorAplicacion.externo.Persona;
 
-public class Fabrica {
+public class Fabrica implements Serializable{
     //ATRIBUTOS
     // De instancia
+    private static final long serialVersionUID = 1728394; // Versión del serializado asociada a esta clase
     private ArrayList<Producto> listaProductos;
     private ArrayList<Tienda> listaTienda;
     private CuentaBancaria cuentaBancaria;

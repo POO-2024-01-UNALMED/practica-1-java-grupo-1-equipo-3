@@ -1,6 +1,7 @@
 package gestorAplicacion.empresa;
 
 import java.util.Map.Entry;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,9 +13,10 @@ import gestorAplicacion.externo.Cliente;
 import gestorAplicacion.externo.Transporte;
 
 
-public class Factura {
+public class Factura implements Serializable{
     // ATRIBUTOS
     // De clase
+    private static final long serialVersionUID = 1897543L; // Versión del serializado asociado a esta clase
     private static ArrayList<Factura> listaFacturas = new ArrayList<>();
     private static int facturasCreadas = 0;
     private static HashMap<String, Moda> infoAtributos = new HashMap<String,Moda>();
@@ -419,7 +421,7 @@ public class Factura {
         return infoAtributos;
     }
 
-    public void setInfoAtributos(HashMap<String, Moda> infoAtributos) {
+    public static void setInfoAtributos(HashMap<String, Moda> infoAtributos) {
         
         Factura.infoAtributos = infoAtributos;
     }

@@ -1,11 +1,14 @@
 package gestorAplicacion.externo;
+import java.io.Serializable;
+
 import gestorAplicacion.empleados.Operario;
 import gestorAplicacion.empleados.Transportador;
 import gestorAplicacion.empleados.Vendedor;
 
-public class CuentaBancaria {
+public class CuentaBancaria implements Serializable {
     // ATRIBUTOS
     // De instancia
+    private static final long serialVersionUID = 1525353L; // Versión del serializado asociada a esta clase 
     private int numeroCuenta;
     private int saldo;
     
@@ -77,7 +80,7 @@ public class CuentaBancaria {
     }
     
     public void setSaldo(int saldo) {
-        
+
         this.saldo = saldo;
     }
 }

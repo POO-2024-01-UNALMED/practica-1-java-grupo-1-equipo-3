@@ -1,14 +1,16 @@
 package gestorAplicacion.externo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import gestorAplicacion.empresa.Moda;
 import gestorAplicacion.empresa.Producto;
 
 
-public class Cliente implements Moda {
+public class Cliente implements Moda, Serializable {
     // ATRIBUTOS 
     // De clase 
+    private static final long serialVersionUID = 1234567L; // Versión del serializado asociada a esta clase
     private static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
     
     // De instancia
