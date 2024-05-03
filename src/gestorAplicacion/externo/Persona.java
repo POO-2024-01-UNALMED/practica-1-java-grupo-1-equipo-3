@@ -1,11 +1,13 @@
 package gestorAplicacion.externo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public abstract class Persona {
+public abstract class Persona implements Serializable{
     // ATRIBUTOS
     // De clase
+    private static final long serialVersionUID = 1567940L; // Versión del serializado asociada a esta clase
     private static int totalPersonas;
     private static  ArrayList<Persona> listaPersonas = new ArrayList<Persona>();
     private static final int SALARIO = 1500000; 
