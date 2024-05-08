@@ -24,8 +24,8 @@ public class Tienda implements Moda, Serializable{
     private String nombre;
     private Vendedor vendedor;
     private CuentaBancaria cuentaBancaria;
-    static private ArrayList<Producto> listaProductos;
-    static public HashMap<Producto, Integer> cantidadProductos;
+    private ArrayList<Producto> listaProductos;
+    public HashMap<Producto, Integer> cantidadProductos;
     private Map<String, Integer> cantidadPorCategoria = new HashMap<String, Integer>() {{
         put("frutas y verduras", (int) (new Random().nextInt(51) + 50));
         put("panaderia", (int) (new Random().nextInt(51) + 50));
@@ -53,7 +53,7 @@ public class Tienda implements Moda, Serializable{
 
     // MÉTODOS
     // Muestra los productos disponibles en la tienda
-    public static String mostrarProductos() {
+    public String mostrarProductos() {
         
         String mensaje = "";
         

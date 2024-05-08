@@ -9,10 +9,12 @@ import gestorAplicacion.externo.Persona;
 
 public class Fabrica implements Serializable{
     //ATRIBUTOS
-    // De instancia
+    // De clase 
     private static final long serialVersionUID = 1728394; // Versión del serializado asociada a esta clase
+
+    // De instancia
     private ArrayList<Producto> listaProductos;
-    static private ArrayList<Tienda> listaTienda;
+    private ArrayList<Tienda> listaTienda;
     private CuentaBancaria cuentaBancaria;
     private Operario operario;
 
@@ -56,24 +58,24 @@ public class Fabrica implements Serializable{
     }
 
     // Muestra las tiendas disponibles
-    public static String mostrarTienda() {
+    public String mostrarTiendas() {
         
         String mensaje = "";
 		int numero = 1;
 		
         //se recorre la lista para obtener la información de las tiendas:
 		for(Tienda tienda:listaTienda) {
-			mensaje += numero + ". " + tienda.getNombre() + "-PRODUCTOS: " + tienda.cantidadProductos() + "\n";
+			mensaje += numero +". "+tienda.getNombre()+"-Productos: "+tienda.cantidadProductos() + "\n"; //se almacenan todos lo nombres de las tiendas en un string
 			numero++;
             if(numero == listaTienda.size());
-            mensaje +="\n";
+            mensaje+="\n";
 		}
 
 		return mensaje;
     }
 
     // Permite seleccionar una de las tiendas disponibles
-    public static Tienda seleccionarTienda(int indice) {
+    public Tienda seleccionarTienda(int indice) {
         
         Tienda tienda = listaTienda.get(indice - 1);
 		
