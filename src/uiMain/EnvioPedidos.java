@@ -12,8 +12,9 @@ import java.util.ArrayList;
 
 public class EnvioPedidos  {
 
-    public static void enviarPedido() { 
+    public static void envioPedidos() { 
 
+        // Atributos a usar
         int x = 1; // para manejar el menu
         int eleccion = 1; 
         int numProductoSeleccionado = 1;
@@ -32,6 +33,7 @@ public class EnvioPedidos  {
         ArrayList<Producto> listaProductosPedidos = new ArrayList<Producto>();
         
 
+        // Manejo de opciones
         while (interruptor) {
 
             switch (eleccion) {

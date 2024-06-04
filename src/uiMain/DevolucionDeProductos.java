@@ -8,7 +8,7 @@ import gestorAplicacion.empresa.Producto;
 import gestorAplicacion.externo.Cliente;
 
 public class DevolucionDeProductos {
-    public static void gestionarDevoluciones() {
+    public static void devolucionDeProductos() {
 
         //Atributos a usar
         Scanner sc = new Scanner(System.in);
