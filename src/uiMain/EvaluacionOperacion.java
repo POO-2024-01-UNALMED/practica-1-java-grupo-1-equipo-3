@@ -81,7 +81,7 @@ public class EvaluacionOperacion {
 
         String opcion = new MenuAuxiliar("Ingrese información a obtener", opciones, "Volver al inicio").mostrarReturnString();
 
-        HashMap<Integer, Double> disc =  Factura.gananciasDiscretas(fecha1, fecha2);
+        HashMap<Integer, Double> disc =  Factura.gananciasPorDia(fecha1, fecha2);
         
         while(opcion!= "Volver al inicio"){
 
@@ -96,7 +96,7 @@ public class EvaluacionOperacion {
 
                 case "GANANCIAS TOTALES":
     
-                        System.out.println("\nLas ganancias totales entre las fechas ingresadas han sido: " + Factura.gananciasTotales(disc));
+                        System.out.println("\nLas ganancias totales entre las fechas ingresadas han sido: " + Factura.ganancias(disc));
     
                     break;
     
@@ -110,7 +110,7 @@ public class EvaluacionOperacion {
 
                 case "AUMENTO PORCENTUAL":
     
-                        desplegarInfo(Factura.aumentoPorcentual(disc), "AUMENTO", "%");
+                        desplegarInfo(Factura.porcentajeDeAumento(disc), "AUMENTO", "%");
     
                     break;
     
@@ -120,12 +120,12 @@ public class EvaluacionOperacion {
                     System.out.println("\nLa fecha mínima es " + fechaMin + " y la fecha máxima es " + fechaMax);
 
                     System.out.println("Ingrese fecha de inicio: ");
-                    fecha1 = Menu.ingresarConLimites(fechaMin, fechaMax);
+                    fecha1 = MenuAuxiliar.ingresarConLimites(fechaMin, fechaMax);
 
                     System.out.println("Ingrese fecha final: ");
-                    fecha2 = Menu.ingresarConLimites(fecha1, fechaMax);
+                    fecha2 = MenuAuxiliar.ingresarConLimites(fecha1, fechaMax);
 
-                    disc =  Factura.gananciasDiscretas(fecha1, fecha2);
+                    disc =  Factura.gananciasPorDia(fecha1, fecha2);
     
                     break;
 
@@ -149,7 +149,7 @@ public class EvaluacionOperacion {
                 
             }
 
-            opcion = new Menu("Ingrese información a obtener", opciones, "Volver al inicio").mostrarReturnString();
+            opcion = new MenuAuxiliar("Ingrese información a obtener", opciones, "Volver al inicio").mostrarReturnString();
         }
     }
 
@@ -157,7 +157,7 @@ public class EvaluacionOperacion {
 
         String opciones[] = new String[]{"Tienda más usada", "Transporte más usado", "Cliente al que más se le ha vendido"};
 
-        int opcion = new Menu("Seleccione moda: ", opciones).mostrar();
+        int opcion = new MenuAuxiliar("Seleccione moda: ", opciones).mostrar();
 
         System.out.println("\n");
 
@@ -201,7 +201,7 @@ public class EvaluacionOperacion {
 
             System.out.println("\n");
 
-             opcion = new Menu("Seleccione moda: ", opciones).mostrar();
+             opcion = new MenuAuxiliar("Seleccione moda: ", opciones).mostrar();
         }
     }
 

@@ -42,7 +42,7 @@ public class Menu {
 
                 case 3:
 
-                    ProveerTiendas.proveerTiendas();              ARREGLARRRRRRRRRRRRR
+                    ProveerTiendas.proveerTiendas();
                     break;
 
 

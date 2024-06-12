@@ -266,13 +266,13 @@ public class Factura implements Serializable{
     }
 
     // Obtiene la fecha más pequeña en la lista de fechas
-    public static int minFecha(){
+    public static int getFechaMin(){
 
         return Collections.min(listaFechas());
     }
 
     // Obtiene la fecha más grande en la lista de fechas
-    public static int maxFecha(){
+    public static int getFechaMax(){
 
         return Collections.max(listaFechas());
     }

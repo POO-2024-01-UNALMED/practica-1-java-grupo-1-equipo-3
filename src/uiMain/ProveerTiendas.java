@@ -3,6 +3,7 @@ package uiMain;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import baseDatos.Cargar;
 import gestorAplicacion.empresa.Producto;
 import gestorAplicacion.empresa.Tienda;
 import gestorAplicacion.externo.TipoTransporte;
@@ -43,7 +44,7 @@ public class ProveerTiendas {
                     System.out.println("\n");
                     System.out.println("Abastecer tiendas - Apartado de tiendas");
                     System.out.println("\n0. Volver al menu anterior\n");
-                    System.out.print(Load.fabrica.mostrarTiendas());
+                    System.out.print(Cargar.fabrica.mostrarTiendas());
                     // Seleccionar tienda
                     System.out.print("Seleccione la tienda a la que desea enviar: ");
                     // Entero seleccionado
@@ -58,9 +59,9 @@ public class ProveerTiendas {
                             break;
                         }
 
-                        if (x > 0 && x <=Load.fabrica.getListaTienda().size()) {
+                        if (x > 0 && x <= Cargar.fabrica.getListaTienda().size()) {
 
-                            tiendaSeleccionada =Load.fabrica.getListaTienda().get(x - 1);
+                            tiendaSeleccionada = Cargar.fabrica.getListaTienda().get(x - 1);
                             eleccion = 2;
                             break;
 
@@ -81,7 +82,7 @@ public class ProveerTiendas {
                     System.out.print("\nLa capacidad de productos por categoria para esta tienda es la siguiente: \n");
                     System.out.println(tiendaSeleccionada.productosPorCategoria());
                     System.out.println("\n0. Regresar al menu anterior");
-                    System.out.println(Load.fabrica.mostrarProductos());
+                    System.out.println(Cargar.fabrica.mostrarProductos());
                     System.out.print("Seleccione el producto que desea enviar: ");
 
                     while (x != 0) {
@@ -94,9 +95,9 @@ public class ProveerTiendas {
                             break;
                         }
 
-                        if (escanerInt > 0 && escanerInt <=Load.fabrica.getListaProductos().size()) {
+                        if (escanerInt > 0 && escanerInt <= Cargar.fabrica.getListaProductos().size()) {
                             
-                            productoSeleccionado =Load.fabrica.getListaProductos().get(escanerInt - 1);
+                            productoSeleccionado = Cargar.fabrica.getListaProductos().get(escanerInt - 1);
                             eleccion = 3;
                             break;
 
@@ -151,9 +152,9 @@ public class ProveerTiendas {
 
                     // TipoTransporte tipoTransportes;
                     ArrayList<TipoTransporte> listaTransFiltrada = new ArrayList<TipoTransporte>();
-                    listaTransFiltrada = TipoTransporte.crearTipoTransporteSegunCarga(PesoTotalProductos);
+                    listaTransFiltrada = TipoTransporte.transporteSegunCarga(PesoTotalProductos);
                     // System.out.printlnLoad.tipoTransportes.mostrarTipoTransporteSegunCarga(productoSeleccionado));
-                    System.out.println(TipoTransporte.mostrarTipoTransporteSegunCarga(listaTransFiltrada));
+                    System.out.println(TipoTransporte.mostrarTransporteSegunCarga(listaTransFiltrada));
                     System.out.println("Seleccione el número del tipo de transporte: ");
                     System.out.print("> ");
 
@@ -188,7 +189,7 @@ public class ProveerTiendas {
 
                 case 5:
 
-                    listaDeProductos =Load.fabrica.cantidadProductos(escanerInt, productoSeleccionado); // meter los productos en el camion
+                    listaDeProductos = Cargar.fabrica.cantidadProductos(escanerInt, productoSeleccionado); // meter los productos en el camion
                     transporteSeleccionado.suministrarProducto(tiendaSeleccionada, listaDeProductos); // Se descargan los productos en la tienda,  luego de comprobar que sea la tienda correcta
 
                     if (transporteSeleccionado.getTienda().equals(tiendaSeleccionada) == true) {

@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import gestorAplicacion.empleados.Meta;
 import gestorAplicacion.empleados.Operario;
+import gestorAplicacion.empleados.Transportador;
 import gestorAplicacion.empleados.Vendedor;
 import gestorAplicacion.empresa.Fabrica;
 import gestorAplicacion.empresa.Factura;
@@ -27,9 +28,8 @@ public class PagoDeNomina {
             boolean verificador2 = true;
             boolean verificador3 = true;
 
-            int opcion = new Menu("\n¿A qué tipo de trabajador desea pagarle?",
-                    new String[] { "Operarios", "Conductores",
-                            "Vendedores" },
+            int opcion = new MenuAuxiliar("\n¿A qué tipo de trabajador desea pagarle?",
+                    new String[] { "Operarios", "Conductores", "Vendedores" },
                     "Volver al menú principal").mostrar();
 
             if (opcion == 0) {
@@ -42,7 +42,7 @@ public class PagoDeNomina {
                 
                 // Método #1 Verifica los trabajadores del tipo que seleccionó
                 // salen en las facturas que han sido creadas
-                ArrayList<Persona> listaTrabajadores = Fabrica.busquedaTrabajo(Factura.getListaFacturas(), opcion);
+                ArrayList<Persona> listaTrabajadores = Fabrica.TrabajadoresInvolucrados(Factura.getListaFacturas(), opcion);
 
                 if (listaTrabajadores.size() == 0) {
                     
@@ -73,7 +73,7 @@ public class PagoDeNomina {
                 }
 
                 // Imprime la lista que se devolvió anteriormente
-                System.out.println(Fabrica.mostrarPersonas(listaTrabajadores));
+                System.out.println(Fabrica.mostrarEmpleados(listaTrabajadores));
 
                 while (verificador2) {
                     // Pide el # del trabajador
@@ -103,7 +103,7 @@ public class PagoDeNomina {
                         int total = CuentaBancaria.calcularPago(trabajadorEscogido);
 
                         System.out.println("\nAl trabajor " + trabajadorEscogido.getNombre() + " se le pagará " + total
-                                + " por trabajar " + trabajadorEscogido.getTrabajo() + " veces");
+                                + " por trabajar " + trabajadorEscogido.getTrabajado() + " veces");
 
                         System.out.println(
                                 "\n¿Desea analizar y bonificar al trabajador por sus metas cumplidas?\n1.Si\n2.No");
@@ -135,7 +135,7 @@ public class PagoDeNomina {
                                     
                                     ArrayList<Meta> listaMetas;
                                     String textoIndice;
-                                    double indice = trabajadorEscogido.getIndiceMeta();
+                                    double indice = trabajadorEscogido.getMinimoMeta();
             
                                     if (opcion==1){
                                         
@@ -144,12 +144,12 @@ public class PagoDeNomina {
 
                                     }else if(opcion==2){
 
-                                        listaMetas = Conductor.getMetasConductor();
+                                        listaMetas = Transportador.getMetas();
                                         textoIndice = "Indice: peso de productos transportados\n";
 
                                     }else{
 
-                                        listaMetas = Vendedor.getMetasVendedor();
+                                        listaMetas = Vendedor.getMetas();
                                         textoIndice = "Indice: número de productos vendidos\n";
 
                                     }
@@ -174,7 +174,7 @@ public class PagoDeNomina {
                                             
                                             System.out.println("Esta opción ya fue mostrada");
 
-                                        }else if(trabajadorEscogido.getVerificadorMetasCumplidas().get(opcMetaEscogida - 1)==true){
+                                        }else if(trabajadorEscogido.getCumplimientoMetas().get(opcMetaEscogida - 1)==true){
                                             
                                             System.out.println("La meta que seleccionó ya fue cumplida y se le ha pagado al trabajador su bonificación");
 
@@ -188,15 +188,15 @@ public class PagoDeNomina {
                                             }else{
 
                                                 Meta metaEscogida = listaMetas.get(opcMetaEscogida - 1);
-                                                boolean verificadorMeta = metaEscogida.cumpleMeta(indice);
-                                                String estadisticasMeta = metaEscogida.porcentajesCumplidos(indice);
+                                                boolean verificadorMeta = metaEscogida.cumplioMeta(indice);
+                                                String estadisticasMeta = metaEscogida.porcentajeCumplimiento(indice);
                                 
                                                 if (verificadorMeta){
 
                                                     System.out.println("\nLa meta ha sido cumplida exitósamente");
                                                     System.out.println("Sumaremos al pago la bonificación por esta meta");
-                                                    valorPorMetas += metaEscogida.getPago();
-                                                    trabajadorEscogido.getVerificadorMetasCumplidas().set(opcMetaEscogida - 1,true);  
+                                                    valorPorMetas += metaEscogida.getComision();
+                                                    trabajadorEscogido.getCumplimientoMetas().set(opcMetaEscogida - 1,true);  
 
                                                 } else{
 
@@ -245,7 +245,7 @@ public class PagoDeNomina {
                         // Método #3
                         // Envia el dinero que calculamos antes a la cuenta del trabajador
                         // y se lo resta a la cuenta de la fabrica
-                        trabajadorEscogido.recibirSueldo(total + valorPorMetas);
+                        trabajadorEscogido.recibirPagos(total + valorPorMetas);
 
 
                         // temporizador para que se vea mas real la eliminacion.
@@ -280,7 +280,7 @@ public class PagoDeNomina {
 
                         // Asignamos de nuevo 0 al trabajo, para que si se le paga de nuevo,
                         // no se le pague más de una vez por el mismo trabajo
-                        trabajadorEscogido.setTrabajo(0);
+                        trabajadorEscogido.setTrabajado(0);
 
                         verificador2 = false;
                         break;

@@ -93,7 +93,7 @@ public class Fabrica implements Serializable{
     }
 
 
-    public String mostrarEmpleados(ArrayList<Persona> trabajadores) {
+    public static String mostrarEmpleados(ArrayList<Persona> trabajadores) {
         
         String mensaje = "";
         int numero = 1;
@@ -107,7 +107,7 @@ public class Fabrica implements Serializable{
     }
 
     // Crea una lista con cierta cantidad de un mismo producto
-    public ArrayList<Producto> cantidadProductos(Producto producto, int cantidad) {
+    public ArrayList<Producto> cantidadProductos(int cantidad, Producto producto) {
        
         ArrayList<Producto> productosRequeridos = new ArrayList<>();
         
