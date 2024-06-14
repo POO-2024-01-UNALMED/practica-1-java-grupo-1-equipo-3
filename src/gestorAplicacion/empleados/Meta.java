@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Meta implements Serializable{
     //ATRIBUTOS
     // De instancia
-    private static final long serialVersionUID = 1574812L; // Versión del serializado asociada a esta clase
+    private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
     private String nivel;
     private double minimo;
     private double comision;

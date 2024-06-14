@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Producto implements Serializable{
     // ATRIBUTOS
     // De clase
-    private static final long serialVersionUID = 12457078L; // Versión del serializado asociada a esta clase
+    private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
     private static int numProductos = 0;
     private static ArrayList<Producto> listaProductos = new ArrayList<>();
 

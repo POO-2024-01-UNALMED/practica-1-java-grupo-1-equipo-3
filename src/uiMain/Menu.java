@@ -9,6 +9,7 @@ public class Menu {
     
 	public static void main(String[] args) {
 
+		//Cargar.cargarPorDefecto();;
         Cargar.cargar();
 
         int opcion;
@@ -16,11 +17,11 @@ public class Menu {
 		do{
             System.out.println("\nMenú principal Delicia Fresca\n");
             System.out.println("Ingrese el número de la opción que desea utilizar");
-			System.out.println("1. Enviar pedido");
-			System.out.println("2. Pagar a trabajadores");
-			System.out.println("3. Abastecer tiendas");
-			System.out.println("4. Gestionar devoluciones");
-            System.out.println("5. Mostrar estadísticas");
+			System.out.println("1. Envio pedidos");
+			System.out.println("2. Pago de nomina");
+			System.out.println("3. Proveer tiendas");
+			System.out.println("4. Devoluciones de productos");
+            System.out.println("5. Evaluación operación");
             System.out.println("6. Salir\n");
             System.out.print("> ");
             opcion = sc.nextInt();

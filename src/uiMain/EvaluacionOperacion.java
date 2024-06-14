@@ -76,8 +76,8 @@ public class EvaluacionOperacion {
         int fechaMin = Factura.getFechaMin();
         int fechaMax = Factura.getFechaMax();
 
-        String opciones[] = new String[]{"Ganancias Discretas", "Ganancias Totales", 
-                "Promedio por dia", "Aumento porcentual", "Modas estadisticas", "Cambiar fechas"};
+        String opciones[] = new String[]{"Ganancias por dia", "Ganancias Totales", 
+                "Promedio por dia", "Porcentaje de aumento", "Modas estadisticas", "Cambiar fechas"};
 
         String opcion = new MenuAuxiliar("Ingrese información a obtener", opciones, "Volver al inicio").mostrarReturnString();
 
@@ -87,7 +87,7 @@ public class EvaluacionOperacion {
 
             switch(opcion){
 
-                case "GANANCIAS DISCRETAS":
+                case "GANANCIAS POR DIA":
     
                         desplegarInfo(disc, "GANANCIA", "");
     
@@ -108,7 +108,7 @@ public class EvaluacionOperacion {
                     break;
     
 
-                case "AUMENTO PORCENTUAL":
+                case "PORCENTAJE DE AUMENTO":
     
                         desplegarInfo(Factura.porcentajeDeAumento(disc), "AUMENTO", "%");
     

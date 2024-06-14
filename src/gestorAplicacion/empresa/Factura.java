@@ -16,7 +16,7 @@ import gestorAplicacion.externo.Transporte;
 public class Factura implements Serializable{
     // ATRIBUTOS
     // De clase
-    private static final long serialVersionUID = 1897543L; // Versión del serializado asociado a esta clase
+    private static final long serialVersionUID = 1L; // Versión del serializado asociado a esta clase
     private static ArrayList<Factura> listaFacturas = new ArrayList<>();
     private static int facturasCreadas = 0;
     private static HashMap<String, Moda> infoAtributos = new HashMap<String,Moda>();

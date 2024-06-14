@@ -17,14 +17,14 @@ import gestorAplicacion.externo.Transporte;
 public class Tienda implements Moda, Serializable{
     // ATRIBUTOS
     // De clase
-    private static final long serialVersionUID = 1538904L; // Versión del serializado asociada a esta clase
+    private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
     private static int numTiendas = 0; 
 
     // De instancia
     private String nombre;
     private Vendedor vendedor;
     private CuentaBancaria cuentaBancaria;
-    private ArrayList<Producto> listaProductos;
+    private ArrayList<Producto> listaProductos = new ArrayList<Producto>();
     public HashMap<Producto, Integer> cantidadProductos;
     private Map<String, Integer> cantidadPorCategoria = new HashMap<String, Integer>() {{
         put("frutas y verduras", (int) (new Random().nextInt(51) + 50));
@@ -250,9 +250,14 @@ public class Tienda implements Moda, Serializable{
 
     public ArrayList<Producto> getListaProductos() {
         
+        if (listaProductos == null) {
+
+            listaProductos = new ArrayList<>();
+        }
+
         return listaProductos;
     }
-
+    
     public void setListaProductos(ArrayList<Producto> listaProductos) {
         
         this.listaProductos = listaProductos;

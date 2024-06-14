@@ -29,7 +29,7 @@ public class PagoDeNomina {
             boolean verificador3 = true;
 
             int opcion = new MenuAuxiliar("\n¿A qué tipo de trabajador desea pagarle?",
-                    new String[] { "Operarios", "Conductores", "Vendedores" },
+                    new String[] { "Operarios", "Transportadores", "Vendedores" },
                     "Volver al menú principal").mostrar();
 
             if (opcion == 0) {
@@ -62,7 +62,7 @@ public class PagoDeNomina {
 
                     case 2:
 
-                        System.out.println("\nEsta es la lista de Conductores que han trabajado");
+                        System.out.println("\nEsta es la lista de Transportadores que han trabajado");
                         break;
 
 
@@ -271,12 +271,12 @@ public class PagoDeNomina {
 
 
                         System.out.println("\nEl pago fue realizado con éxito\n");
-                        System.out.println("********************************");
+                        System.out.println("-------------------------------------");
                         System.out.println("Comprobante de pago");
                         System.out.println("Pago asociado a los envios realizados " + total);
                         System.out.println("Pago asociado al cumpliento de metas " + valorPorMetas);
                         System.out.println("Total = " + (total + valorPorMetas));
-                        System.out.println("********************************");
+                        System.out.println("-------------------------------------");
 
                         // Asignamos de nuevo 0 al trabajo, para que si se le paga de nuevo,
                         // no se le pague más de una vez por el mismo trabajo

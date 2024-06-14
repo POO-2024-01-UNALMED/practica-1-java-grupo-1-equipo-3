@@ -10,7 +10,7 @@ import gestorAplicacion.externo.Persona;
 public class Fabrica implements Serializable{
     //ATRIBUTOS
     // De clase 
-    private static final long serialVersionUID = 1728394; // Versión del serializado asociada a esta clase
+    private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
 
     // De instancia
     private ArrayList<Producto> listaProductos;

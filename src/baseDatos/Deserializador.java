@@ -17,6 +17,7 @@ import gestorAplicacion.externo.Cliente;
 import gestorAplicacion.externo.Transporte;
 
 public class Deserializador {
+    
     public static Serializable deserializar(String strArchivo) throws IOException, ClassNotFoundException{
 
         FileInputStream fileInputStream;
@@ -57,6 +58,8 @@ public class Deserializador {
 
     public static ArrayList<Producto> cargarCatalogo() throws IOException, ClassNotFoundException{
 
+        @SuppressWarnings("unchecked")
+        
         ArrayList<Producto> catalogo = (ArrayList<Producto>) deserializar("src/baseDatos/temp/catalogo.txt");
 
         return catalogo;
@@ -65,6 +68,8 @@ public class Deserializador {
 
     public static ArrayList<Cliente> cargarClientes() throws IOException, ClassNotFoundException{
 
+        @SuppressWarnings("unchecked")
+        
         ArrayList<Cliente> clientes= (ArrayList<Cliente>) deserializar("src/baseDatos/temp/clientes.txt");
 
         return clientes;
@@ -73,6 +78,8 @@ public class Deserializador {
 
     public static ArrayList<Vendedor> cargarVendedores() throws IOException, ClassNotFoundException{
 
+        @SuppressWarnings("unchecked")
+
         ArrayList<Vendedor> vendedores = (ArrayList<Vendedor>) deserializar("src/baseDatos/temp/vendedores.txt");
 
         return vendedores;
@@ -80,6 +87,8 @@ public class Deserializador {
 
 
     public static ArrayList<Tienda> cargarTiendas() throws IOException, ClassNotFoundException{
+
+        @SuppressWarnings("unchecked")
 
         ArrayList<Tienda> tiendas = (ArrayList<Tienda>) deserializar("src/baseDatos/temp/tiendas.txt");
 
@@ -97,12 +106,16 @@ public class Deserializador {
 
     public static ArrayList<Transportador> cargarTransportadores() throws IOException, ClassNotFoundException{
 
+        @SuppressWarnings("unchecked")
+
         ArrayList<Transportador> transportadores = (ArrayList<Transportador>) deserializar("src/baseDatos/temp/transportadores.txt");
 
         return transportadores;
     }
 
     public static HashMap<String, Moda> cargaAtributos() throws IOException, ClassNotFoundException{
+
+        @SuppressWarnings("unchecked")
 
         HashMap<String, Moda>  infoAtributos = (HashMap<String, Moda>) deserializar("src/baseDatos/temp/infoAtributos.txt");
 

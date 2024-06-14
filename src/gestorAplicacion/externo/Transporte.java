@@ -12,7 +12,7 @@ import gestorAplicacion.empresa.Tienda;
 public class Transporte implements Moda, Serializable{
     // ATRIBUTOS 
     // De clase 
-    private static final long serialVersionUID = 198754L; // Versión del serializado asociada a esta clase
+    private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
 
     // De instancia
     private TipoTransporte tipo;

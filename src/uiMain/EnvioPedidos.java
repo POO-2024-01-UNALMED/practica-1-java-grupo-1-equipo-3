@@ -266,10 +266,10 @@ public class EnvioPedidos  {
                         }
                     }
 
-                    System.out.println("\n************************************\n"+ "Factura generada en la tienda " 
+                    System.out.println("\n-------------------------------------\n"+ "Factura generada en la tienda " 
                     +tiendaSeleccionada.getNombre() + "\nA nombre del cliente: " + clienteSeleccionado.getNombre()+"\n" 
                     +tiendaSeleccionada.enviarPedido(new ArrayList<>(listaProductosPedidos),
-                            transporteSeleccionado, clienteSeleccionado, dia, Cargar.fabrica.getOperario())+"\n************************************\n\n\n");
+                            transporteSeleccionado, clienteSeleccionado, dia, Cargar.fabrica.getOperario())+"\n-------------------------------------\n\n\n");
                     
                     if(numEnvioGratis==1){
 

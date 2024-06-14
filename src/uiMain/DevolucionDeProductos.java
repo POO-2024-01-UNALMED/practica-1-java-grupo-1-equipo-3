@@ -40,7 +40,7 @@ public class DevolucionDeProductos {
                         System.out.println("0. Volver al menu principal");
                         System.out.println(facturas); // se muestran las facturas en pantalla
                         System.out.println("Digite su opcion: ");
-                        System.out.print("--------------------------------------------------------------------");
+                        System.out.print("-------------------------------------");
                         int op = sc.nextInt(); // el usuario ingresa la opción selccionada
 
                         if (op == 0) { // Volver al menú principal

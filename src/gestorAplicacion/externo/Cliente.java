@@ -10,14 +10,14 @@ import gestorAplicacion.empresa.Producto;
 public class Cliente implements Moda, Serializable {
     // ATRIBUTOS 
     // De clase 
-    private static final long serialVersionUID = 1234567L; // Versión del serializado asociada a esta clase
+    private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
     private static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
     
     // De instancia
     private String nombre; 
     private String direccion;
     private CuentaBancaria cuentaBancaria;
-    private ArrayList<Producto> productos;
+    private ArrayList<Producto> productos = new ArrayList<Producto>();
 
 
     // CONSTRUCTORES
@@ -101,8 +101,14 @@ public class Cliente implements Moda, Serializable {
 
     public ArrayList<Producto> getProductos() {
         
+        if (productos == null) {
+            
+            productos = new ArrayList<Producto>();
+        }
+
         return productos;
     }
+    
 
     public void setProductos(ArrayList<Producto> productos) {
         
