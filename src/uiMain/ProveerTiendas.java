@@ -6,6 +6,7 @@ import java.util.Scanner;
 import baseDatos.Cargar;
 import gestorAplicacion.empresa.Producto;
 import gestorAplicacion.empresa.Tienda;
+import gestorAplicacion.externo.Parejas;
 import gestorAplicacion.externo.TipoTransporte;
 import gestorAplicacion.externo.Transporte;
 
@@ -42,7 +43,7 @@ public class ProveerTiendas {
 
                     // Visto en pantalla
                     System.out.println("\n");
-                    System.out.println("Abastecer tiendas - Apartado de tiendas");
+                    System.out.println("Proveer tiendas - Apartado de tiendas");
                     System.out.println("\n0. Volver al menu anterior\n");
                     System.out.print(Cargar.fabrica.mostrarTiendas());
                     // Seleccionar tienda
@@ -78,7 +79,7 @@ public class ProveerTiendas {
 
                 case 2:
 
-                    System.out.println("\nAbastecer tiendas - Apartado de productos");
+                    System.out.println("\nProveer tiendas - Apartado de productos");
                     System.out.print("\nLa capacidad de productos por categoria para esta tienda es la siguiente: \n");
                     System.out.println(tiendaSeleccionada.productosPorCategoria());
                     System.out.println("\n0. Regresar al menu anterior");
@@ -112,9 +113,28 @@ public class ProveerTiendas {
 
                 case 3: // Cantidad de productos
 
-                    System.out.print("\nEscriba la cantidad de productos que desea abastecer: ");
-                    int productoEnTiendaPorCategoria = tiendaSeleccionada.getProductosPorCategoria().get(productoSeleccionado.getCategoria());
-                    int productosMaximosEnTiendaPorCategoria = tiendaSeleccionada.getCantidadPorCategoria().get(productoSeleccionado.getCategoria());
+                    System.out.print("\nEscriba la cantidad de productos que desea proveer: ");
+                    int productoEnTiendaPorCategoria = 0;
+                    int productosMaximosEnTiendaPorCategoria = 0;
+                    String categoriaProducto = productoSeleccionado.getCategoria(); // Asumiendo que getCategoria() devuelve un String
+
+                    // Buscar en productosPorCategoria
+                    for (Parejas<String, Integer> par : tiendaSeleccionada.getProductosPorCategoria()) {
+                        
+                        if (par.getKey().equals(categoriaProducto)) {
+                            productoEnTiendaPorCategoria = par.getValue();
+                            break;
+                        }
+                    }
+
+                    // Buscar en cantidadPorCategoria
+                    for (Parejas<String, Integer> par : tiendaSeleccionada.getCantidadPorCategoria()) {
+                        
+                        if (par.getKey().equals(categoriaProducto)) {
+                            productosMaximosEnTiendaPorCategoria = par.getValue();
+                            break;
+                        }
+                    }
                     
                     while (true) {
                         
@@ -122,7 +142,7 @@ public class ProveerTiendas {
                         
                         if (escanerInt == 0){
                             
-                            eleccion =1;
+                            eleccion = 1;
                             break;
                         }
 
@@ -179,7 +199,7 @@ public class ProveerTiendas {
                         transporteSeleccionado = TipoTransporte.seleccionarTransporte(listaTransFiltrada,
                                 numTransporteSeleccionado);
                         System.out.print("Ha seleccionado el transporte #" + (numTransporteSeleccionado)
-                                + "\nLa tienda se abastecera por: " + transporteSeleccionado.getTipo().getNombre());
+                                + "\nLa tienda se proveerá por: " + transporteSeleccionado.getTipo().getNombre());
                         eleccion = 5;
                         break;
                     }}
@@ -205,7 +225,7 @@ public class ProveerTiendas {
                     }
 
                     // Ciclo final para ver si sale o se reinicia la funcionalidad
-                    System.out.println("\n0.Volver al menu principal" + "\n" + "1. Realizar más abastecimientos");
+                    System.out.println("\n0.Volver al menu principal" + "\n" + "1. Proveer más tiendas");
                     System.out.print("> ");
 
                     while (true) {

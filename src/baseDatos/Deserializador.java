@@ -1,10 +1,10 @@
 package baseDatos;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import gestorAplicacion.empleados.Transportador;
 import gestorAplicacion.empleados.Vendedor;
@@ -14,6 +14,7 @@ import gestorAplicacion.empresa.Moda;
 import gestorAplicacion.empresa.Producto;
 import gestorAplicacion.empresa.Tienda;
 import gestorAplicacion.externo.Cliente;
+import gestorAplicacion.externo.Parejas;
 import gestorAplicacion.externo.Transporte;
 
 public class Deserializador {
@@ -113,11 +114,11 @@ public class Deserializador {
         return transportadores;
     }
 
-    public static HashMap<String, Moda> cargaAtributos() throws IOException, ClassNotFoundException{
+    public static ArrayList<Parejas<String, Moda>> cargaAtributos() throws IOException, ClassNotFoundException{
 
         @SuppressWarnings("unchecked")
 
-        HashMap<String, Moda>  infoAtributos = (HashMap<String, Moda>) deserializar("src/baseDatos/temp/infoAtributos.txt");
+        ArrayList<Parejas<String, Moda>> infoAtributos = (ArrayList<Parejas<String, Moda>>) deserializar("src/baseDatos/temp/infoAtributos.txt");
 
         return infoAtributos;
 

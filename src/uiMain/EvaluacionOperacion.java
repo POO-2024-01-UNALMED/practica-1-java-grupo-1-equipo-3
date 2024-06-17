@@ -1,9 +1,10 @@
 package uiMain;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import gestorAplicacion.empresa.Factura;
+import gestorAplicacion.externo.Parejas;
 
 public class EvaluacionOperacion {
     
@@ -64,7 +65,7 @@ public class EvaluacionOperacion {
 
     return new int[]{-1, -1}; 
 
-}
+    }
 
     public static void analisis(int fecha1, int fecha2){
 
@@ -81,7 +82,7 @@ public class EvaluacionOperacion {
 
         String opcion = new MenuAuxiliar("Ingrese información a obtener", opciones, "Volver al inicio").mostrarReturnString();
 
-        HashMap<Integer, Double> disc =  Factura.gananciasPorDia(fecha1, fecha2);
+        ArrayList<Parejas<Integer, Double>> disc = Factura.gananciasPorDia(fecha1, fecha2);
         
         while(opcion!= "Volver al inicio"){
 
@@ -205,15 +206,13 @@ public class EvaluacionOperacion {
         }
     }
 
-    public static void desplegarInfo(HashMap <Integer, Double> info, String strData, String posfijo){
+    public static void desplegarInfo(ArrayList<Parejas<Integer, Double>> info, String strData, String posfijo){
 
         System.out.println("DIA \t " + strData);
     
-        for(int i: info.keySet()){
+        for(Parejas<Integer, Double> par : info){
             
-            System.out.println(i + "\t" + info.get(i) + posfijo);
+            System.out.println(par.getKey() + "\t" + par.getValue() + posfijo);
         }
-    
-    
     }
 }

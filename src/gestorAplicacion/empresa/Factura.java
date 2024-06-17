@@ -1,15 +1,13 @@
 package gestorAplicacion.empresa;
 
-import java.util.Map.Entry;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import gestorAplicacion.empleados.Operario;
 import gestorAplicacion.externo.Cliente;
+import gestorAplicacion.externo.Parejas;
 import gestorAplicacion.externo.Transporte;
 
 
@@ -19,7 +17,7 @@ public class Factura implements Serializable{
     private static final long serialVersionUID = 1L; // Versión del serializado asociado a esta clase
     private static ArrayList<Factura> listaFacturas = new ArrayList<>();
     private static int facturasCreadas = 0;
-    private static HashMap<String, Moda> infoAtributos = new HashMap<String,Moda>();
+    private static ArrayList<Parejas<String, Moda>> infoAtributos = new ArrayList<>();
 
     // De instancia
     private Tienda tienda;
@@ -43,9 +41,9 @@ public class Factura implements Serializable{
         this.fecha = fecha;
         this.operario = operario;
 
-        infoAtributos.put("tienda", tienda);
-        infoAtributos.put("transporte", transporte);
-        infoAtributos.put("cliente", cliente);
+        infoAtributos.add(new Parejas<>("tienda", tienda));
+        infoAtributos.add(new Parejas<>("transporte", transporte));
+        infoAtributos.add(new Parejas<>("cliente", cliente));
         
         this.total = calcularTotal();
         this.identificacionCompra = ++facturasCreadas;
@@ -63,8 +61,9 @@ public class Factura implements Serializable{
         double totalCompra = 0;
         
         for(int i=0; i<listaProductos.size(); i++){
+            
             double precioProducto = listaProductos.get(i).getValor();
-            totalCompra+=precioProducto;
+            totalCompra += precioProducto;
         }
 
         return totalCompra + valorEnvio();
@@ -84,6 +83,7 @@ public class Factura implements Serializable{
         ArrayList<Factura> facturasPeriodo = new ArrayList<Factura>();
         
         for(Factura factura: listaFacturas){
+            
             if(factura.fecha >= inicio && factura.fecha <= fin)
                 facturasPeriodo.add(factura); 
         }
@@ -92,52 +92,56 @@ public class Factura implements Serializable{
     }
 
     // Obtiene las ganancias de cada fecha dentro del periodo ingresado como parámetro
-    public static HashMap<Integer, Double> gananciasPorDia(int inicio, int fin){
-
+    public static ArrayList<Parejas<Integer, Double>> gananciasPorDia(int inicio, int fin) {
+        
         ArrayList<Integer> dias = listaFechas(inicio, fin);
-        ArrayList<Factura> facturas = facturasPorPeriodo(inicio, fin); 
-        HashMap<Integer, Double> gananciasPorDia = new HashMap<Integer, Double>();
+        ArrayList<Factura> facturas = facturasPorPeriodo(inicio, fin);
+        ArrayList<Parejas<Integer, Double>> gananciasPorDia = new ArrayList<>();
 
-        for(int dia: dias){
-            gananciasPorDia.put(dia, 0.0);
+        for (int dia : dias) {
+            
+            gananciasPorDia.add(new Parejas<>(dia, 0.0));
         }
 
-        // Se itera sobre un set que contiene todas las claves (días)
-        for(int fecha: gananciasPorDia.keySet()){
-            for(Factura factura: facturas){
-                if(factura.fecha == fecha){
-                    double contador = gananciasPorDia.get(fecha);
-                    gananciasPorDia.put(fecha, contador + factura.getTotal());
+        for (Parejas<Integer, Double> par : gananciasPorDia) {
+            
+            int fecha = par.getKey();
+            
+            for (Factura factura : facturas) {
+
+                if (factura.fecha == fecha) {
+                    double contador = par.getValue();
+                    par.setValue(contador + factura.getTotal());
                 }
             }
-        } 
-
+        }
         return gananciasPorDia;
     }
 
-    // Obtiene las ganancias de cada fecha en el ArrayList ingresado como parámetro
-    public static HashMap<Integer, Double> gananciasPorDia(ArrayList<Integer> fechas){
-    
-        int fecha1 = Collections.min(fechas); // Encontrar la fecha más pequeña y la más grande para definir el periodo en que se evaluará 
-        int fecha2 = Collections.max(fechas);
 
+    // Obtiene las ganancias de cada fecha en el ArrayList ingresado como parámetro
+    public static ArrayList<Parejas<Integer, Double>> gananciasPorDia(ArrayList<Integer> fechas) {
+        
+        int fecha1 = Collections.min(fechas);
+        int fecha2 = Collections.max(fechas);
+        
         return gananciasPorDia(fecha1, fecha2);
     }
 
     // Obtiene las ganancias totales a partir de las ganancias por día
-    public static double ganancias(HashMap<Integer, Double> gananciasPorDia) {
+    public static double ganancias(ArrayList<Parejas<Integer, Double>> gananciasPorDia) {
         
         double ganancias = 0.0;
         
-        for(int fecha: gananciasPorDia.keySet()){
-            ganancias += gananciasPorDia.get(fecha);
+        for (Parejas<Integer, Double> par : gananciasPorDia) {
+            
+            ganancias += par.getValue();
         }
-
         return ganancias;
     }
 
     // Obtiene el promedio de ganancias por día a partir de un diccionario que contiene estas ganancias por día
-    public static double promedioPorDia(HashMap<Integer, Double> gananciasPorDia) {
+    public static double promedioPorDia(ArrayList<Parejas<Integer, Double>> gananciasPorDia) {
 
         double promedio = ganancias(gananciasPorDia) / gananciasPorDia.size();
         
@@ -145,53 +149,94 @@ public class Factura implements Serializable{
     }
 
     // Obtiene el porcentaje de aumento de ganancias de cada fecha respecto a la fecha anterior
-    public static HashMap<Integer, Double> porcentajeDeAumento(HashMap<Integer, Double> gananciasPorDia){
-
-        ArrayList<Integer> fechas = new ArrayList<Integer>(gananciasPorDia.keySet()); // set que contiene todas las claves (días)
-        Collections.sort(fechas); // Ordenar de manera ascendente
-        HashMap<Integer, Double> porcentajeDeAumento = new HashMap<Integer, Double>(); // Aquí se guardará el aumento para cada fecha
-    
-        for(int i = 1; i < fechas.size(); i++){
-            double gananciaFecha = gananciasPorDia.get(fechas.get(i));
-            double gananciaFechaAnterior = gananciasPorDia.get(fechas.get(i - 1));
-            double porcentaje = ((gananciaFecha - gananciaFechaAnterior) / gananciaFechaAnterior) * 100;
-            porcentajeDeAumento.put(fechas.get(i), porcentaje);
+    public static ArrayList<Parejas<Integer, Double>> porcentajeDeAumento(ArrayList<Parejas<Integer, Double>> gananciasPorDia) {
+        
+        ArrayList<Integer> fechas = new ArrayList<>();
+        
+        for (Parejas<Integer, Double> par : gananciasPorDia) {
+            
+            fechas.add(par.getKey());
         }
-       
+        
+        Collections.sort(fechas);
+        ArrayList<Parejas<Integer, Double>> porcentajeDeAumento = new ArrayList<>();
+        
+        for(int i = 1; i < fechas.size(); i++){
+            
+            double gananciaFecha = obtenerValor(gananciasPorDia, fechas.get(i));
+            double gananciaFechaAnterior = obtenerValor(gananciasPorDia, fechas.get(i - 1));
+            double porcentaje = ((gananciaFecha - gananciaFechaAnterior) / gananciaFechaAnterior) * 100;
+            porcentajeDeAumento.add(new Parejas<>(fechas.get(i), porcentaje));
+        }
         return porcentajeDeAumento;
     }
 
-    // Obtiene el elemento más común en una lista de elementos 
-    private static <T> T masComun(List<T> list) { // T indica que los elementos son genéricos
+    // Método para encontrar los valores de la clave y valor de un objeto de tipo Parejas cuando la clave es un entero
+    private static double obtenerValor(ArrayList<Parejas<Integer, Double>> lista, int clave) {
         
-        Map<T, Integer> map = new HashMap<>();
-
-        for (T t : list) {
-            Integer val = map.get(t);
-            map.put(t, val == null ? 1 : val + 1);
+        for (Parejas<Integer, Double> par : lista) {
+            
+            if (par.getKey() == clave) {
+                return par.getValue();
+            }
         }
+        return 0.0;
+    }
 
-        Entry<T, Integer> max = null;
-
-        for (Entry<T, Integer> e : map.entrySet()) {
-            if (max == null || e.getValue() > max.getValue())
+    // Obtiene el elemento más común en una lista de elementos 
+    private static <T> T masComun(List<T> list) {
+        
+        ArrayList<Parejas<T, Integer>> map = new ArrayList<>();
+        
+        for (T t : list) {
+            
+            boolean buscar = false;
+           
+            for (Parejas<T, Integer> par : map) {
+                
+                if (par.getKey().equals(t)) {
+                    par.setValue(par.getValue() + 1);
+                    buscar = true;
+                    break;
+                }
+            }
+            if (!buscar) {   
+                map.add(new Parejas<>(t, 1));
+            }
+        }
+        Parejas<T, Integer> max = null;
+        
+        for (Parejas<T, Integer> e : map) {
+            
+            if (max == null || e.getValue() > max.getValue()) // Si cumple una o la otra
                 max = e;
         }
-
         return max.getKey();
     }
 
     // Obtiene la moda de un atributo específico de las facturas en un periodo especifico
-    public static Moda moda(int inicio, int fin, String atributo){
-
+    public static Moda moda(int inicio, int fin, String atributo) {
+        
         ArrayList<Factura> facturas = Factura.facturasPorPeriodo(inicio, fin);
-        ArrayList<Moda> objetos = new ArrayList<Moda>(); 
-    
-        for(Factura factura: facturas){
-            objetos.add(factura.getAtributos().get(atributo));
+        ArrayList<Moda> objetos = new ArrayList<>();
+        
+        for (Factura factura : facturas) {
+            
+            objetos.add(obtenerValor(factura.getAtributos(), atributo));
         }
-    
         return Factura.masComun(objetos);
+    }
+
+    // Método para encontrar los valores de la clave y valor de un objeto de tipo Parejas cuando la clave es un String
+    private static Moda obtenerValor(ArrayList<Parejas<String, Moda>> lista, String clave) {
+        
+        for (Parejas<String, Moda> par : lista) {
+            
+            if (par.getKey().equals(clave)) {
+                return par.getValue();
+            }
+        }
+        return null;
     }
 
     // Muestra información de los clientes en las facturas que han sido creadas
@@ -201,6 +246,7 @@ public class Factura implements Serializable{
         int numero = 1;
     
         for(Factura factura:listaFacturas) {
+            
             mensaje += numero +". " + "Cliente: " + factura.getCliente().getNombre()+ 
             " Identificación de compra" + factura.getIdentificacionCompra() + "\n"; 
             numero++;
@@ -225,17 +271,16 @@ public class Factura implements Serializable{
 
         //se recorre la lista para obtener cada nombre de las facturas disponibles:
         for(Producto producto:productos) {
+            
             if (producto.isDevuelto()){
                 mensaje += numero + ". Producto: " + producto.getNombre() + " (Devuelto)"+"\n"; //se especifica que el producto ya ha sido devuelto
                 numero++;
             }
-
             else {
                 mensaje += numero + ". Producto: " + producto.getNombre() + "\n"; 
                 numero++;                
             }
         }
-
         return mensaje;
     }
 
@@ -245,10 +290,10 @@ public class Factura implements Serializable{
         ArrayList<Integer> listaFechas = new ArrayList<Integer>();
         
         for(Factura factura: listaFacturas){
+            
             if(factura.fecha >= inicio && factura.fecha <= fin && !listaFechas.contains(factura.fecha)) //La fecha no debe existir anteriormente para ser agregada a la lista 
                 listaFechas.add(factura.fecha);
         }
-
         return listaFechas;
     }
 
@@ -261,7 +306,6 @@ public class Factura implements Serializable{
             if(!listaFechas.contains(factura.fecha))
                 listaFechas.add(factura.fecha);
         }
-
         return listaFechas;
     }
 
@@ -285,11 +329,9 @@ public class Factura implements Serializable{
         if ((0< opcion)&& (opcion<=listaProductos.size())){ // Valida que la opción ingresada sea válida
             producto = listaProductos.get(opcion-1);
         }
-
         else{ //Para que no salga un error si el indice ingresado no es válido
-           producto = null;
+            producto = null;
         }
-
 		return producto;
 	}
 
@@ -299,6 +341,7 @@ public class Factura implements Serializable{
         String textoProductos = "";
         
         for(int i=0; i<listaProductos.size(); i++){
+            
             textoProductos += "Nombre del producto: " + listaProductos.get(i).getNombre() + " - Precio del producto: "+ listaProductos.get(i).getValor()+"\n";
         }
 
@@ -411,17 +454,17 @@ public class Factura implements Serializable{
         this.operario = operario;
     }
 
-    public HashMap<String, Moda> getAtributos(){
-
-        return infoAtributos;
-    }
-
-    public static HashMap<String, Moda> getInfoAtributos(){
+    public ArrayList<Parejas<String, Moda>> getAtributos() {
         
         return infoAtributos;
     }
 
-    public static void setInfoAtributos(HashMap<String, Moda> infoAtributos) {
+    public static ArrayList<Parejas<String, Moda>> getInfoAtributos(){
+        
+        return infoAtributos;
+    }
+
+    public static void setInfoAtributos(ArrayList<Parejas<String, Moda>> infoAtributos) {
         
         Factura.infoAtributos = infoAtributos;
     }

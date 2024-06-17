@@ -2,14 +2,13 @@ package gestorAplicacion.empresa;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import gestorAplicacion.empleados.Operario;
 import gestorAplicacion.empleados.Vendedor;
 import gestorAplicacion.externo.Cliente;
 import gestorAplicacion.externo.CuentaBancaria;
+import gestorAplicacion.externo.Parejas;
 import gestorAplicacion.externo.TipoTransporte;
 import gestorAplicacion.externo.Transporte;
 
@@ -25,14 +24,15 @@ public class Tienda implements Moda, Serializable{
     private Vendedor vendedor;
     private CuentaBancaria cuentaBancaria;
     private ArrayList<Producto> listaProductos = new ArrayList<Producto>();
-    public HashMap<Producto, Integer> cantidadProductos;
-    private Map<String, Integer> cantidadPorCategoria = new HashMap<String, Integer>() {{
-        put("frutas y verduras", (int) (new Random().nextInt(51) + 50));
-        put("panaderia", (int) (new Random().nextInt(51) + 50));
-        put("salsas y mermeladas", (int) (new Random().nextInt(51) + 50));
-        put("bebidas", (int) (new Random().nextInt(51) + 50));}}; //Número aleatorio entre 50 y 100 (Incluidos)
-    private Map<String, Integer> productosPorCategoria;
-    private ArrayList<Producto> productosDevueltos = new ArrayList<Producto>();
+    private ArrayList<Parejas<Producto, Integer>> cantidadProductos = new ArrayList<>();
+    private ArrayList<Parejas<String, Integer>> cantidadPorCategoria = new ArrayList<>() {{
+        add(new Parejas<>("frutas y verduras", new Random().nextInt(51) + 50));
+        add(new Parejas<>("panaderia", new Random().nextInt(51) + 50));
+        add(new Parejas<>("salsas y mermeladas", new Random().nextInt(51) + 50));
+        add(new Parejas<>("bebidas", new Random().nextInt(51) + 50));
+    }};
+    private ArrayList<Parejas<String, Integer>> productosPorCategoria = new ArrayList<>();
+    private ArrayList<Producto> productosDevueltos = new ArrayList<>();
 
 
     // CONSTRUCTORES
@@ -42,8 +42,6 @@ public class Tienda implements Moda, Serializable{
         this.nombre = nombre;
         this.vendedor = vendedor;
         this.cuentaBancaria = cuentaBancaria;
-        this.cantidadProductos = new HashMap<Producto, Integer>();
-        productosPorCategoria = new HashMap<String, Integer>();
         numTiendas++;
     }
 
@@ -58,6 +56,7 @@ public class Tienda implements Moda, Serializable{
         String mensaje = "";
         
         for (int i = 0; i < listaProductos.size(); i++) {
+            
             mensaje += "\n" + (1 + i) + listaProductos.get(i).toString() + "\n";
         }
         
@@ -67,22 +66,31 @@ public class Tienda implements Moda, Serializable{
     // Permite ver los productos que hay en la tienda y la cantidad que hay
     public String cantidadProductos() {
         
-        cantidadProductos = new HashMap<Producto, Integer>();
+        cantidadProductos = new ArrayList<>();
         
         String mensaje = "";
         
         // Agregar los valores al diccionario y su respectiva cantidad
-        for (int i = 0; i < listaProductos.size(); i++) {
-            if (cantidadProductos.containsKey(listaProductos.get(i))) {
-                cantidadProductos.put(listaProductos.get(i),cantidadProductos.get(listaProductos.get(i)) + 1);
-            } else {
-                cantidadProductos.put(listaProductos.get(i), 1);
+        for (Producto producto : listaProductos) {
+            
+            boolean buscar = false;
+            
+            for (Parejas<Producto, Integer> par : cantidadProductos) {
+                
+                if (par.getKey().equals(producto)) {
+                    par.setValue(par.getValue() + 1);
+                    buscar = true;
+                    break;
+                }
+            }
+            if (!buscar) {
+                cantidadProductos.add(new Parejas<>(producto, 1));
             }
         }
 
         // Generar el String con cada producto y su cantidad
-        for (Map.Entry<Producto, Integer> entrada : cantidadProductos.entrySet()) {
-            mensaje += "\n" + entrada.getKey().getNombre() + ": " + entrada.getValue() + " ";
+        for (Parejas<Producto, Integer> par : cantidadProductos) {
+            mensaje += "\n" + par.getKey().getNombre() + ": " + par.getValue() + " ";
         }
 
         return mensaje;
@@ -94,10 +102,16 @@ public class Tienda implements Moda, Serializable{
         if (listaProductos.contains(producto)) {
             listaProductos.remove(producto);
             
-            if (cantidadProductos.get(producto) > 1) {
-                cantidadProductos.put(producto, cantidadProductos.get(producto) - 1);
-            } else {
-                cantidadProductos.remove(producto);
+            for (Parejas<Producto, Integer> par : cantidadProductos) {
+                
+                if (par.getKey().equals(producto)) {
+                    if (par.getValue() > 1) {
+                        par.setValue(par.getValue() - 1);
+                    } else {
+                        cantidadProductos.remove(par);
+                    }
+                    break;
+                }
             }
         }
     }
@@ -152,45 +166,62 @@ public class Tienda implements Moda, Serializable{
     public String productosPorCategoria(){
         
         String mensaje = "";
-        productosPorCategoria.put("frutas y verduras",0);
-        productosPorCategoria.put("panaderia",0);
-        productosPorCategoria.put("salsas y mermeladas",0);
-        productosPorCategoria.put("bebidas",0);
+        productosPorCategoria.clear();
+        productosPorCategoria.add(new Parejas<>("frutas y verduras", 0));
+        productosPorCategoria.add(new Parejas<>("panaderia", 0));
+        productosPorCategoria.add(new Parejas<>("salsas y mermeladas", 0));
+        productosPorCategoria.add(new Parejas<>("bebidas", 0));
         
         for(Producto producto:listaProductos){
-            if(productosPorCategoria.containsKey(producto.getCategoria())){
-                productosPorCategoria.put(producto.getCategoria(),productosPorCategoria.get(producto.getCategoria())+1);
+            
+            for (Parejas<String, Integer> par : productosPorCategoria) {
+                
+                if (par.getKey().equals(producto.getCategoria())) {
+                    par.setValue(par.getValue() + 1);
+                }
             }
         }
 
-        mensaje += "Frutas y verduras " + productosPorCategoria.get("frutas y verduras")+"/"+cantidadPorCategoria.get("frutas y verduras") +"  ";
-        mensaje += "Panaderia " + productosPorCategoria.get("panaderia")+"/"+cantidadPorCategoria.get("panaderia")+"  ";
-        mensaje += "Salsas y mermeladas " + productosPorCategoria.get("salsas y mermeladas")+"/"+cantidadPorCategoria.get("salsas y mermeladas")+"  ";
-        mensaje += "Bebidas " + productosPorCategoria.get("bebidas")+"/"+cantidadPorCategoria.get("bebidas") +"  ";
-        
+        for (Parejas<String, Integer> par : productosPorCategoria) {
+            for (Parejas<String, Integer> categoria : cantidadPorCategoria) {
+                if (categoria.getKey().equals(par.getKey())) {
+                    mensaje += par.getKey() + " " + par.getValue() + "/" + categoria.getValue() + " ";
+                }
+            }
+        }
+    
         return mensaje;
     } 
 
     // Muestra un texto con la cantidad de productos vendidos
     public String cantidadProductosVentas() {
         
-        cantidadProductos = new HashMap<Producto, Integer>();
+        cantidadProductos = new ArrayList<>();
         String mensaje = "";
         int numero = 1;
         
-        for (int i = 0; i < listaProductos.size(); i++) {
-            if (cantidadProductos.containsKey(listaProductos.get(i))) {
-                cantidadProductos.put(listaProductos.get(i),
-                        cantidadProductos.get(listaProductos.get(i)) + 1);
-            } else {
-                cantidadProductos.put(listaProductos.get(i), 1);
+        for (Producto producto : listaProductos) {
+            
+            boolean buscar = false;
+            
+            for (Parejas<Producto, Integer> par : cantidadProductos) {
+                
+                if (par.getKey().equals(producto)) {
+                    par.setValue(par.getValue() + 1);
+                    buscar = true;
+                    break;
+                }
+            }
+
+            if (!buscar) {
+                cantidadProductos.add(new Parejas<>(producto, 1));
             }
         }
 
         // Generar el texto con la cantidad de cada producto
-        for(Producto producto:listaProductos){
-            if (!mensaje.contains(producto.getNombre())){              
-                mensaje+="\n" + numero + ". " + producto.getNombre() + ": " + cantidadProductos.get(producto) + " ";
+        for(Parejas<Producto, Integer> par : cantidadProductos){
+            if (!mensaje.contains(par.getKey().getNombre())){              
+                mensaje+="\n" + numero + ". " + par.getKey().getNombre() + ": " + par.getValue() + " ";
                 numero++;
             }
         }
@@ -263,36 +294,36 @@ public class Tienda implements Moda, Serializable{
         this.listaProductos = listaProductos;
     }
 
-    public HashMap<Producto, Integer> getCantidadProductos() {
-        
+    public ArrayList<Parejas<Producto, Integer>> getCantidadProductos() {
+       
         return cantidadProductos;
     }
 
-    public void setCantidadProductos(HashMap<Producto, Integer> listaCantidadProductos) {
+    public void setCantidadProductos(ArrayList<Parejas<Producto, Integer>> cantidadProductos) {
         
-        this.cantidadProductos = listaCantidadProductos;
+        this.cantidadProductos = cantidadProductos;
     }
 
-    public Map<String, Integer> getCantidadPorCategoria(){
+    public ArrayList<Parejas<String, Integer>> getCantidadPorCategoria() {
         
         return cantidadPorCategoria;
     }
 
-    public void setCantidadPorCategoria(Map<String, Integer> cantidadPorCategoria){
+    public void setCantidadPorCategoria(ArrayList<Parejas<String, Integer>> cantidadPorCategoria) {
         
         this.cantidadPorCategoria = cantidadPorCategoria;
     }
 
-    public Map<String, Integer> getProductosPorCategoria(){
+    public ArrayList<Parejas<String, Integer>> getProductosPorCategoria() {
         
         return productosPorCategoria;
     }
 
-    public void setProductosPorCategoria(Map<String, Integer> productosPorCategoria){
+    public void setProductosPorCategoria(ArrayList<Parejas<String, Integer>> productosPorCategoria) {
         
         this.productosPorCategoria = productosPorCategoria;
     }
-
+    
     public ArrayList<Producto> getProductosDevueltos() {
         
         return productosDevueltos;

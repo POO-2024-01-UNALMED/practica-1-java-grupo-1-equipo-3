@@ -2,7 +2,6 @@ package baseDatos;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 
 import gestorAplicacion.empleados.Operario;
 import gestorAplicacion.empleados.Transportador;
@@ -14,6 +13,7 @@ import gestorAplicacion.empresa.Producto;
 import gestorAplicacion.empresa.Tienda;
 import gestorAplicacion.externo.Cliente;
 import gestorAplicacion.externo.CuentaBancaria;
+import gestorAplicacion.externo.Parejas;
 import gestorAplicacion.externo.TipoTransporte;
 import gestorAplicacion.externo.Transporte;
 
@@ -25,7 +25,7 @@ public class Cargar {
     public static ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
     public static ArrayList<Factura> facturas = new ArrayList<Factura>();
     public static ArrayList<Transportador> transportadores = new ArrayList<Transportador>();
-    public static HashMap<String, Moda> infoAtributos = new HashMap<String,Moda>();
+    public static ArrayList<Parejas<String, Moda>> infoAtributos = new ArrayList<>();
     public static Fabrica fabrica;
     public static Transporte transporteAbastecer;
 

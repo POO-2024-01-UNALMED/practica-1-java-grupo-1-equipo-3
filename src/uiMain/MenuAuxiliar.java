@@ -1,5 +1,7 @@
 package uiMain;
+
 import java.util.Scanner;
+
 public class MenuAuxiliar {
     private String[] opciones;
     private int numOpciones;
