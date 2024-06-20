@@ -119,9 +119,9 @@ public class Tienda implements Moda, Serializable{
     // Permite elegir el transporte teniendo en cuenta el peso del producto
     public void elegirTransporte(Producto producto) {
         
-        for (int i = 0; i < TipoTransporte.values().length; i++) {
-            if (TipoTransporte.values()[i].getCapacidad_KG() <= producto.getPeso()) {
-                TipoTransporte.values()[i].toString();
+        for (TipoTransporte tipo : TipoTransporte.values()) {
+            if (tipo.getCapacidad_KG() <= producto.getPeso()) {
+                tipo.toString();
             }
         }
     }

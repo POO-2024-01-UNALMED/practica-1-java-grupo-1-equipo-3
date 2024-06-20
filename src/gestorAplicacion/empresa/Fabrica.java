@@ -76,17 +76,15 @@ public class Fabrica implements Serializable{
 
     // Permite seleccionar una de las tiendas disponibles
     public Tienda seleccionarTienda(int indice) {
-        
-        Tienda tienda = listaTienda.get(indice - 1);
 		
-        return tienda;
+        return listaTienda.get(indice - 1);
 	}
 
     // Descuenta el valor del producto devuelto de la cuenta de la fabrica
     public double descontarDinero(Producto productoDevuelto){
         
         double total = productoDevuelto.getValor();
-        CuentaBancaria cuentaFabrica = getCuentaBancaria();
+        CuentaBancaria cuentaFabrica = this.getCuentaBancaria();
         cuentaFabrica.disminuirSaldo(total); 
         
         return total;
@@ -109,13 +107,13 @@ public class Fabrica implements Serializable{
     // Crea una lista con cierta cantidad de un mismo producto
     public ArrayList<Producto> cantidadProductos(int cantidad, Producto producto) {
        
-        ArrayList<Producto> productosRequeridos = new ArrayList<>();
+        ArrayList<Producto> productos = new ArrayList<>();
         
         for (int i = 0; i < cantidad; i++) {
-            productosRequeridos.add(producto);
+            productos.add(producto);
         }
         
-        return productosRequeridos;
+        return productos;
     }
 
     // Busca en las facturas quienes son los trabajadores involucrados en los envios. Se verifica que no se le haya pagado antes (Trabajo mayor a 0)

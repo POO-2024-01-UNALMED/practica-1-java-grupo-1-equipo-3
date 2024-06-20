@@ -13,9 +13,9 @@ public class Transportador extends Persona{
     // ATRIBUTOS
     // De clase
     private static ArrayList<Meta> metas = new ArrayList<Meta>(List.of(
-        new Meta("Facil",4,20000),
-        new Meta("intermedio",7,40000),
-        new Meta("Dificil",10,60000))); //Crear una lista inmutable
+        new Meta("Facil",4,10000),
+        new Meta("intermedio",7,15000),
+        new Meta("Dificil",10,20000))); //Crear una lista inmutable
 	private static ArrayList<Transportador> listaTransportadores = new ArrayList<Transportador>();
     
     // De instancia

@@ -53,6 +53,7 @@ public class Transporte implements Moda, Serializable{
         }
 
     }
+    
     //metodo para nombre, precio y capacidad de algún tipo de transporte
     public String TipoTransporte(TipoTransporte transporte) {
         

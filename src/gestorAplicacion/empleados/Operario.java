@@ -12,9 +12,9 @@ public class Operario extends Persona {
     // ATRIBUTOS
     // De clase
     private static ArrayList<Meta> meta = new ArrayList<Meta>(List.of(
-        new Meta("Facil",4,30000),
-        new Meta("intermedio",7,50000),
-        new Meta("Dificil",10,70000))); //Crear una lista inmutable 
+        new Meta("Facil",4,5000),
+        new Meta("intermedio",7,10000),
+        new Meta("Dificil",10,15000))); //Crear una lista inmutable 
     
     //De instancia
     private Fabrica fabrica;

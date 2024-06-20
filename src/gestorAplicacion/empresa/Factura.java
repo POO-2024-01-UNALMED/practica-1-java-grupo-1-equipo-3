@@ -71,10 +71,8 @@ public class Factura implements Serializable{
 
     // Este método calcula la tarife de envío de una factura dependiendo del tipo de transporte seleccionado
     public double valorEnvio() {
-       
-        double precioEnvio = transporte.getTipo().precioEnvio_COP;
         
-        return precioEnvio;
+        return transporte.getTipo().precioEnvio_COP;
     }
 
     // Obtiene una lista de facturas en un periodo especifico
@@ -122,10 +120,7 @@ public class Factura implements Serializable{
     // Obtiene las ganancias de cada fecha en el ArrayList ingresado como parámetro
     public static ArrayList<Parejas<Integer, Double>> gananciasPorDia(ArrayList<Integer> fechas) {
         
-        int fecha1 = Collections.min(fechas);
-        int fecha2 = Collections.max(fechas);
-        
-        return gananciasPorDia(fecha1, fecha2);
+        return gananciasPorDia(Collections.min(fechas), Collections.max(fechas)); // encontrar la fecha maxima y minima para poder usar el metodo definido anteriormente
     }
 
     // Obtiene las ganancias totales a partir de las ganancias por día
@@ -142,10 +137,8 @@ public class Factura implements Serializable{
 
     // Obtiene el promedio de ganancias por día a partir de un diccionario que contiene estas ganancias por día
     public static double promedioPorDia(ArrayList<Parejas<Integer, Double>> gananciasPorDia) {
-
-        double promedio = ganancias(gananciasPorDia) / gananciasPorDia.size();
         
-        return promedio;
+        return ganancias(gananciasPorDia) / gananciasPorDia.size();
     }
 
     // Obtiene el porcentaje de aumento de ganancias de cada fecha respecto a la fecha anterior
@@ -184,11 +177,11 @@ public class Factura implements Serializable{
     }
 
     // Obtiene el elemento más común en una lista de elementos 
-    private static <T> T masComun(List<T> list) {
+    private static <T> T masComun(List<T> lista) {
         
         ArrayList<Parejas<T, Integer>> map = new ArrayList<>();
         
-        for (T t : list) {
+        for (T t : lista) {
             
             boolean buscar = false;
            
@@ -257,10 +250,8 @@ public class Factura implements Serializable{
 
     // Permite al usuario seleccionar una de las facturas existentes
     public static Factura seleccionarFactura(int opcion) {
-		
-        Factura factura = listaFacturas.get(opcion-1);
 
-		return factura;
+		return listaFacturas.get(opcion-1);
     }
 
     // Obtiene los productos presentes en una factura

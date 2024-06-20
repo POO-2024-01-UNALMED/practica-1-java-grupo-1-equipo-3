@@ -11,9 +11,9 @@ public class Vendedor extends Persona {
     // ATRIBUTOS
     // De clase
     private static ArrayList<Meta> metas = new ArrayList<Meta>(List.of(
-        new Meta("Facil",6,40000),
-        new Meta("intermedio",9,60000),
-        new Meta("Dificil",12,80000))); //Crear una lista inmutable 
+        new Meta("Facil",6,12000),
+        new Meta("intermedio",9,18000),
+        new Meta("Dificil",12,25000))); //Crear una lista inmutable 
     
     // De instancia
     private Tienda tienda;

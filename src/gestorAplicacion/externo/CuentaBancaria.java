@@ -43,13 +43,13 @@ public class CuentaBancaria implements Serializable {
 
         //Diferentes pagos según el salario para cada uno de los tipos
         if (persona instanceof Operario){
-            total =+ (salario + 150000)*trabajo;
+            total =+ (salario + 15000)*trabajo;
         }
         else if (persona instanceof Vendedor){
-            total =+ (salario + 200000)*trabajo;
+            total =+ (salario + 20000)*trabajo;
         }
         else if(persona instanceof Transportador){
-            total =+ (salario + 100000)*trabajo;
+            total =+ (salario + 10000)*trabajo;
         }
 
         return total;
@@ -58,8 +58,7 @@ public class CuentaBancaria implements Serializable {
     // Método para devolver dinero
     public void devolverDinero(double cantidad, Cliente cliente){
 
-        CuentaBancaria cuenta = cliente.getCuentaBancaria();
-        cuenta.incrementarSaldo(cantidad);
+        cliente.getCuentaBancaria().incrementarSaldo(cantidad);
     }
     
 

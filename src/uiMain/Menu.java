@@ -9,7 +9,6 @@ public class Menu {
     
 	public static void main(String[] args) {
 
-		//Cargar.cargarPorDefecto();;
         Cargar.cargar();
 
         int opcion;

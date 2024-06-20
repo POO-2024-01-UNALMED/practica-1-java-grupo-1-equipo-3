@@ -7,19 +7,19 @@ import java.util.ArrayList;
 public abstract class Persona implements Serializable{
     // ATRIBUTOS
     // De clase
-    private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
-    private static int totalPersonas;
-    private static  ArrayList<Persona> listaPersonas = new ArrayList<Persona>();
-    private static final int SALARIO = 1500000; 
+    protected static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
+    protected static int totalPersonas;
+    protected static  ArrayList<Persona> listaPersonas = new ArrayList<Persona>();
+    protected static final int SALARIO = 50000; 
     
     // De instancia
-    private String nombre;
-    private int edad;
-    private int identificacion;
-    private CuentaBancaria cuentaBancaria;
-    private int trabajado;
-    private double minimoMeta;
-	private ArrayList<Boolean> cumplimientoMetas = new ArrayList<Boolean>();
+    protected String nombre;
+    protected int edad;
+    protected int identificacion;
+    protected CuentaBancaria cuentaBancaria;
+    protected int trabajado;
+    protected double minimoMeta;
+	protected ArrayList<Boolean> cumplimientoMetas = new ArrayList<Boolean>();
      
 
     // CONSTRUCTORES
@@ -42,7 +42,7 @@ public abstract class Persona implements Serializable{
      
 
     //MÉTODOS
-    // Método para realizar pagos
+    // Método abstracto para realizar pagos
     public abstract void recibirPagos(double pago); // Método abstracto
  
 

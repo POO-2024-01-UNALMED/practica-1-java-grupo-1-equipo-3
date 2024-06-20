@@ -44,11 +44,8 @@ public class Meta implements Serializable{
     // Método para calcular las comisiones que deben pagarsele al empleado
     public double pagoComisiones(double valorAlcanzado) {
         
-        if (cumplioMeta(valorAlcanzado)) {
-            return comision;
-        } else {
-            return 0.0; // No se paga comisión si no se cumplió la meta
-        }
+        // condicion ? Verdadero : Falso
+        return cumplioMeta(valorAlcanzado) ? comision : 0.0;  // No se paga comisión si no se cumplió la meta
     }
 
     // Método para definir el mensaje que se mostrará al imprimir un objeto de esta clase
