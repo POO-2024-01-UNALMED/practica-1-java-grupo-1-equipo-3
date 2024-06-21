@@ -169,6 +169,7 @@ public class EvaluacionOperacion {
 
                 case 1:
 
+                    // Uso de ligadura dinamica
                     System.out.println("La tienda más usada ha sido "  + Factura.moda(fecha1, fecha2, "tienda").getNombre());
 
                     break;
@@ -176,6 +177,7 @@ public class EvaluacionOperacion {
 
                 case 2:     
 
+                    // Uso de ligadura dinamica
                     System.out.println("El transporte más usado ha sido " + Factura.moda(fecha1, fecha2, "transporte").getNombre());
 
                     break;
@@ -183,6 +185,7 @@ public class EvaluacionOperacion {
 
                 case 3:
 
+                    // Uso de ligadura dinamica
                     System.out.println("El cliente al que más se le ha vendido ha sido " + Factura.moda(fecha1, fecha2, "cliente").getNombre());
 
                     break;

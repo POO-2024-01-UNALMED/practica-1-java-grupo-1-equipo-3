@@ -249,7 +249,7 @@ public class Tienda implements Moda, Serializable{
         Tienda.numTiendas = numTiendas;
     }
 
-    public String getNombre() {
+    public String getNombre() { //De la interfaz Moda
         
         return nombre;
     }

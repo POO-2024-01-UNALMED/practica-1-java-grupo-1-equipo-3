@@ -166,8 +166,7 @@ public class Transporte implements Moda, Serializable{
         this.listaProductos = listaProductos;
     }
 
-    //De la interfaz Moda
-    public String getNombre(){
+    public String getNombre(){ //De la interfaz Moda
         
         return tipo.getNombre();
     }

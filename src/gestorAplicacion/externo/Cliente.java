@@ -69,7 +69,7 @@ public class Cliente implements Moda, Serializable {
 
 
     // GETTERS Y SETTERS
-    public String getNombre() {
+    public String getNombre() { // De la interfaz Moda
 		
         return nombre;
 	}
