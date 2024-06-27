@@ -24,7 +24,7 @@ public abstract class Persona implements Serializable{
 
     // CONSTRUCTORES
     // Constructor que recibe todos los parametros
-    public Persona(String nombre, int edad, int identificacion, CuentaBancaria cuentaBancaria) {
+    protected Persona(String nombre, int edad, int identificacion, CuentaBancaria cuentaBancaria) {
         this.nombre = nombre;
         this.edad = edad;
         this.identificacion = identificacion;
@@ -38,7 +38,7 @@ public abstract class Persona implements Serializable{
     }
 
     // Constructor que no recibe parametros
-    public Persona(){}
+    protected Persona(){}
      
 
     //MÉTODOS

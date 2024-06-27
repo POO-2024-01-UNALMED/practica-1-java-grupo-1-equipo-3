@@ -72,7 +72,7 @@ public class Factura implements Serializable{
     // Este método calcula la tarife de envío de una factura dependiendo del tipo de transporte seleccionado
     public double valorEnvio() {
         
-        return transporte.getTipo().precioEnvio_COP;
+        return transporte.getTipo().getPrecioEnvio_COP();
     }
 
     // Obtiene una lista de facturas en un periodo especifico

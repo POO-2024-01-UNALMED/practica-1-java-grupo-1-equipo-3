@@ -17,9 +17,9 @@ public enum TipoTransporte {
 
     // ATRIBUTOS 
     // De instancia
-    public double precioEnvio_COP; //pesos colombianos
-    public double capacidad_KG; //kilogramos
-    public String nombre;
+    double precioEnvio_COP; //pesos colombianos
+    double capacidad_KG; //kilogramos
+    String nombre;
 
 
     // CONSTRUCTOR
