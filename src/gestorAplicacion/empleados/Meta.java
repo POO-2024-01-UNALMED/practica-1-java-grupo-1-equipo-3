@@ -8,33 +8,33 @@
  */
 
 
- package gestorAplicacion.empleados;
+package gestorAplicacion.empleados;
 
- import java.io.Serializable;
+import java.io.Serializable;
  
  
- /**
+/**
   * La clase 'Meta' representa una meta de rendimiento para los empleados, incluyendo el nivel de la meta, 
   * el valor mínimo a alcanzar y la comisión por cumplir la meta.
   * 
   * Funcionalidades en las que se usa: 
   *      - Pago de nomina
-  */
+ */
  
- public class Meta implements Serializable{
+public class Meta implements Serializable{
      
-     //ATRIBUTOS--------------------------------------------------------------------------------------------------------------------------------------
+    //ATRIBUTOS--------------------------------------------------------------------------------------------------------------------------------------
      
-     // De instancia
-     private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
-     private String nivel;
-     private double minimo;
-     private double comision;
+    // De instancia
+    private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
+    private String nivel;
+    private double minimo;
+    private double comision;
  
  
-     // CONSTRUCTOR-------------------------------------------------------------------------------------------------------------------------------------
+    // CONSTRUCTOR-------------------------------------------------------------------------------------------------------------------------------------
  
-      /**
+    /**
       * Constructor de la clase Meta.
       * 
       * @param nivel Nivel de la meta (Por ejemplo: "Facil", "Intermedio", "Dificil")
@@ -44,19 +44,19 @@
       * @param comision Comisión por cumplir la meta
       */
  
-     public Meta(String nivel, double minimo, double comision) {
+    public Meta(String nivel, double minimo, double comision) {
         
-         this.nivel = nivel;
-         this.minimo = minimo;
-         this.comision = comision;
-     }
+        this.nivel = nivel;
+        this.minimo = minimo;
+        this.comision = comision;
+    }
  
  
  
-     //MÉTODOS----------------------------------------------------------------------------------------------------------
+    //MÉTODOS----------------------------------------------------------------------------------------------------------
  
  
-     /**
+    /**
       * Determina si se cumplió la meta esperada. 
       * 
       * @param valorAlcanzado Valor alcanzado por el empleado
@@ -66,14 +66,14 @@
       * Funcionalidades en las que se usa: Pago de nomina
       */
      
-     public boolean cumplioMeta(double valorAlcanzado) {
+    public boolean cumplioMeta(double valorAlcanzado) {
          
-         return valorAlcanzado >= minimo;
-     }
+        return valorAlcanzado >= minimo;
+    }
  
  
  
-     /**
+    /**
       * Calcula el porcentaje de cumplimiento de la meta.
       * 
       * @param valorAlcanzado Valor alcanzado por el empleado
@@ -84,71 +84,71 @@
       * Funcionalidades en las que se usa: Pago de nomina
       */
  
-     public String porcentajeCumplimiento(double valorAlcanzado) {
+    public String porcentajeCumplimiento(double valorAlcanzado) {
          
-         double porcentajeCumplido = (valorAlcanzado / minimo) * 100;
-         String mensaje = "Porcentaje de cumplimiento: " + porcentajeCumplido + "%";
+        double porcentajeCumplido = (valorAlcanzado / minimo) * 100;
+        String mensaje = "Porcentaje de cumplimiento: " + porcentajeCumplido + "%";
          
-         if (porcentajeCumplido < 100){
-             mensaje += "\nPorcentaje faltante: " + (100 - porcentajeCumplido) + "%";
-             mensaje += "\nCantidad faltante del indice indicado: " + (minimo - valorAlcanzado); 
-         }
+        if (porcentajeCumplido < 100){
+            mensaje += "\nPorcentaje faltante: " + (100 - porcentajeCumplido) + "%";
+            mensaje += "\nCantidad faltante del indice indicado: " + (minimo - valorAlcanzado); 
+        }
          
-         return mensaje;
-     }
+        return mensaje;
+    }
  
  
  
-     /**
+    /**
       * Devuelve una representación en cadena del objeto Meta.
       * 
       * @return Cadena de texto con información sobre la meta
       */
      
-     public String toString(){
+    public String toString(){
          
-         return "\n"
-         + "Minimo requerido:                 " + minimo + "\n"
-         + "Bonificación por cumplimiento:    " + comision + "\n";
-     }
+        return "\n"
+        + "Minimo requerido:                 " + minimo + "\n"
+        + "Bonificación por cumplimiento:    " + comision + "\n";
+    }
  
  
  
-     // GETTERS Y SETTERS---------------------------------------------------------------------------------------------------------
+    // GETTERS Y SETTERS---------------------------------------------------------------------------------------------------------
      
  
-     public String getNivel() {
+    public String getNivel() {
          
-         return this.nivel;
-     }
+        return this.nivel;
+    }
  
  
-     public void setNivel(String nivel) {
+    public void setNivel(String nivel) {
          
-         this.nivel = nivel;
-     }
+        this.nivel = nivel;
+    }
      
  
-     public double getMinimo() {
+    public double getMinimo() {
          
-         return minimo;
-     }
+        return minimo;
+    }
  
  
-     public void setMinimo(double minimo) {
+    public void setMinimo(double minimo) {
  
-         this.minimo = minimo;
-     }
+        this.minimo = minimo;
+    }
  
  
-     public double getComision() {
+    public double getComision() {
          
-         return comision;
-     }
+        return comision;
+    }
  
  
-     public void setComision(double comision) {
+    public void setComision(double comision) {
          
-         this.comision = comision;
-     }
- }
+        this.comision = comision;
+    }
+}

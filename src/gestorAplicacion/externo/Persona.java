@@ -9,13 +9,13 @@
  */
 
 
- package gestorAplicacion.externo;
+package gestorAplicacion.externo;
 
- import java.io.Serializable;
- import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.ArrayList;
  
  
- /**
+/**
   * La clase abstracta `Persona` representa una persona dentro de la empresa. 
   * 
   * Esta proporciona atributos y métodos para la creación de los diferentes empleados de la empresa.
@@ -26,29 +26,29 @@
   *      - Pago de nomina
   */
  
- public abstract class Persona implements Serializable{
+public abstract class Persona implements Serializable{
      
-     // ATRIBUTOS ----------------------------------------------------------------------------------------------------------------------------
+    // ATRIBUTOS ----------------------------------------------------------------------------------------------------------------------------
      
-     // De clase
-     protected static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
-     protected static int totalPersonas;
-     protected static  ArrayList<Persona> listaPersonas = new ArrayList<Persona>();
-     protected static final int SALARIO = 50000; 
+    // De clase
+    protected static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
+    protected static int totalPersonas;
+    protected static  ArrayList<Persona> listaPersonas = new ArrayList<Persona>();
+    protected static final int SALARIO = 50000; 
      
-     // De instancia
-     protected String nombre;
-     protected int edad;
-     protected int identificacion;
-     protected CuentaBancaria cuentaBancaria;
-     protected int trabajado;
-     protected double minimoMeta;
-     protected ArrayList<Boolean> cumplimientoMetas = new ArrayList<Boolean>();
+    // De instancia
+    protected String nombre;
+    protected int edad;
+    protected int identificacion;
+    protected CuentaBancaria cuentaBancaria;
+    protected int trabajado;
+    protected double minimoMeta;
+    protected ArrayList<Boolean> cumplimientoMetas = new ArrayList<Boolean>();
       
  
-     // CONSTRUCTORES -------------------------------------------------------------------------------------------------------------------------------------
+    // CONSTRUCTORES -------------------------------------------------------------------------------------------------------------------------------------
      
-     /**
+    /**
       * Constructor que recibe todos los parámetros.
       * 
       * @param nombre Nombre de la persona
@@ -60,33 +60,33 @@
       * @param cuentaBancaria Cuenta bancaria de la persona
       */
  
-     protected Persona(String nombre, int edad, int identificacion, CuentaBancaria cuentaBancaria) {
-         // Constructor con protected por ser una clase abstracta
-         this.nombre = nombre;
-         this.edad = edad;
-         this.identificacion = identificacion;
-         this.cuentaBancaria = cuentaBancaria;
-         this.trabajado = 0;
-         this.minimoMeta = 0;
-         this.cumplimientoMetas.add(false);
-         this.cumplimientoMetas.add(false);
-         listaPersonas.add(this);
-         totalPersonas++;
-     }
+    protected Persona(String nombre, int edad, int identificacion, CuentaBancaria cuentaBancaria) {
+        // Constructor con protected por ser una clase abstracta
+        this.nombre = nombre;
+        this.edad = edad;
+        this.identificacion = identificacion;
+        this.cuentaBancaria = cuentaBancaria;
+        this.trabajado = 0;
+        this.minimoMeta = 0;
+        this.cumplimientoMetas.add(false);
+        this.cumplimientoMetas.add(false);
+        listaPersonas.add(this);
+        totalPersonas++;
+    }
      
  
-     /**
+    /**
       * Constructor que no recibe parámetros.
       */
  
-     protected Persona(){}
+    protected Persona(){}
       
  
  
-     //MÉTODOS -----------------------------------------------------------------------------------------------------------------------------
+    //MÉTODOS -----------------------------------------------------------------------------------------------------------------------------
  
  
-     /**
+    /**
       * Método abstracto para realizar pagos.
       * 
       * @param pago Monto del pago a realizar
@@ -95,125 +95,124 @@
       * 'Transportador' y 'Vendedor' es usada en la funcionalidad Pago de nomina
       */
  
-     public abstract void recibirPagos(double pago); // Método abstracto
+    public abstract void recibirPagos(double pago); // Método abstracto
   
  
  
-     // GETTERS Y SETTERS----------------------------------------------------------------------------------------------------------------------------
+    // GETTERS Y SETTERS----------------------------------------------------------------------------------------------------------------------------
  
  
-     public static int getTotalPersonas() {
+    public static int getTotalPersonas() {
  
-         return totalPersonas;
-     }
+        return totalPersonas;
+    }
  
  
-     public static void setTotalPersonas(int totalPersonas) {
+    public static void setTotalPersonas(int totalPersonas) {
  
-         Persona.totalPersonas = totalPersonas;
-     }
+        Persona.totalPersonas = totalPersonas;
+    }
  
      
-     public static ArrayList<Persona> getListaPersonas(){
+    public static ArrayList<Persona> getListaPersonas(){
  
-         return listaPersonas;
-     }
- 
- 
-     public static void setListaPersonas(ArrayList<Persona> listaPersonas){
- 
-         Persona.listaPersonas = listaPersonas;
-     }
+        return listaPersonas;
+    }
  
  
-     // Para este atributo solo se crea get debido a que es una constante
-     public static int getSalario(){
+    public static void setListaPersonas(ArrayList<Persona> listaPersonas){
  
-         return SALARIO; 
-     }
+        Persona.listaPersonas = listaPersonas;
+    }
  
  
-     public String getNombre() {
+    // Para este atributo solo se crea get debido a que es una constante
+    public static int getSalario(){
  
-         return nombre;
-     }
+        return SALARIO; 
+    }
+ 
+ 
+    public String getNombre() {
+ 
+        return nombre;
+    }
  
   
-     public void setNombre(String nombre) {
+    public void setNombre(String nombre) {
          
-         this.nombre = nombre;
-     }
+        this.nombre = nombre;
+    }
  
   
-     public int getEdad() {
+    public int getEdad() {
      
-         return edad;
-     }
+        return edad;
+    }
  
   
-     public void setEdad(int edad) {
+    public void setEdad(int edad) {
          
-         this.edad = edad;
-     }
+        this.edad = edad;
+    }
  
  
-     public int getIdentificacion() {
+    public int getIdentificacion() {
          
-         return identificacion;
-     }
+        return identificacion;
+    }
  
  
-     public void setIdentificacion(int identificacion) {
+    public void setIdentificacion(int identificacion) {
          
-         this.identificacion = identificacion;
-     }
+        this.identificacion = identificacion;
+    }
  
   
-     public CuentaBancaria getCuentaBancaria() {
+    public CuentaBancaria getCuentaBancaria() {
          
-         return cuentaBancaria;
-     }
+        return cuentaBancaria;
+    }
  
   
-     public void setCuentaBancaria(CuentaBancaria cuentaBancaria) {
+    public void setCuentaBancaria(CuentaBancaria cuentaBancaria) {
          
-         this.cuentaBancaria = cuentaBancaria;
-     }
+        this.cuentaBancaria = cuentaBancaria;
+    }
  
  
-     public int getTrabajado(){
+    public int getTrabajado(){
          
-         return trabajado;
-     }
+        return trabajado;
+    }
  
  
-     public void setTrabajado(int trabajado){
+    public void setTrabajado(int trabajado){
          
-         this.trabajado = trabajado;
-     }
+        this.trabajado = trabajado;
+    }
  
  
-     public double getMinimoMeta(){
+    public double getMinimoMeta(){
          
-         return minimoMeta;
-     }
+        return minimoMeta;
+    }
  
  
-     public void setMinimoMeta(double d){
+    public void setMinimoMeta(double d){
          
-         this.minimoMeta = d;
-     }
+        this.minimoMeta = d;
+    }
  
  
-     public ArrayList<Boolean> getCumplimientoMetas(){
+    public ArrayList<Boolean> getCumplimientoMetas(){
          
-         return cumplimientoMetas;
-     }
+        return cumplimientoMetas;
+    }
  
  
-     public void setCumplimientoMetas(ArrayList<Boolean> cumplimientoMetas){
+    public void setCumplimientoMetas(ArrayList<Boolean> cumplimientoMetas){
          
-         this.cumplimientoMetas = cumplimientoMetas;
-     }
- }
- 
+        this.cumplimientoMetas = cumplimientoMetas;
+    }
+}
