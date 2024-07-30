@@ -12,18 +12,18 @@
  */
 
 
- package gestorAplicacion.externo;
+package gestorAplicacion.externo;
 
- import java.io.Serializable;
- import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.ArrayList;
  
- import gestorAplicacion.empleados.Transportador;
- import gestorAplicacion.empresa.Moda;
- import gestorAplicacion.empresa.Producto;
- import gestorAplicacion.empresa.Tienda;
+import gestorAplicacion.empleados.Transportador;
+import gestorAplicacion.empresa.Moda;
+import gestorAplicacion.empresa.Producto;
+import gestorAplicacion.empresa.Tienda;
  
  
- /**
+/**
   * La clase 'Transporte' representa un medio de transporte dentro de la empresa.
   * 
   * Contiene información sobre el tipo de transporte, su capacidad, costo, transportador asignado, y los productos transportados.
@@ -36,27 +36,27 @@
   *      - Proveer tiendas
   */
  
- public class Transporte implements Moda, Serializable{
+public class Transporte implements Moda, Serializable{
      
-     // ATRIBUTOS ------------------------------------------------------------------------------------------------------------------------------------------
+    // ATRIBUTOS ------------------------------------------------------------------------------------------------------------------------------------------
      
-     // De clase 
-     private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
+    // De clase 
+    private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
  
-     // De instancia
-     private TipoTransporte tipo;
-     private double capacidad;
-     private double costo;
-     private Transportador transportador;
-     private ArrayList<TipoTransporte> transportes;
-     private double precioTransporte;
-     private Tienda tienda;
-     private ArrayList<Producto> listaProductos;
+    // De instancia
+    private TipoTransporte tipo;
+    private double capacidad;
+    private double costo;
+    private Transportador transportador;
+    private ArrayList<TipoTransporte> transportes;
+    private double precioTransporte;
+    private Tienda tienda;
+    private ArrayList<Producto> listaProductos;
  
  
-     // CONSTRUCTOR -------------------------------------------------------------------------------------------------------------------------------------------------
+    // CONSTRUCTOR -------------------------------------------------------------------------------------------------------------------------------------------------
  
-     /**
+    /**
       * Constructor que recibe todos los parámetros.
       * 
       * @param tipo Tipo de transporte
@@ -68,20 +68,20 @@
       * @param transportador Transportador asignado al transporte
       */
  
-     public Transporte(TipoTransporte tipo, Double capacidad, double costo, Transportador transportador) {
+    public Transporte(TipoTransporte tipo, Double capacidad, double costo, Transportador transportador) {
          
-         this.tipo = tipo;
-         this.capacidad = capacidad;
-         this.costo = costo;
-         this.transportador = transportador;
-     }
+        this.tipo = tipo;
+        this.capacidad = capacidad;
+        this.costo = costo;
+        this.transportador = transportador;
+    }
  
  
  
-     //MÉTODOS --------------------------------------------------------------------------------------------------------------------------------------------------
+    //MÉTODOS --------------------------------------------------------------------------------------------------------------------------------------------------
      
  
-     /**
+    /**
       * Lleva los productos al transporte seleccionado y asigna la tienda a la que se enviarán.
       * 
       * @param tienda Tienda a la que se enviarán los productos
@@ -91,15 +91,15 @@
       * Funcionalidades en las que se usa: Proveer tiendas
       */
  
-     public void suministrarProducto(Tienda tienda, ArrayList<Producto> listaProductos){
+    public void suministrarProducto(Tienda tienda, ArrayList<Producto> listaProductos){
          
-         this.setTienda(tienda);
-         this.setListaProductos(listaProductos);
-     }
+        this.setTienda(tienda);
+        this.setListaProductos(listaProductos);
+    }
  
  
  
-     /**
+    /**
       * Muestra todos los tipos de transporte, su precio y su capacidad.
       * 
       * @param args Argumentos de la línea de comandos
@@ -108,19 +108,19 @@
       * 
       */
  
-     public static void MostrarTipoTransporte(String[] args) {
+    public static void MostrarTipoTransporte(String[] args) {
          
-         TipoTransporte[] transportes = TipoTransporte.values();
+        TipoTransporte[] transportes = TipoTransporte.values();
          
-         for (int i = 0; i < transportes.length; i++) {
-             System.out.println(transportes[i]);
-         }
+        for (int i = 0; i < transportes.length; i++) {
+            System.out.println(transportes[i]);
+        }
  
-     }
+    }
  
  
      
-     /**
+    /**
       * Genera una cadena de texto con el nombre, precio y capacidad de un tipo de transporte.
       * 
       * @param transporte Tipo de transporte a mostrar
@@ -128,18 +128,18 @@
       * @return Una cadena de texto con la información del tipo de transporte
       */
  
-     public String TipoTransporte(TipoTransporte transporte) {
+    public String TipoTransporte(TipoTransporte transporte) {
          
-         String mensaje = ("Tipo de transporte: " + transporte.name() + 
+        String mensaje = ("Tipo de transporte: " + transporte.name() + 
                            "Precio: " + transporte.getPrecioEnvio_COP() + 
                            "Capacidad máxima: " + transporte.getCapacidad_KG());
          
-         return mensaje;
-     }
+        return mensaje;
+    }
  
  
  
-     /**
+    /**
       * Cambia el valor del envío a 0.
       * 
       * @param transporte Transporte al que se le cambiará el precio del envío
@@ -149,142 +149,142 @@
       * Funcionalidades en las que se usa: Envio pedidos
       */
  
-     public static Transporte enviarGratis(Transporte transporte){
+    public static Transporte enviarGratis(Transporte transporte){
          
-         transporte.getTipo().setPrecioEnvio_COP(0);
+        transporte.getTipo().setPrecioEnvio_COP(0);
          
-         return transporte;
-     }
+        return transporte;
+    }
  
  
  
-     /**
+    /**
       * Guarda el valor del precio de envío en la variable precioTransporte.
       * 
       * Funcionalidades en las que se usa: Envio pedidos
       */
  
-     public void recordarPrecioTransporte(){
+    public void recordarPrecioTransporte(){
          
-         precioTransporte = this.getTipo().getPrecioEnvio_COP();
-     }
+        precioTransporte = this.getTipo().getPrecioEnvio_COP();
+    }
  
  
  
-     /**
+    /**
       * Guarda en precioEnvio el valor que está en precioTransporte.
       * 
       * Funcionalidades en las que se usa: Envio pedidos
       */
  
-     public void reestablecerPrecioTransporte(){
+    public void reestablecerPrecioTransporte(){
          
-         this.getTipo().setPrecioEnvio_COP(precioTransporte);
-     }
+        this.getTipo().setPrecioEnvio_COP(precioTransporte);
+    }
      
  
  
-     // GETTERS Y SETTERS ----------------------------------------------------------------------------------------------------------
+    // GETTERS Y SETTERS ----------------------------------------------------------------------------------------------------------
  
  
-      public TipoTransporte getTipo() {
+    public TipoTransporte getTipo() {
          
-         return tipo;
-     }
+        return tipo;
+    }
  
  
-     public void setTipo(TipoTransporte tipo) {
+    public void setTipo(TipoTransporte tipo) {
          
-         this.tipo = tipo;
-     }
+        this.tipo = tipo;
+    }
  
      
-     public Double getCapacidad() {
+    public Double getCapacidad() {
         
-         return capacidad;
-     }
+        return capacidad;
+    }
  
  
-     public void setCapacidad(Double capacidad) {
+    public void setCapacidad(Double capacidad) {
          
-         this.capacidad = capacidad;
-     }
+        this.capacidad = capacidad;
+    }
  
      
-     public double getCosto() {
+    public double getCosto() {
          
-         return costo;
-     }
+        return costo;
+    }
  
  
-     public void setCosto (double costo) {
+    public void setCosto (double costo) {
         
-         this.costo = costo;
-     }
+        this.costo = costo;
+    }
  
  
-     public Transportador getTransportador() {
+    public Transportador getTransportador() {
          
-         return transportador;
-     }
+        return transportador;
+    }
  
  
-     public void setTransportador(Transportador transportador) {
+    public void setTransportador(Transportador transportador) {
          
-         this.transportador = transportador;
-     }
+        this.transportador = transportador;
+    }
  
  
-     public ArrayList<TipoTransporte> getTransportes() {
+    public ArrayList<TipoTransporte> getTransportes() {
          
-         return transportes;
-     }
+        return transportes;
+    }
  
  
-     public void setTransportes(ArrayList<TipoTransporte> transportes) {
+    public void setTransportes(ArrayList<TipoTransporte> transportes) {
          
-         this.transportes = transportes;
-     }
+        this.transportes = transportes;
+    }
  
  
-     public double getPrecioTransporte() {
+    public double getPrecioTransporte() {
          
-         return precioTransporte;
-     }
+        return precioTransporte;
+    }
  
  
-     public void setPrecioTransporte(double precioTransporte) {
+    public void setPrecioTransporte(double precioTransporte) {
          
-         this.precioTransporte = precioTransporte;
-     }
+        this.precioTransporte = precioTransporte;
+    }
  
  
-     public Tienda getTienda() {
+    public Tienda getTienda() {
         
-         return tienda;
-     }
+        return tienda;
+    }
  
  
-     public void setTienda(Tienda tienda) {
+    public void setTienda(Tienda tienda) {
          
-         this.tienda = tienda;
-     }
+        this.tienda = tienda;
+    }
  
  
-     public ArrayList<Producto> getListaProductos() {
+    public ArrayList<Producto> getListaProductos() {
          
-         return listaProductos;
-     }
+        return listaProductos;
+    }
  
  
-     public void setListaProductos(ArrayList<Producto> listaProductos) {
+    public void setListaProductos(ArrayList<Producto> listaProductos) {
          
-         this.listaProductos = listaProductos;
-     }
+        this.listaProductos = listaProductos;
+    }
  
  
-     public String getNombre(){ //De la interfaz Moda
+    public String getNombre(){ //De la interfaz Moda
          
-         return tipo.getNombre();
-     }
- }
+        return tipo.getNombre();
+    }
+}

@@ -8,15 +8,15 @@
  */
 
 
- package gestorAplicacion.externo;
+package gestorAplicacion.externo;
 
- import java.util.ArrayList;
- import java.util.Random;
+import java.util.ArrayList;
+import java.util.Random;
  
- import gestorAplicacion.empleados.Transportador;
+import gestorAplicacion.empleados.Transportador;
  
  
- /**
+/**
   * La enumeración 'TipoTransporte' representa los diferentes tipos de transporte disponibles.
   * 
   * Contiene información sobre el costo de envío, la capacidad de carga y el nombre del transporte.
@@ -27,28 +27,28 @@
   *      - Envio pedidos
   */
  
- public enum TipoTransporte {
+public enum TipoTransporte {
      
-     //CONSTANTES -------------------------------------------------------------------------------------------------------------------
-     CAMINANDO(1000, 5,"Caminando"),
-     BICICLETA(2000,8,"Bicicleta"),
-     MOTO(5000, 10, "Moto"),
-     CARRO(10000,30,"Carro"),
-     CAMION(50000, 100, "Camion"),
-     AVION(500000, 1000,"Avion");
+    //CONSTANTES -------------------------------------------------------------------------------------------------------------------
+    CAMINANDO(1000, 5,"Caminando"),
+    BICICLETA(2000,8,"Bicicleta"),
+    MOTO(5000, 10, "Moto"),
+    CARRO(10000,30,"Carro"),
+    CAMION(50000, 100, "Camion"),
+    AVION(500000, 1000,"Avion");
      
  
-     // ATRIBUTOS -----------------------------------------------------------------------------------------------------------------------------
+    // ATRIBUTOS -----------------------------------------------------------------------------------------------------------------------------
      
-     // De instancia
-     double precioEnvio_COP; //pesos colombianos
-     double capacidad_KG; //kilogramos
-     String nombre;
+    // De instancia
+    double precioEnvio_COP; //pesos colombianos
+    double capacidad_KG; //kilogramos
+    String nombre;
  
  
-     // CONSTRUCTOR -----------------------------------------------------------------------------------------------------------------------------
+    // CONSTRUCTOR -----------------------------------------------------------------------------------------------------------------------------
      
-     /**
+    /**
       * Constructor que recibe los parámetros:
       * 
       * @param precioEnvio Costo de envío en pesos colombianos
@@ -58,20 +58,20 @@
       * @param nombre Nombre del tipo de transporte
       */
  
-     private TipoTransporte(int precioEnvio, double capacidad, String nombre) {
+    private TipoTransporte(int precioEnvio, double capacidad, String nombre) {
          
-         // Constructor privado para que solo se tengan las constantes definidas anteriormente    
-         this.precioEnvio_COP = precioEnvio;
-         this.capacidad_KG = capacidad;
-         this.nombre = nombre;
-     }
+        // Constructor privado para que solo se tengan las constantes definidas anteriormente    
+        this.precioEnvio_COP = precioEnvio;
+        this.capacidad_KG = capacidad;
+        this.nombre = nombre;
+    }
  
  
  
-     // MÉTODOS --------------------------------------------------------------------------------------------------------------------------------------
+    // MÉTODOS --------------------------------------------------------------------------------------------------------------------------------------
      
  
-     /**
+    /**
       * Verifica qué tipos de transporte son aptos según el peso de los productos a enviar.
       * 
       * @param PesoTotalProductos Peso total de los productos a enviar
@@ -81,23 +81,23 @@
       * Funcionalidades en las que se usa: Envio pedidos
       */
  
-     public static ArrayList<TipoTransporte> transporteSegunCarga(int PesoTotalProductos){
+    public static ArrayList<TipoTransporte> transporteSegunCarga(int PesoTotalProductos){
          
-         ArrayList<TipoTransporte> transportesPosibles = new ArrayList<TipoTransporte>();
+        ArrayList<TipoTransporte> transportesPosibles = new ArrayList<TipoTransporte>();
          
-         for(TipoTransporte tipoTransporte : TipoTransporte.values()) {
+        for(TipoTransporte tipoTransporte : TipoTransporte.values()) {
              
-             if(tipoTransporte.getCapacidad_KG() >= PesoTotalProductos){
-                 transportesPosibles.add(tipoTransporte); 
-             }
-     }
+            if(tipoTransporte.getCapacidad_KG() >= PesoTotalProductos){
+                transportesPosibles.add(tipoTransporte); 
+            }
+    }
  
-     return transportesPosibles;
-     }
+    return transportesPosibles;
+    }
  
  
      
-     /**
+    /**
       * Muestra los tipos de transporte disponibles según la carga.
       * 
       * @param transportesPosibles Lista de tipos de transporte posibles
@@ -107,22 +107,22 @@
       * Funcionalidades en las que se usa: Envio pedidos
       */
  
-     public static String mostrarTransporteSegunCarga(ArrayList<TipoTransporte> transportesPosibles){
+    public static String mostrarTransporteSegunCarga(ArrayList<TipoTransporte> transportesPosibles){
          
-         String mensajeTransportesPosibles = "";
-         int numero = 1;
+        String mensajeTransportesPosibles = "";
+        int numero = 1;
          
-         for(TipoTransporte tipoTransportes : transportesPosibles) {
-             mensajeTransportesPosibles += numero + ". " + tipoTransportes.getNombre() + " $" + tipoTransportes.getPrecioEnvio_COP() + "\n";
-             numero++;
-         }
+        for(TipoTransporte tipoTransportes : transportesPosibles) {
+            mensajeTransportesPosibles += numero + ". " + tipoTransportes.getNombre() + " $" + tipoTransportes.getPrecioEnvio_COP() + "\n";
+            numero++;
+        }
          
-         return  mensajeTransportesPosibles;
-     }
+        return mensajeTransportesPosibles;
+    }
  
  
  
-     /**
+    /**
       * Selecciona el transporte y le asigna un transportador aleatorio.
       * 
       * @param ListaFiltrada Lista de tipos de transporte filtrada según la carga
@@ -133,70 +133,70 @@
       * 
       * Funcionalidades en las que se usa: Envio pedidos
       */
-     public static Transporte seleccionarTransporte(ArrayList<TipoTransporte> ListaFiltrada,int opcion){
+    public static Transporte seleccionarTransporte(ArrayList<TipoTransporte> ListaFiltrada,int opcion){
  
-         Random random = new Random();
-         int indice = random.nextInt(Transportador.getListaTransportadores().size()); //se genera un nuero aleatorio con un maximo en el tamaño de la lista de transportadores 
-         Transportador transportador = Transportador.getListaTransportadores().get(indice);
-         TipoTransporte tipo = ListaFiltrada.get(opcion-1);
-         Double capacidad= ListaFiltrada.get(opcion-1).getCapacidad_KG();
-         Double precioEnvio = ListaFiltrada.get(opcion-1).getPrecioEnvio_COP();
-         Transporte transporte = new Transporte(tipo,capacidad,precioEnvio,transportador); //Se crea un objeto de tipo Transporte con las caracteristicas requeridas
-         transportador.setTransporte(transporte);
+        Random random = new Random();
+        int indice = random.nextInt(Transportador.getListaTransportadores().size()); //se genera un nuero aleatorio con un maximo en el tamaño de la lista de transportadores 
+        Transportador transportador = Transportador.getListaTransportadores().get(indice);
+        TipoTransporte tipo = ListaFiltrada.get(opcion-1);
+        Double capacidad= ListaFiltrada.get(opcion-1).getCapacidad_KG();
+        Double precioEnvio = ListaFiltrada.get(opcion-1).getPrecioEnvio_COP();
+        Transporte transporte = new Transporte(tipo,capacidad,precioEnvio,transportador); //Se crea un objeto de tipo Transporte con las caracteristicas requeridas
+        transportador.setTransporte(transporte);
  
-         return transporte;
-     }
+        return transporte;
+    }
  
  
  
-     /**
+    /**
       * Genera una representación en cadena del tipo de transporte.
       * 
       * @return Una cadena de texto con el nombre del tipo de transporte
       */
  
-     @Override
-     public String toString() {
-         return this.getNombre();
-     }
+    @Override
+    public String toString() {
+        return this.getNombre();
+    }
  
  
  
-     //GETTERS Y SETTERS ------------------------------------------------------------------------------------------------------------------------------
+    //GETTERS Y SETTERS ------------------------------------------------------------------------------------------------------------------------------
  
  
-     public double getPrecioEnvio_COP() {
+    public double getPrecioEnvio_COP() {
          
-         return precioEnvio_COP;
-     }
+        return precioEnvio_COP;
+    }
  
  
-     public void setPrecioEnvio_COP(double precioEnvio) {
+    public void setPrecioEnvio_COP(double precioEnvio) {
          
-         this.precioEnvio_COP = precioEnvio;
-     }
+        this.precioEnvio_COP = precioEnvio;
+    }
  
  
-     public double getCapacidad_KG() {
+    public double getCapacidad_KG() {
          
-         return capacidad_KG;
-     }
+        return capacidad_KG;
+    }
  
  
-     public void setCapacidad_KG(double capacidad) {
+    public void setCapacidad_KG(double capacidad) {
          
-         this.capacidad_KG = capacidad;
-     }
+        this.capacidad_KG = capacidad;
+    }
  
  
-     public String getNombre() {
+    public String getNombre() {
          
-         return nombre;
-     }
+        return nombre;
+    }
  
  
-     public void setNombre(String nombre) {
+    public void setNombre(String nombre) {
          
-         this.nombre = nombre;
-     }
- }
+        this.nombre = nombre;
+    }
+}
