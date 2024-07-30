@@ -8,18 +8,18 @@
  */
 
 
- package gestorAplicacion.empleados;
+package gestorAplicacion.empleados;
 
- import java.util.ArrayList;
- import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
  
- import gestorAplicacion.empresa.Fabrica;
- import gestorAplicacion.externo.CuentaBancaria;
- import gestorAplicacion.externo.Persona;
- import gestorAplicacion.externo.Transporte;
+import gestorAplicacion.empresa.Fabrica;
+import gestorAplicacion.externo.CuentaBancaria;
+import gestorAplicacion.externo.Persona;
+import gestorAplicacion.externo.Transporte;
  
  
- /**
+/**
   * La clase 'Transportador' representa a un empleado transportador en la empresa, que tiene metas de rendimiento 
   * y puede pertenecer a una fábrica y tener un transporte asignado.
   * 
@@ -27,25 +27,25 @@
   * 		- Pago de nomina
   */
  
- public class Transportador extends Persona{
+public class Transportador extends Persona{
      
-     // ATRIBUTOS---------------------------------------------------------------------------------------------------------------------------------
+    // ATRIBUTOS---------------------------------------------------------------------------------------------------------------------------------
      
-     // De clase
-     private static ArrayList<Meta> metas = new ArrayList<Meta>(List.of(
-         new Meta("Facil",4,10000),
-         new Meta("intermedio",7,15000),
-         new Meta("Dificil",10,20000))); //Crear una lista inmutable
-     private static ArrayList<Transportador> listaTransportadores = new ArrayList<Transportador>();
+    // De clase
+    private static ArrayList<Meta> metas = new ArrayList<Meta>(List.of(
+        new Meta("Facil",4,10000),
+        new Meta("intermedio",7,15000),
+        new Meta("Dificil",10,20000))); //Crear una lista inmutable
+    private static ArrayList<Transportador> listaTransportadores = new ArrayList<Transportador>();
      
-     // De instancia
-     private Transporte transporte;
-     private Fabrica fabrica;
+    // De instancia
+    private Transporte transporte;
+    private Fabrica fabrica;
  
  
-     // CONSTRUCTORES---------------------------------------------------------------------------------------------------------------------------------------
+    // CONSTRUCTORES---------------------------------------------------------------------------------------------------------------------------------------
  
-      /**
+    /**
       * Constructor que recibe todos los parámetros.
       * 
       * @param nombre Nombre del transportador
@@ -59,26 +59,26 @@
       * @param transporte Transporte asignado al transportador
       */
  
-     public Transportador(String nombre, int edad, int identificacion, CuentaBancaria cuentaBancaria,Transporte transporte) {
+    public Transportador(String nombre, int edad, int identificacion, CuentaBancaria cuentaBancaria,Transporte transporte) {
          
-         super(nombre, edad, identificacion, cuentaBancaria);
-         this.transporte = transporte;
-         listaTransportadores.add(this);
-     }
+        super(nombre, edad, identificacion, cuentaBancaria);
+        this.transporte = transporte;
+        listaTransportadores.add(this);
+    }
  
  
-     /**
+    /**
       * Constructor sin parámetros.
       */
  
-     public Transportador() {}
+    public Transportador() {}
      
  
  
-     // MÉTODOS---------------------------------------------------------------------------------------------------------------------------------------------------
+    // MÉTODOS---------------------------------------------------------------------------------------------------------------------------------------------------
  
  
-     /**
+    /**
       * Realiza el pago de salario a un objeto de tipo transportador.
       * 
       * Este método esta sobre escrito de la clase Persona.
@@ -91,82 +91,82 @@
       * Funcionalidades en las que se usa: Pago de nomina
       */
  
-     @Override
-     public void recibirPagos(double pago) {
+    @Override
+    public void recibirPagos(double pago) {
          
-         fabrica.getCuentaBancaria().disminuirSaldo(pago);
-         super.getCuentaBancaria().incrementarSaldo(pago);
-     }
+        fabrica.getCuentaBancaria().disminuirSaldo(pago);
+        super.getCuentaBancaria().incrementarSaldo(pago);
+    }
      
  
  
-     /**
+    /**
       * Devuelve una representación en cadena del objeto Transportador.
       * 
       * @return Una cadena de texto con información sobre el transportador, incluyendo su nombre, edad,
       * 		   identificación y el tipo de transporte asignado.
       */
      
-     @Override
-     public String toString() {
+    @Override
+    public String toString() {
          
-         return "\n"
-         + "Nombre: 			" + getNombre() + "\n"
-         + "Edad: 			" + getEdad() + "\n"
-         + "Cedula:			" + getIdentificacion() + "\n"
-         + "Transporte:	    " + getTransporte().getTipo() + "\n";
+        return "\n"
+        + "Nombre: 			" + getNombre() + "\n"
+        + "Edad: 			" + getEdad() + "\n"
+        + "Cedula:			" + getIdentificacion() + "\n"
+        + "Transporte:	    " + getTransporte().getTipo() + "\n";
          
-     }
+    }
      
  
      
-     // GETTERS Y SETTERS-------------------------------------------------------------------------------------------------------------------------------
+    // GETTERS Y SETTERS-------------------------------------------------------------------------------------------------------------------------------
      
      
-     public static ArrayList<Meta> getMetas(){
+    public static ArrayList<Meta> getMetas(){
          
-         return metas;
-     }
+        return metas;
+    }
  
  
-     public static void setMetas(ArrayList<Meta> metas){
+    public static void setMetas(ArrayList<Meta> metas){
          
-         Transportador.metas = metas;
-     }
+        Transportador.metas = metas;
+    }
  
  
-     public static ArrayList<Transportador> getListaTransportadores() {
+    public static ArrayList<Transportador> getListaTransportadores() {
          
-         return listaTransportadores;
-     }
+        return listaTransportadores;
+    }
  
  
-     public static void setListaTransportadores(ArrayList<Transportador> listaTransportadores) {
+    public static void setListaTransportadores(ArrayList<Transportador> listaTransportadores) {
          
-         Transportador.listaTransportadores = listaTransportadores;
-     }
+        Transportador.listaTransportadores = listaTransportadores;
+    }
  
  
-     public Transporte getTransporte() {
+    public Transporte getTransporte() {
          
-         return transporte;
-     }
+        return transporte;
+    }
  
  
-     public void setTransporte(Transporte transporte) {
+    public void setTransporte(Transporte transporte) {
+        
+        this.transporte = transporte;
+    }
+ 
+ 
+    public Fabrica getFabrica() {
          
-         this.transporte = transporte;
-     }
+        return fabrica;
+    }
  
  
-     public Fabrica getFabrica() {
+    public void setFabrica(Fabrica fabrica) {
          
-         return fabrica;
-     }
- 
- 
-     public void setFabrica(Fabrica fabrica) {
-         
-         this.fabrica = fabrica;
-     }
- }
+        this.fabrica = fabrica;
+    }
+}
