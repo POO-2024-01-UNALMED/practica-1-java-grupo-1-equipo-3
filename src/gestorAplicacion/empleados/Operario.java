@@ -25,17 +25,17 @@ import gestorAplicacion.externo.Persona;
   * Funcionalidades en las que se usa: 
   *      - Pago de nomina
   */
- 
+
+@SuppressWarnings("serial") //Para poder generar el archivo .jar
 public class Operario extends Persona {
-     
+      
     // ATRIBUTOS----------------------------------------------------------------------------------------------------------------------------------
-     
+      
     // De clase
     private static ArrayList<Meta> meta = new ArrayList<Meta>(List.of(
         new Meta("Facil",4,5000),
-        new Meta("intermedio",7,10000),
-        new Meta("Dificil",10,15000))); //Crear una lista inmutable con las metas de un objeto de tipo operario
-     
+        new Meta("Dificil",9,15000))); //Crear una lista inmutable con las metas de un objeto de tipo operario
+      
     //De instancia
     private Fabrica fabrica;
  

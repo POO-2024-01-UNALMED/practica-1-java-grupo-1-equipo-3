@@ -27,17 +27,17 @@ import gestorAplicacion.externo.Transporte;
   * 		- Pago de nomina
   */
  
+@SuppressWarnings("serial") //Para poder generar el archivo .jar
 public class Transportador extends Persona{
-     
+      
     // ATRIBUTOS---------------------------------------------------------------------------------------------------------------------------------
-     
+      
     // De clase
     private static ArrayList<Meta> metas = new ArrayList<Meta>(List.of(
-        new Meta("Facil",4,10000),
-        new Meta("intermedio",7,15000),
+        new Meta("Facil",5,10000),
         new Meta("Dificil",10,20000))); //Crear una lista inmutable
     private static ArrayList<Transportador> listaTransportadores = new ArrayList<Transportador>();
-     
+      
     // De instancia
     private Transporte transporte;
     private Fabrica fabrica;
