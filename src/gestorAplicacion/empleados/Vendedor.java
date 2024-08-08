@@ -26,18 +26,18 @@ import gestorAplicacion.empresa.Tienda;
   *      - Pago de nomina
   */
  
-  @SuppressWarnings("serial") //Para poder generar el archivo .jar
-  public class Vendedor extends Persona {
+@SuppressWarnings("serial") //Para poder generar el archivo .jar
+public class Vendedor extends Persona {
       
-      // ATRIBUTOS--------------------------------------------------------------------------------------------------------------------------
+    // ATRIBUTOS--------------------------------------------------------------------------------------------------------------------------
       
-      // De clase
-      private static ArrayList<Meta> metas = new ArrayList<Meta>(List.of(
-          new Meta("Facil",6,12000),
-          new Meta("Dificil",12,25000))); //Crear una lista inmutable 
+    // De clase
+    private static ArrayList<Meta> metas = new ArrayList<Meta>(List.of(
+        new Meta("Facil",6,12000),
+        new Meta("Dificil",12,25000))); //Crear una lista inmutable 
       
-      // De instancia
-      private Tienda tienda;
+    // De instancia
+    private Tienda tienda;
  
  
     //CONSTRUCTORES

@@ -37,21 +37,21 @@ import gestorAplicacion.externo.Persona;
  
 public class Fabrica implements Serializable{
      
-     //ATRIBUTOS-------------------------------------------------------------------------------------------------------------
+    //ATRIBUTOS-------------------------------------------------------------------------------------------------------------
      
-     // De clase 
-     private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
+    // De clase 
+    private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
  
-     // De instancia
-     private ArrayList<Producto> listaProductos;
-     private ArrayList<Tienda> listaTienda;
-     private CuentaBancaria cuentaBancaria;
-     private Operario operario;
+    // De instancia
+    private ArrayList<Producto> listaProductos;
+    private ArrayList<Tienda> listaTienda;
+    private CuentaBancaria cuentaBancaria;
+    private Operario operario;
  
  
-     //CONSTRUCTORES----------------------------------------------------------------------------------------------------------------
+    //CONSTRUCTORES----------------------------------------------------------------------------------------------------------------
  
-     /**
+    /**
       * Constructor para cuando el operario ya existe
       *
       * @param listaProductos La lista de productos que maneja la fábrica.
@@ -63,16 +63,16 @@ public class Fabrica implements Serializable{
       * @param operario El operario asignado a la fábrica.
       */
  
-     public Fabrica(ArrayList<Producto> listaProductos, ArrayList<Tienda> listaTienda,CuentaBancaria cuentaBancaria, Operario operario) {
+    public Fabrica(ArrayList<Producto> listaProductos, ArrayList<Tienda> listaTienda,CuentaBancaria cuentaBancaria, Operario operario) {
          
-         // Se llama al otro constructor que recibe estos parametros
-         this(listaProductos, listaTienda, cuentaBancaria);
-         // Se define el atributo que no esta en el otro constructor
-         this.operario = operario;
-     }
+        // Se llama al otro constructor que recibe estos parametros
+        this(listaProductos, listaTienda, cuentaBancaria);
+        // Se define el atributo que no esta en el otro constructor
+        this.operario = operario;
+    }
  
  
-     /**
+    /**
       * Este constructor se usa cuando no hay un operario asignado a la fábrica.
       *
       * @param listaProductos La lista de productos que maneja la fábrica.
@@ -82,28 +82,28 @@ public class Fabrica implements Serializable{
       * @param cuentaBancaria La cuenta bancaria asociada a la fábrica.
       */
  
-     public Fabrica(ArrayList<Producto> listaProductos, ArrayList<Tienda> listaTienda,CuentaBancaria cuentaBancaria) {
+    public Fabrica(ArrayList<Producto> listaProductos, ArrayList<Tienda> listaTienda,CuentaBancaria cuentaBancaria) {
          
-         this.listaProductos = listaProductos;
-         this.listaTienda = listaTienda;
-         this.cuentaBancaria = cuentaBancaria;
-     }
+        this.listaProductos = listaProductos;
+        this.listaTienda = listaTienda;
+        this.cuentaBancaria = cuentaBancaria;
+    }
  
  
-     /**
+    /**
       * Constructor sin parámetros que inicializa una nueva instancia de Fabrica.
       * 
       * Este constructor crea una fábrica sin productos, tiendas, cuenta bancaria ni operario.
       */
  
-     public Fabrica(){}
+    public Fabrica(){}
  
  
  
-     // MÉTODOS--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // MÉTODOS--------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
  
-     /**
+    /**
       * Muestra los productos disponibles en la fábrica.
       * 
       * @return Una cadena de texto con información sobre los productos disponibles en la fábrica, 
@@ -112,23 +112,23 @@ public class Fabrica implements Serializable{
       * Funcionalidades en las que se usa: Proveer tiendas
       */
  
-     public String mostrarProductos() {
+    public String mostrarProductos() {
          
-         String mensaje = "\nNÚMERO-PRODUCTO-PESO-PRECIO-CATEGORIA\n";
-         int numero = 1;
+        String mensaje = "\nNÚMERO-PRODUCTO-PESO-PRECIO-CATEGORIA\n";
+        int numero = 1;
          
-         //se recorre la lista para obtener la información de cada producto disponible:
-         for(Producto producto:listaProductos) {
-             mensaje += numero + ". " + producto.getNombre() + " - " + producto.getPeso() + " - " + producto.getCostoProduccion() + " - " + producto.getCategoria() + "\n";
-             numero++;
-         }
+        //se recorre la lista para obtener la información de cada producto disponible:
+        for(Producto producto:listaProductos) {
+            mensaje += numero + ". " + producto.getNombre() + " - " + producto.getPeso() + " - " + producto.getCostoProduccion() + " - " + producto.getCategoria() + "\n";
+            numero++;
+        }
  
-         return mensaje;
-     }
+        return mensaje;
+    }
  
  
  
-     /**
+    /**
       * Muestra las tiendas disponibles.
       * 
       * @return Una cadena de texto con información sobre las tiendas disponibles, incluyendo número, 
@@ -137,25 +137,25 @@ public class Fabrica implements Serializable{
       * Funcionalidades en las que se usa: Envio pedidos, Proveer tiendas
       */
  
-     public String mostrarTiendas() {
+    public String mostrarTiendas() {
          
-         String mensaje = "";
-         int numero = 1;
+        String mensaje = "";
+        int numero = 1;
          
-         //se recorre la lista para obtener la información de las tiendas:
-         for(Tienda tienda:listaTienda) {
-             mensaje += numero +". "+tienda.getNombre()+"-Productos: "+tienda.cantidadProductos() + "\n"; //se almacenan todos lo nombres de las tiendas en un string
-             numero++;
-             if(numero == listaTienda.size());
-             mensaje+="\n";
-         }
+        //se recorre la lista para obtener la información de las tiendas:
+        for(Tienda tienda:listaTienda) {
+            mensaje += numero +". "+tienda.getNombre()+"-Productos: "+tienda.cantidadProductos() + "\n"; //se almacenan todos lo nombres de las tiendas en un string
+            numero++;
+            if(numero == listaTienda.size());
+            mensaje+="\n";
+        }
  
-         return mensaje;
-     }
+        return mensaje;
+    }
  
  
  
-     /**
+    /**
       * Permite seleccionar una de las tiendas disponibles.
       * 
       * @param indice Índice de la tienda a seleccionar (indice - 1).
@@ -165,14 +165,14 @@ public class Fabrica implements Serializable{
       * Funcionalidades en las que se usa: Envio pedidos.
       */
  
-     public Tienda seleccionarTienda(int indice) {
+    public Tienda seleccionarTienda(int indice) {
          
-         return listaTienda.get(indice - 1);
-     }
+        return listaTienda.get(indice - 1);
+    }
  
  
      
-     /**
+    /**
       * Descuenta el valor del producto devuelto de la cuenta de la fábrica.
       * 
       * @param productoDevuelto Producto que fue devuelto.
@@ -182,18 +182,18 @@ public class Fabrica implements Serializable{
       * Funcionalidades en las que se usa: Devolucion de productos
       */
  
-     public double descontarDinero(Producto productoDevuelto){
+    public double descontarDinero(Producto productoDevuelto){
          
-         double total = productoDevuelto.getValor();
-         CuentaBancaria cuentaFabrica = this.getCuentaBancaria();
-         cuentaFabrica.disminuirSaldo(total); 
+        double total = productoDevuelto.getValor();
+        CuentaBancaria cuentaFabrica = this.getCuentaBancaria();
+        cuentaFabrica.disminuirSaldo(total); 
          
-         return total;
-     }
+        return total;
+    }
  
  
  
-     /**
+    /**
       * Muestra información de los empleados en una lista de trabajadores.
       * 
       * @param trabajadores Lista de trabajadores a mostrar.
@@ -203,22 +203,22 @@ public class Fabrica implements Serializable{
       * Funcionalidades en las que se usa: Pago de nomina
       */
  
-     public static String mostrarEmpleados(ArrayList<Persona> trabajadores) {
+    public static String mostrarEmpleados(ArrayList<Persona> trabajadores) {
          
-         String mensaje = "";
-         int numero = 1;
+        String mensaje = "";
+        int numero = 1;
          
-         for (Persona i: trabajadores) {
-             mensaje += "\n" + "Trabajador "+ numero + i.toString();  //Uso de ligadura dinámica
-             numero++;               
-         }
+        for (Persona i: trabajadores) {
+            mensaje += "\n" + "Trabajador "+ numero + i.toString();  //Uso de ligadura dinámica
+            numero++;               
+        }
  
-         return mensaje;
-     }
+        return mensaje;
+    }
  
  
  
-     /**
+    /**
       * Crea una lista con cierta cantidad de un mismo producto.
       * 
       * @param cantidad Cantidad de productos a crear.
@@ -230,20 +230,20 @@ public class Fabrica implements Serializable{
       * Funcionalidades en las que se usa: Proveer tiendas
       */
  
-     public ArrayList<Producto> cantidadProductos(int cantidad, Producto producto) {
+    public ArrayList<Producto> cantidadProductos(int cantidad, Producto producto) {
         
-         ArrayList<Producto> productos = new ArrayList<>();
+        ArrayList<Producto> productos = new ArrayList<>();
          
-         for (int i = 0; i < cantidad; i++) {
-             productos.add(producto);
-         }
+        for (int i = 0; i < cantidad; i++) {
+            productos.add(producto);
+        }
          
-         return productos;
-     }
+        return productos;
+    }
  
  
  
-     /**
+    /**
       * Busca en las facturas los trabajadores involucrados en los envíos. 
       * Verifica que no se les haya pagado antes (Trabajo mayor a 0).
       * 
@@ -256,92 +256,92 @@ public class Fabrica implements Serializable{
       * Funcionalidades en las que se usa: Pago de nomina
       */
  
-     public static ArrayList<Persona> TrabajadoresInvolucrados(ArrayList<Factura> listaFacturas, int tipo){
+    public static ArrayList<Persona> TrabajadoresInvolucrados(ArrayList<Factura> listaFacturas, int tipo){
          
-         ArrayList<Persona> listaPersonas = new ArrayList<Persona>();
+        ArrayList<Persona> listaPersonas = new ArrayList<Persona>();
          
-         for (Factura factura: listaFacturas){
-             if(tipo==1){
-                 if (!listaPersonas.contains(factura.getOperario()) && factura.getOperario().getTrabajado()>0 ){
-                     listaPersonas.add(factura.getOperario());
-                 }
+        for (Factura factura: listaFacturas){
+            if(tipo==1){
+                if (!listaPersonas.contains(factura.getOperario()) && factura.getOperario().getTrabajado()>0 ){
+                    listaPersonas.add(factura.getOperario());
+                }
  
-             }else if(tipo==2){
-                 if (!listaPersonas.contains(factura.getTransporte().getTransportador()) && factura.getTransporte().getTransportador().getTrabajado()>0 ){
-                     listaPersonas.add(factura.getTransporte().getTransportador());
-                 }
+            }else if(tipo==2){
+                if (!listaPersonas.contains(factura.getTransporte().getTransportador()) && factura.getTransporte().getTransportador().getTrabajado()>0 ){
+                    listaPersonas.add(factura.getTransporte().getTransportador());
+                }
                      
-             }else if(tipo==3){
-                 if (!listaPersonas.contains(factura.getTienda().getVendedor()) && factura.getTienda().getVendedor().getTrabajado()>0){
-                     listaPersonas.add(factura.getTienda().getVendedor());
-                 }
-             }
-         }
-         return listaPersonas;
-     }
+            }else if(tipo==3){
+                if (!listaPersonas.contains(factura.getTienda().getVendedor()) && factura.getTienda().getVendedor().getTrabajado()>0){
+                    listaPersonas.add(factura.getTienda().getVendedor());
+                }
+            }
+        }
+        return listaPersonas;
+    }
  
  
  
-     /**
+    /**
       * Devuelve una representación en cadena del objeto Fabrica.
       * 
       * @return Una cadena de texto con la información "Fábrica Delicia Fresca".
       */
      
-     @Override   
-     public String toString() {
-         return "Fábrica Delicia Fresca";
-     }
+    @Override   
+    public String toString() {
+        return "Fábrica Delicia Fresca";
+    }
  
  
  
-     // GETTERS Y SETTERS---------------------------------------------------------------------------------------------------------------------------------------------------
+    // GETTERS Y SETTERS---------------------------------------------------------------------------------------------------------------------------------------------------
      
      
-     public ArrayList<Producto> getListaProductos() {
+    public ArrayList<Producto> getListaProductos() {
          
-         return listaProductos;
-     }
+        return listaProductos;
+    }
  
      
-     public void setListaProductos(ArrayList<Producto> listaProductos) {
+    public void setListaProductos(ArrayList<Producto> listaProductos) {
          
-         this.listaProductos = listaProductos;
-     }
+        this.listaProductos = listaProductos;
+    }
  
  
-     public ArrayList<Tienda> getListaTienda() {
+    public ArrayList<Tienda> getListaTienda() {
          
-         return listaTienda;
-     }
+        return listaTienda;
+    }
  
  
-     public void setListaTienda(ArrayList<Tienda> listaTienda) {
+    public void setListaTienda(ArrayList<Tienda> listaTienda) {
          
-         this.listaTienda = listaTienda;
-     }
+        this.listaTienda = listaTienda;
+    }
  
  
-     public CuentaBancaria getCuentaBancaria() {
+    public CuentaBancaria getCuentaBancaria() {
          
-         return cuentaBancaria;
-     }
+        return cuentaBancaria;
+    }
  
  
-     public void setCuentaBancaria(CuentaBancaria cuentaBancaria) {
+    public void setCuentaBancaria(CuentaBancaria cuentaBancaria) {
          
-         this.cuentaBancaria = cuentaBancaria;
-     }
+        this.cuentaBancaria = cuentaBancaria;
+    }
  
  
-     public Operario getOperario() {
+    public Operario getOperario() {
          
-         return operario;
-     }
+        return operario;
+    }
  
  
-     public void setOperario(Operario operario) {
+    public void setOperario(Operario operario) {
          
-         this.operario = operario;
-     }
+        this.operario = operario;
+    }
 }
