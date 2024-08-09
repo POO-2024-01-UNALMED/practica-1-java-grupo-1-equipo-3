@@ -42,13 +42,13 @@ import gestorAplicacion.externo.Transporte;
  
 public class Tienda implements Moda, Serializable{
      
-     // ATRIBUTOS--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // ATRIBUTOS--------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
-     // De clase
+    // De clase
     private static final long serialVersionUID = 1L; // Versión del serializado asociada a esta clase
     private static int numTiendas = 0; 
  
-     // De instancia
+    // De instancia
     private String nombre;
     private Vendedor vendedor;
     private CuentaBancaria cuentaBancaria;
@@ -64,7 +64,7 @@ public class Tienda implements Moda, Serializable{
     private ArrayList<Producto> productosDevueltos = new ArrayList<>();
  
  
-     // CONSTRUCTORES------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // CONSTRUCTORES------------------------------------------------------------------------------------------------------------------------------------------------------------
      
      /**
       * Constructor que recibe todos los parámetros.
@@ -93,10 +93,10 @@ public class Tienda implements Moda, Serializable{
  
  
  
-     // MÉTODOS-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // MÉTODOS-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
  
-     /**
+    /**
       * Muestra los productos disponibles en la tienda.
       * 
       * @return Una cadena de texto con la información de los productos disponibles en la tienda.
@@ -132,7 +132,7 @@ public class Tienda implements Moda, Serializable{
          
         String mensaje = "";
          
-         // Agregar los valores al diccionario y su respectiva cantidad
+        // Agregar los valores al diccionario y su respectiva cantidad
         for (Producto producto : listaProductos) {
              
             boolean buscar = false;
@@ -159,7 +159,7 @@ public class Tienda implements Moda, Serializable{
  
  
  
-     /**
+    /**
       * Método que permite hacer la venta de un producto, eliminándolo de la lista de productos
       * y reduciendo la cantidad en 1 en cantidadProductos.
       * 
@@ -189,7 +189,7 @@ public class Tienda implements Moda, Serializable{
  
  
  
-     /**
+    /**
       * Permite descontar una unidad a las cantidades de los productos, añadir trabajo a los trabajadores
       * involucrados con la venta, y crear la factura de la venta.
       * 
@@ -209,17 +209,17 @@ public class Tienda implements Moda, Serializable{
       */
  
     public Factura enviarPedido(ArrayList<Producto> listaProductosPedidos, Transporte transporte, Cliente cliente, int fecha, Operario operario) {
-         // Vendedor
+        // Vendedor
         this.getVendedor().setTrabajado(this.getVendedor().getTrabajado() + 1);
         this.getVendedor().setMinimoMeta(this.getVendedor().getMinimoMeta()+listaProductosPedidos.size());
          
-         // Transportador
+        // Transportador
         transporte.getTransportador().setTrabajado(transporte.getTransportador().getTrabajado() + 1);
         for(int i=0; i<listaProductosPedidos.size(); i++){
             transporte.getTransportador().setMinimoMeta(transporte.getTransportador().getMinimoMeta()+listaProductosPedidos.get(i).getPeso());
         }
  
-         // Operario
+        // Operario
         operario.setTrabajado(operario.getTrabajado() + 1);
         operario.setMinimoMeta(operario.getMinimoMeta() + listaProductosPedidos.size());
  
@@ -227,7 +227,7 @@ public class Tienda implements Moda, Serializable{
             cliente.getProductos().add(listaProductosPedidos.get(i));
         }
  
-         //Creación de la factura
+        //Creación de la factura
         Factura factura = new Factura(this, cliente, transporte, listaProductosPedidos, fecha, operario);
          
         return factura;
@@ -235,7 +235,7 @@ public class Tienda implements Moda, Serializable{
  
  
  
-     /**
+    /**
       * Permite que la tienda reciba los productos enviados en el transporte.
       * 
       * @param transporte Transporte utilizado para el envío.
@@ -254,7 +254,7 @@ public class Tienda implements Moda, Serializable{
  
  
  
-     /**
+    /**
       * Permite ver la cantidad de productos por categoría que tiene cada tienda, y la cantidad máxima que puede tener.
       * 
       * @return Una cadena de texto con la cantidad de productos por categoría en la tienda.
@@ -294,7 +294,7 @@ public class Tienda implements Moda, Serializable{
  
  
  
-     /**
+    /**
       * Muestra un texto con la cantidad de productos vendidos.
       * 
       * @return Una cadena de texto con la cantidad de cada producto vendido.
@@ -326,7 +326,7 @@ public class Tienda implements Moda, Serializable{
             }
         }
  
-         // Generar el texto con la cantidad de cada producto
+        // Generar el texto con la cantidad de cada producto
         for(Parejas<Producto, Integer> par : cantidadProductos){
             if (!mensaje.contains(par.getKey().getNombre())){              
                 mensaje+="\n" + numero + ". " + par.getKey().getNombre() + ": " + par.getValue() + " ";
@@ -339,7 +339,7 @@ public class Tienda implements Moda, Serializable{
  
  
  
-     /**
+    /**
       * Devuelve el producto seleccionado, agregándolo a la lista donde se almacenan las devoluciones de la tienda
       * y retorna al cliente al que se le hizo la devolución.
       * 

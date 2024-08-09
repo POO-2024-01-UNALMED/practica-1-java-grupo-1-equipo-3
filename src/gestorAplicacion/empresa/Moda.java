@@ -11,17 +11,17 @@
 package gestorAplicacion.empresa;
 
 
- /**
+/**
   * 'Moda' representa una interfaz que permite seleccionar objetos para poder encontrar la moda en 
   * la funcionalidad de evaluación operación. Esta interfaz tiene un único método llamado 'getNombre'.
   */
  
 public abstract interface Moda {
  
-     // MÉTODOS ------------------------------------------------------------------------------------------------------------------------------------------
+    // MÉTODOS ------------------------------------------------------------------------------------------------------------------------------------------
      
      
-     /**
+    /**
       * Obtiene el nombre del elemento.
       *
       * @return el nombre del elemento como un String.
