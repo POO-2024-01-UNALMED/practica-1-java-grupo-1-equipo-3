@@ -98,13 +98,13 @@ public class EvaluacionOperacion {
                                                      "Ingresar fechas específicas"}).mostrar();
     }
  
-     return new int[]{-1, -1}; 
+    return new int[]{-1, -1}; 
  
-     }
+    }
  
  
  
-     /**
+    /**
       * Realiza el análisis de los datos entre las fechas proporcionadas.
       * 
       * @param fecha1 Fecha de inicio del análisis
@@ -112,96 +112,96 @@ public class EvaluacionOperacion {
       * @param fecha2 Fecha final del análisis
       */
  
-     public static void analisis(int fecha1, int fecha2){
+    public static void analisis(int fecha1, int fecha2){
  
-         if(fecha1 == -1 && fecha2 == -1){
+        if(fecha1 == -1 && fecha2 == -1){
  
-             return;
-         }
+            return;
+        }
  
-         int fechaMin = Factura.getFechaMin();
-         int fechaMax = Factura.getFechaMax();
+        int fechaMin = Factura.getFechaMin();
+        int fechaMax = Factura.getFechaMax();
  
-         String opciones[] = new String[]{"Ganancias por dia", "Ganancias Totales", 
-                 "Promedio por dia", "Porcentaje de aumento", "Mas usados", "Cambiar fechas"};
+        String opciones[] = new String[]{"Ganancias por dia", "Ganancias Totales", 
+                "Promedio por dia", "Porcentaje de aumento", "Mas usados", "Cambiar fechas"};
  
-         String opcion = new MenuAuxiliar("Ingrese información a obtener", opciones, "Volver al inicio").mostrarReturnString();
+        String opcion = new MenuAuxiliar("Ingrese información a obtener", opciones, "Volver al inicio").mostrarReturnString();
  
-         ArrayList<Parejas<Integer, Double>> gananciasPorDia = Factura.gananciasPorDia(fecha1, fecha2);
+        ArrayList<Parejas<Integer, Double>> gananciasPorDia = Factura.gananciasPorDia(fecha1, fecha2);
          
-         while(opcion!= "Volver al inicio"){
+        while(opcion!= "Volver al inicio"){
  
-             switch(opcion){
+            switch(opcion){
  
-                 case "GANANCIAS POR DIA":
+                case "GANANCIAS POR DIA":
      
-                         desplegarInfo(gananciasPorDia, "GANANCIA", "");
+                        desplegarInfo(gananciasPorDia, "GANANCIA", "");
      
-                     break;
-     
- 
-                 case "GANANCIAS TOTALES":
-     
-                         System.out.println("\nLas ganancias totales entre las fechas ingresadas han sido: " + Factura.ganancias(gananciasPorDia));
-     
-                     break;
+                    break;
      
  
-                 case "PROMEDIO POR DIA":
+                case "GANANCIAS TOTALES":
      
-                         System.out.println("\nEl promedio por día es: " + Factura.promedioPorDia(gananciasPorDia));
+                        System.out.println("\nLas ganancias totales entre las fechas ingresadas han sido: " + Factura.ganancias(gananciasPorDia));
      
-                     break;
-     
- 
-                 case "PORCENTAJE DE AUMENTO":
-     
-                         desplegarInfo(Factura.porcentajeDeAumento(gananciasPorDia), "AUMENTO", "%");
-     
-                     break;
+                    break;
      
  
-                 case "CAMBIAR FECHAS":
+                case "PROMEDIO POR DIA":
      
-                     System.out.println("\nLa fecha mínima es " + fechaMin + " y la fecha máxima es " + fechaMax);
- 
-                     System.out.println("Ingrese fecha de inicio: ");
-                     fecha1 = MenuAuxiliar.ingresarConLimites(fechaMin, fechaMax);
- 
-                     System.out.println("Ingrese fecha final: ");
-                     fecha2 = MenuAuxiliar.ingresarConLimites(fecha1, fechaMax);
- 
-                     gananciasPorDia =  Factura.gananciasPorDia(fecha1, fecha2);
+                        System.out.println("\nEl promedio por día es: " + Factura.promedioPorDia(gananciasPorDia));
      
-                     break;
- 
- 
-                 case "MAS USADOS":
- 
-                     masUsados(fecha1, fecha2);
- 
-                     break;
- 
- 
-                 case "VOLVER AL INICIO":
- 
-                         return;
+                    break;
      
  
-                 default:
+                case "PORCENTAJE DE AUMENTO":
+     
+                        desplegarInfo(Factura.porcentajeDeAumento(gananciasPorDia), "AUMENTO", "%");
+     
+                    break;
+     
  
-                     System.out.println("Ha ingresado un valor no válido. Por favor vuelva a intentarlo");
+                case "CAMBIAR FECHAS":
+     
+                    System.out.println("\nLa fecha mínima es " + fechaMin + " y la fecha máxima es " + fechaMax);
+ 
+                    System.out.println("Ingrese fecha de inicio: ");
+                    fecha1 = MenuAuxiliar.ingresarConLimites(fechaMin, fechaMax);
+ 
+                    System.out.println("Ingrese fecha final: ");
+                    fecha2 = MenuAuxiliar.ingresarConLimites(fecha1, fechaMax);
+ 
+                    gananciasPorDia =  Factura.gananciasPorDia(fecha1, fecha2);
+     
+                    break;
+ 
+ 
+                case "MAS USADOS":
+ 
+                    masUsados(fecha1, fecha2);
+ 
+                    break;
+ 
+ 
+                case "VOLVER AL INICIO":
+ 
+                        return;
+     
+ 
+                default:
+ 
+                    System.out.println("Ha ingresado un valor no válido. Por favor vuelva a intentarlo");
      
                  
-             }
+            }
  
-             opcion = new MenuAuxiliar("Ingrese información a obtener", opciones, "Volver al inicio").mostrarReturnString();
-         }
-     }
+            opcion = new MenuAuxiliar("Ingrese información a obtener", opciones, "Volver al inicio").mostrarReturnString();
+        }
+    }
  
  
  
-     /**
+    /**
       * Muestra los elementos más usados entre las fechas proporcionadas.
       * 
       * @param fecha1 Fecha de inicio del análisis
