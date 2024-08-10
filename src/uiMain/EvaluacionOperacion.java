@@ -11,92 +11,92 @@
  */
 
 
- package uiMain;
+package uiMain;
 
- import java.util.ArrayList;
- import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Scanner;
  
- import gestorAplicacion.empresa.Factura;
- import gestorAplicacion.externo.Parejas;
+import gestorAplicacion.empresa.Factura;
+import gestorAplicacion.externo.Parejas;
  
  
- /**
+/**
   * La clase 'EvaluacionOperacion' gestiona la evaluación de las operaciones de la empresa.
   * 
   * Proporciona métodos para ingresar fechas, analizar datos y mostrar información estadística.
   */
  
- public class EvaluacionOperacion {
+public class EvaluacionOperacion {
      
  
-     /**
+    /**
       * Método principal para gestionar la evaluación de las operaciones.
       * 
       * Permite al usuario ingresar fechas y realizar análisis de datos.
       */
  
-     public static void evaluacionOperacion(){
+    public static void evaluacionOperacion(){
  
-         int[] fechas = ingresarFechas();
-         analisis(fechas[0], fechas[1]);
+        int[] fechas = ingresarFechas();
+        analisis(fechas[0], fechas[1]);
  
-     }
+    }
  
  
  
-     /**
+    /**
       * Permite al usuario ingresar fechas específicas o analizar toda la información disponible.
       * 
       * @return Un arreglo de enteros que contiene la fecha de inicio y la fecha final.
       */
  
-     public static int[] ingresarFechas(){
+    public static int[] ingresarFechas(){
  
-         Scanner sc = new Scanner(System.in);
-         int opcion = new MenuAuxiliar("REPORTE", new String[]{"Analizar toda la información", 
+        Scanner sc = new Scanner(System.in);
+        int opcion = new MenuAuxiliar("REPORTE", new String[]{"Analizar toda la información", 
                                                      "Ingresar fechas específicas"}).mostrar();
         
-         int fechaMin = Factura.getFechaMin();
-         int fechaMax = Factura.getFechaMax();
+        int fechaMin = Factura.getFechaMin();
+        int fechaMax = Factura.getFechaMax();
  
-         while(opcion != 0){
+        while(opcion != 0){
  
-         // Manejo de opciones
-         switch(opcion){
+        // Manejo de opciones
+        switch(opcion){
+
+            case 1:
  
-             case 1:
- 
-                 return new int[]{fechaMin, fechaMax};
+                return new int[]{fechaMin, fechaMax};
  
  
-             case 2:
+            case 2:
  
-                 System.out.println("\nLa fecha mínima es " + fechaMin + " y la fecha máxima es " + fechaMax);
+                System.out.println("\nLa fecha mínima es " + fechaMin + " y la fecha máxima es " + fechaMax);
  
-                 System.out.println("Ingrese fecha de inicio: ");
-                 int fecha1 = MenuAuxiliar.ingresarConLimites(fechaMin, fechaMax);
+                System.out.println("Ingrese fecha de inicio: ");
+                int fecha1 = MenuAuxiliar.ingresarConLimites(fechaMin, fechaMax);
  
-                 System.out.println("Ingrese fecha final: ");
-                 int fecha2 = MenuAuxiliar.ingresarConLimites(fecha1, fechaMax);
+                System.out.println("Ingrese fecha final: ");
+                int fecha2 = MenuAuxiliar.ingresarConLimites(fecha1, fechaMax);
                  
-                 return new int[]{fecha1, fecha2};
+                return new int[]{fecha1, fecha2};
  
  
-             case 0:
+            case 0:
  
-                 return new int[]{-1, -1}; 
+                return new int[]{-1, -1}; 
  
-             default:
+            default:
  
-             System.out.println("Ha ingresado un valor no válido. Por favor vuelva a intentarlo");
+            System.out.println("Ha ingresado un valor no válido. Por favor vuelva a intentarlo");
  
-                 break;
+                break;
  
-         }
+        }
  
-         opcion = new MenuAuxiliar("REPORTE", new String[]{"Analizar toda la información", 
+        opcion = new MenuAuxiliar("REPORTE", new String[]{"Analizar toda la información", 
                                                      "Ingresar fechas específicas"}).mostrar();
-     }
+    }
  
      return new int[]{-1, -1}; 
  
