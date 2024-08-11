@@ -209,64 +209,64 @@ public class EvaluacionOperacion {
       * @param fecha2 Fecha final del análisis
       */
  
-     public static void masUsados(int fecha1, int fecha2){
+    public static void masUsados(int fecha1, int fecha2){
  
-         String opciones[] = new String[]{"Tienda más usada", "Transporte más usado", "Cliente al que más se le ha vendido"};
+        String opciones[] = new String[]{"Tienda más usada", "Transporte más usado", "Cliente al que más se le ha vendido"};
  
-         int opcion = new MenuAuxiliar("Seleccione moda: ", opciones).mostrar();
+        int opcion = new MenuAuxiliar("Seleccione moda: ", opciones).mostrar();
  
-         System.out.println("\n");
+        System.out.println("\n");
  
-         while(opcion != 0){
+        while(opcion != 0){
  
-             // Manejo de opciones
-             switch(opcion){
+            // Manejo de opciones
+            switch(opcion){
  
-                 case 1:
+                case 1:
  
-                     // Uso de ligadura dinamica
-                     System.out.println("La tienda más usada ha sido "  + Factura.moda(fecha1, fecha2, "tienda").getNombre());
+                    // Uso de ligadura dinamica
+                    System.out.println("La tienda más usada ha sido "  + Factura.moda(fecha1, fecha2, "tienda").getNombre());
  
-                     break;
- 
- 
-                 case 2:     
- 
-                     // Uso de ligadura dinamica
-                     System.out.println("El transporte más usado ha sido " + Factura.moda(fecha1, fecha2, "transporte").getNombre());
- 
-                     break;
+                    break;
  
  
-                 case 3:
+                case 2:     
  
-                     // Uso de ligadura dinamica
-                     System.out.println("El cliente al que más se le ha vendido ha sido " + Factura.moda(fecha1, fecha2, "cliente").getNombre());
+                    // Uso de ligadura dinamica
+                    System.out.println("El transporte más usado ha sido " + Factura.moda(fecha1, fecha2, "transporte").getNombre());
  
-                     break;
- 
- 
-                 case 0:
- 
-                     return;
+                    break;
  
  
-                 default:
+                case 3:
  
-                     System.out.println("Ha ingresado un valor no válido. Por favor vuelva a intentarlo");
+                    // Uso de ligadura dinamica
+                    System.out.println("El cliente al que más se le ha vendido ha sido " + Factura.moda(fecha1, fecha2, "cliente").getNombre());
  
-                 break;
-             }
- 
-             System.out.println("\n");
- 
-              opcion = new MenuAuxiliar("Seleccione moda: ", opciones).mostrar();
-         }
-     }
+                    break;
  
  
+                case 0:
  
-     /**
+                    return;
+ 
+ 
+                default:
+ 
+                    System.out.println("Ha ingresado un valor no válido. Por favor vuelva a intentarlo");
+ 
+                break;
+            }
+ 
+            System.out.println("\n");
+ 
+             opcion = new MenuAuxiliar("Seleccione moda: ", opciones).mostrar();
+        }
+    }
+ 
+ 
+ 
+    /**
       * Despliega la información proporcionada en el formato adecuado.
       * 
       * @param info Lista de pares de información a desplegar
@@ -276,14 +276,14 @@ public class EvaluacionOperacion {
       * @param posfijo Posfijo a añadir a los valores
       */
      
-     public static void desplegarInfo(ArrayList<Parejas<Integer, Double>> info, String strData, String posfijo){
+    public static void desplegarInfo(ArrayList<Parejas<Integer, Double>> info, String strData, String posfijo){
  
-         System.out.println("DIA \t " + strData);
+        System.out.println("DIA \t " + strData);
      
-         for(Parejas<Integer, Double> par : info){
+        for(Parejas<Integer, Double> par : info){
              
-             System.out.println(par.getKey() + "\t" + par.getValue() + posfijo);
-         }
-     }
- }
+            System.out.println(par.getKey() + "\t" + par.getValue() + posfijo);
+        }
+    }
+}
  
