@@ -210,51 +210,51 @@ public class ProveerTiendas {
                          
                         eleccion = 2;
                         break;
-                     }
+                    }
  
-                     if (numTransporteSeleccionado > listaTransFiltrada.size() || numTransporteSeleccionado < 0) {
+                    if (numTransporteSeleccionado > listaTransFiltrada.size() || numTransporteSeleccionado < 0) {
                          
                         System.out.print("Número de transporte inválido, por favor seleccione un producto en la lista \n> ");
-                     }
+                    }
 
-                     else {
+                    else {
                          
                         transporteSeleccionado = TipoTransporte.seleccionarTransporte(listaTransFiltrada,
-                                 numTransporteSeleccionado);
+                                numTransporteSeleccionado);
                         System.out.print("Ha seleccionado el transporte #" + (numTransporteSeleccionado)
-                                 + "\nLa tienda se proveerá por: " + transporteSeleccionado.getTipo().getNombre());
+                                + "\nLa tienda se proveerá por: " + transporteSeleccionado.getTipo().getNombre());
                         eleccion = 5;
                         break;
-                     }
+                    }
                   
-                  }
+                }
  
-                     break;
+                    break;
                   
-                  case 5:
+                 case 5:
 
-                     //Paso final de la funcionalidad, llevamos a cabo el envio de los productos.
+                    //Paso final de la funcionalidad, llevamos a cabo el envio de los productos.
 
-                     listaDeProductos = Cargar.fabrica.cantidadProductos(escanerInt, productoSeleccionado); // meter los productos en el camion
-                     transporteSeleccionado.suministrarProducto(tiendaSeleccionada, listaDeProductos); // Se descargan los productos en la tienda,  luego de comprobar que sea la tienda correcta
+                    listaDeProductos = Cargar.fabrica.cantidadProductos(escanerInt, productoSeleccionado); // meter los productos en el camion
+                    transporteSeleccionado.suministrarProducto(tiendaSeleccionada, listaDeProductos); // Se descargan los productos en la tienda,  luego de comprobar que sea la tienda correcta
  
-                     if (transporteSeleccionado.getTienda().equals(tiendaSeleccionada) == true) {
+                    if (transporteSeleccionado.getTienda().equals(tiendaSeleccionada) == true) {
                          
                         tiendaSeleccionada.descargarProducto(transporteSeleccionado);
                         System.out
-                                 .println("\nEl producto fue enviado con exito ahora la tienda tiene \nPRODUCTOS: "
-                                         + tiendaSeleccionada.cantidadProductos());
+                                .println("\nEl producto fue enviado con exito ahora la tienda tiene \nPRODUCTOS: "
+                                        + tiendaSeleccionada.cantidadProductos());
  
-                     } else {
+                    } else {
  
                         System.out.println("El envio no se pudo realizar a esa tienda");
-                     }
+                    }
  
-                     // Ciclo final para ver si sale o se reinicia la funcionalidad
-                     System.out.println("\n0.Volver al menu principal" + "\n" + "1. Proveer más tiendas");
-                     System.out.print("> ");
+                    // Ciclo final para ver si sale o se reinicia la funcionalidad
+                    System.out.println("\n0.Volver al menu principal" + "\n" + "1. Proveer más tiendas");
+                    System.out.print("> ");
  
-                     while (true) {
+                    while (true) {
  
                         escanerInt = escaner2.nextInt();
                          
@@ -272,13 +272,13 @@ public class ProveerTiendas {
                              
                            System.out.println("Seleccione una de las opciones disponibles: ");
                         }
-                     }
-                     break;
+                    }
+                    break;
                      
                      
             }
  
-         }
+        }
  
    }
- }
+}
