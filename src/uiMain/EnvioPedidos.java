@@ -233,9 +233,49 @@ public class ProveerTiendas {
                   
                   case 5:
 
-                     //Paso final de la funcionalidad, llevamos a cabo el envio de los productos.z
-                     
+                     //Paso final de la funcionalidad, llevamos a cabo el envio de los productos.
+
+                     listaDeProductos = Cargar.fabrica.cantidadProductos(escanerInt, productoSeleccionado); // meter los productos en el camion
+                     transporteSeleccionado.suministrarProducto(tiendaSeleccionada, listaDeProductos); // Se descargan los productos en la tienda,  luego de comprobar que sea la tienda correcta
+ 
+                     if (transporteSeleccionado.getTienda().equals(tiendaSeleccionada) == true) {
+                         
+                        tiendaSeleccionada.descargarProducto(transporteSeleccionado);
+                        System.out
+                                 .println("\nEl producto fue enviado con exito ahora la tienda tiene \nPRODUCTOS: "
+                                         + tiendaSeleccionada.cantidadProductos());
+ 
+                     } else {
+ 
+                        System.out.println("El envio no se pudo realizar a esa tienda");
+                     }
+ 
+                     // Ciclo final para ver si sale o se reinicia la funcionalidad
+                     System.out.println("\n0.Volver al menu principal" + "\n" + "1. Proveer más tiendas");
+                     System.out.print("> ");
+ 
+                     while (true) {
+ 
+                        escanerInt = escaner2.nextInt();
+                         
+                        if (escanerInt == 0) {
+                             
+                           eleccion = 0;
+                           break;
+ 
+                        } else if (escanerInt == 1) {
+                             
+                           eleccion = 1;
+                           break;
+ 
+                        } else {
+                             
+                           System.out.println("Seleccione una de las opciones disponibles: ");
+                        }
+                     }
                      break;
+                     
+                     
             }
  
          }
