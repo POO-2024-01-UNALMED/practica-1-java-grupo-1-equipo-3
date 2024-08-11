@@ -104,12 +104,34 @@ public class ProveerTiendas {
                      break;
 
                   case 2:
-                     System.out.println("");
+                     System.out.println("\nProveer tiendas - Apartado de productos");
+                     System.out.print("\nLa capacidad de productos por categoria para esta tienda es la siguiente: \n");
+                     System.out.println(tiendaSeleccionada.productosPorCategoria());
+                     System.out.println("\n0. Regresar al menu anterior");
+                     System.out.println(Cargar.fabrica.mostrarProductos());
+                     System.out.print("Seleccione el producto que desea enviar: ");
 
-                     //Este seccion sirve para mostrar la capacidad de productos para una tienda y validamos que el input del usuario sea valido
+                     while (x != 0) {
+                        escanerInt = escaner2.nextInt();
+                        // Se establece el intervalo en el que estan los productos
 
+                        if (escanerInt == 0) {
 
+                           eleccion = 1;
+                        break;
+                     }
 
+                     if (escanerInt > 0 && escanerInt <= Cargar.fabrica.getListaProductos().size()) {
+                          
+                        productoSeleccionado = Cargar.fabrica.getListaProductos().get(escanerInt - 1);
+                        eleccion = 3;
+                        break;
+
+                     } else {
+
+                        System.out.print("Por favor seleccione un producto dentro del rango: ");
+                     }
+                  }
                      break;
 
                   case 3:
