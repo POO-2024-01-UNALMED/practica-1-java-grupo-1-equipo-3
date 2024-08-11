@@ -136,7 +136,50 @@ public class ProveerTiendas {
 
                   case 3:
 
-                        //Se lee la cantidad de productos que se desean proveer
+                     System.out.print("\nEscriba la cantidad de productos que desea proveer: ");
+                     int productoEnTiendaPorCategoria = 0;
+                     int productosMaximosEnTiendaPorCategoria = 0;
+                     String categoriaProducto = productoSeleccionado.getCategoria(); // Asumiendo que getCategoria() devuelve un String
+
+                     // Buscar en productosPorCategoria
+                     for (Parejas<String, Integer> par : tiendaSeleccionada.getProductosPorCategoria()) {
+                        
+                        if (par.getKey().equals(categoriaProducto)) {
+                           productoEnTiendaPorCategoria = par.getValue();
+                           break;
+                        }
+                     }
+
+                     // Buscar en cantidadPorCategoria
+                     for (Parejas<String, Integer> par : tiendaSeleccionada.getCantidadPorCategoria()) {
+                        
+                        if (par.getKey().equals(categoriaProducto)) {
+                           productosMaximosEnTiendaPorCategoria = par.getValue();
+                           break;
+                        }
+                     }
+                     
+                     while (true) {
+                        
+                        escanerInt = escaner2.nextInt();
+                        
+                        if (escanerInt == 0){
+                           
+                           eleccion = 1;
+                           break;
+                        }
+
+                        //Se hace con el fin de evitar que intente mandar mas productos de los que soporta la tienda por la respectiva categoria
+                        else if (escanerInt < 0 || escanerInt <= productosMaximosEnTiendaPorCategoria - productoEnTiendaPorCategoria) {
+                           
+                           eleccion = 4;
+                           break;
+
+                        } else {
+                           
+                           System.out.print("Por favor seleccione una cantidad en el limite de la tienda por categoria: ");
+                        }
+                     }
 
                      break;
                      
