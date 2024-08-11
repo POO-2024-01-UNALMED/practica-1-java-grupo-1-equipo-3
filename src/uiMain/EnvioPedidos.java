@@ -151,15 +151,15 @@ public class ProveerTiendas {
                     }
 
                     // Buscar en cantidadPorCategoria
-                     for (Parejas<String, Integer> par : tiendaSeleccionada.getCantidadPorCategoria()) {
+                    for (Parejas<String, Integer> par : tiendaSeleccionada.getCantidadPorCategoria()) {
                         
                         if (par.getKey().equals(categoriaProducto)) {
                            productosMaximosEnTiendaPorCategoria = par.getValue();
                            break;
                         }
-                     }
+                    }
                      
-                     while (true) {
+                    while (true) {
                         
                         escanerInt = escaner2.nextInt();
                         
@@ -179,34 +179,34 @@ public class ProveerTiendas {
                            
                            System.out.print("Por favor seleccione una cantidad en el limite de la tienda por categoria: ");
                         }
-                     }
+                    }
 
-                     break;
+                    break;
                      
-                  case 4:
+                case 4:
 
-                     // seleccionar tipo de transporte
+                    // seleccionar tipo de transporte
                      
-                     int PesoTotalProductos = escanerInt * ((int) Math.round(productoSeleccionado.getPeso()));
-                     System.out.println("\n\nSeleccione en que medio de transporte quiere enviar este producto");
-                     System.out.println(
-                             "\nAdvertencia: Los tipos de transporte han sido filtrados de manera que solo puede seleccionar los que puedan soportar el peso de su producto.");
+                    int PesoTotalProductos = escanerInt * ((int) Math.round(productoSeleccionado.getPeso()));
+                    System.out.println("\n\nSeleccione en que medio de transporte quiere enviar este producto");
+                    System.out.println(
+                            "\nLos tipos de transporte han sido filtrados de manera que solo puede seleccionar los que puedan soportar el peso de su producto.");
  
-                     System.out.println("0. Regresar al menu anterior");
+                    System.out.println("0. Regresar al menu anterior");
  
-                     // TipoTransporte tipoTransportes;
-                     ArrayList<TipoTransporte> listaTransFiltrada = new ArrayList<TipoTransporte>();
-                     listaTransFiltrada = TipoTransporte.transporteSegunCarga(PesoTotalProductos);
-                     // System.out.printlnLoad.tipoTransportes.mostrarTipoTransporteSegunCarga(productoSeleccionado));
-                     System.out.println(TipoTransporte.mostrarTransporteSegunCarga(listaTransFiltrada));
-                     System.out.println("Seleccione el número del tipo de transporte: ");
-                     System.out.print("> ");
+                    // TipoTransporte tipoTransportes;
+                    ArrayList<TipoTransporte> listaTransFiltrada = new ArrayList<TipoTransporte>();
+                    listaTransFiltrada = TipoTransporte.transporteSegunCarga(PesoTotalProductos);
+                    // System.out.printlnLoad.tipoTransportes.mostrarTipoTransporteSegunCarga(productoSeleccionado));
+                    System.out.println(TipoTransporte.mostrarTransporteSegunCarga(listaTransFiltrada));
+                    System.out.println("Seleccione el número del tipo de transporte: ");
+                    System.out.print("> ");
  
-                     while(true){
+                    while(true){
  
-                     int numTransporteSeleccionado = escaner2.nextInt();
+                    int numTransporteSeleccionado = escaner2.nextInt();
                      
-                     if (numTransporteSeleccionado == 0) {
+                    if (numTransporteSeleccionado == 0) {
                          
                         eleccion = 2;
                         break;
