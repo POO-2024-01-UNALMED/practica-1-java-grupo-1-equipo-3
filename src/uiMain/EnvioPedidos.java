@@ -119,19 +119,19 @@ public class ProveerTiendas {
 
                            eleccion = 1;
                         break;
+                        }
+
+                        if (escanerInt > 0 && escanerInt <= Cargar.fabrica.getListaProductos().size()) {
+                           
+                           productoSeleccionado = Cargar.fabrica.getListaProductos().get(escanerInt - 1);
+                           eleccion = 3;
+                           break;
+
+                        } else {
+
+                           System.out.print("Por favor seleccione un producto dentro del rango: ");
+                        }
                      }
-
-                     if (escanerInt > 0 && escanerInt <= Cargar.fabrica.getListaProductos().size()) {
-                          
-                        productoSeleccionado = Cargar.fabrica.getListaProductos().get(escanerInt - 1);
-                        eleccion = 3;
-                        break;
-
-                     } else {
-
-                        System.out.print("Por favor seleccione un producto dentro del rango: ");
-                     }
-                  }
                      break;
 
                   case 3:
@@ -185,11 +185,52 @@ public class ProveerTiendas {
                      
                   case 4:
 
-                        //Selecciona el tranporte para los productos
+                     // seleccionar tipo de transporte
+                     
+                     int PesoTotalProductos = escanerInt * ((int) Math.round(productoSeleccionado.getPeso()));
+                     System.out.println("\n\nSeleccione en que medio de transporte quiere enviar este producto");
+                     System.out.println(
+                             "\nAdvertencia: Los tipos de transporte han sido filtrados de manera que solo puede seleccionar los que puedan soportar el peso de su producto.");
+ 
+                     System.out.println("0. Regresar al menu anterior");
+ 
+                     // TipoTransporte tipoTransportes;
+                     ArrayList<TipoTransporte> listaTransFiltrada = new ArrayList<TipoTransporte>();
+                     listaTransFiltrada = TipoTransporte.transporteSegunCarga(PesoTotalProductos);
+                     // System.out.printlnLoad.tipoTransportes.mostrarTipoTransporteSegunCarga(productoSeleccionado));
+                     System.out.println(TipoTransporte.mostrarTransporteSegunCarga(listaTransFiltrada));
+                     System.out.println("Seleccione el número del tipo de transporte: ");
+                     System.out.print("> ");
+ 
+                     while(true){
+ 
+                     int numTransporteSeleccionado = escaner2.nextInt();
+                     
+                     if (numTransporteSeleccionado == 0) {
+                         
+                        eleccion = 2;
+                        break;
+                     }
+ 
+                     if (numTransporteSeleccionado > listaTransFiltrada.size() || numTransporteSeleccionado < 0) {
+                         
+                        System.out.print("Número de transporte inválido, por favor seleccione un producto en la lista \n> ");
+                     }
 
+                     else {
+                         
+                        transporteSeleccionado = TipoTransporte.seleccionarTransporte(listaTransFiltrada,
+                                 numTransporteSeleccionado);
+                        System.out.print("Ha seleccionado el transporte #" + (numTransporteSeleccionado)
+                                 + "\nLa tienda se proveerá por: " + transporteSeleccionado.getTipo().getNombre());
+                        eleccion = 5;
+                        break;
+                     }
+                  
+                  }
+ 
                      break;
                   
-
                   case 5:
 
                      //Paso final de la funcionalidad, llevamos a cabo el envio de los productos.z
