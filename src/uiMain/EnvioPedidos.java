@@ -106,13 +106,30 @@ public class ProveerTiendas {
                   case 2:
                      System.out.println("");
 
-                     
+                     //Este seccion sirve para mostrar la capacidad de productos para una tienda y validamos que el input del usuario sea valido
 
 
 
                      break;
- 
- 
+
+                  case 3:
+
+                        //Se lee la cantidad de productos que se desean proveer
+
+                     break;
+                     
+                  case 4:
+
+                        //Selecciona el tranporte para los productos
+
+                     break;
+                  
+
+                  case 5:
+
+                     //Paso final de la funcionalidad, llevamos a cabo el envio de los productos.z
+                     
+                     break;
             }
  
          }
