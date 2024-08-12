@@ -99,11 +99,105 @@ public class EnvioPedidos  {
  
  
                case 2: 
+                // seleccionar la tienda
+
+                System.out.println("\n");
+                System.out.println("Su pedido se enviará desde alguna de estas tiendas, por favor seleccione una:");
+                System.out.println("0. Volver al menu principal");
+                System.out.print(Cargar.fabrica.mostrarTiendas());
+
+                // Seleccionar tienda
+                System.out.println("Seleccione la tienda desde la que desea enviar: ");
+
+                // Entero seleccionado
+                System.out.print("> ");
+                int numTiendaSeleccionada = sc.nextInt();
+                
+                if (numTiendaSeleccionada == 0) { // Volver al menú principal
+                    
+                    eleccion = 0;
+                    break;
+
+                }
+
+                else if (numTiendaSeleccionada > Cargar.fabrica.getListaTienda().size() || numTiendaSeleccionada < 0) { // Una condición o la otra (ó) - Cuando el numero ingresado esta por fuera del rango
+                    
+                    System.out.println("Número de tienda inválido, por favor seleccione una tienda en la lista");
+                    eleccion = 2;
+                    break;
+
+                } else { // Número ingresado es válido
+
+                    tiendaSeleccionada = Cargar.fabrica.getListaTienda().get(numTiendaSeleccionada - 1);
+                    System.out.println("Has seleccionado la tienda: " + numTiendaSeleccionada);
+                    eleccion = 3;
+
+                }
                break;
 
 
 
                case 3: 
+               // seleccionar el producto
+
+               System.out.println("¿Cuantos productos deseas comprar de esta tienda? \n Máximo 5 productos por cliente");
+               int cuantos = sc.nextInt();
+               
+               if (cuantos > 5 || cuantos < 0){ // Número fuera del rango entre 0 y 5
+                   
+                   System.out.println("No es válido, elija un numero menor o igual a 5");
+                   eleccion = 3;
+                   break;
+
+               }
+
+               if (cuantos > tiendaSeleccionada.getListaProductos().size()){ // Se quieren comprar más productos de los que estan disponibles
+                   
+                   System.out.println("***La tienda de la que quieres comprar solo tiene " + tiendaSeleccionada.getListaProductos().size() +
+                   ". Entonces te dejaremos comprar " + tiendaSeleccionada.getListaProductos().size() + " productos.");
+                   
+                   cuantos = tiendaSeleccionada.getListaProductos().size();
+
+               }
+
+               if (cuantos <= 5 && cuantos > 0){ // Número dentro del rango de 0 a 5 (Rango permitido)
+               
+                   for (int i = 0; i < cuantos; i++){
+                   
+                   System.out.println("\nSeleccione el producto que desea enviarle al cliente");
+                   System.out.println("0. Regresar al menu principal");
+                   System.out.println(tiendaSeleccionada.cantidadProductosVentas());
+                   System.out.print("> ");
+                   numProductoSeleccionado = sc.nextInt(); // Se pregunta al usuario
+                   // Se establece el intervalo en el que estan los productos
+
+                   if (numProductoSeleccionado == 0) { // Volver al menú anterior 
+                       
+                       eleccion = 0;
+                       break;
+
+                   }
+
+                   if (numProductoSeleccionado > tiendaSeleccionada.getListaProductos().size() || numProductoSeleccionado < 0) { // Una condición o la otra (ó) - Cuando el numero ingresado esta por fuera del rango
+                       
+                       System.out.println("Número de producto inválido, por favor seleccione un producto en la lista");
+                       cuantos++;
+
+                   } else { // El número ingresado es válido
+
+                       productoSeleccionado = tiendaSeleccionada.getListaProductos().get(numProductoSeleccionado - 1);
+                       System.out.print("Ha seleccionado el producto # " + numProductoSeleccionado + " Nombre del producto: " + productoSeleccionado.getNombre());
+                       listaProductosPedidos.add(productoSeleccionado);
+                       tiendaSeleccionada.venderProducto(productoSeleccionado);
+                       PesoTotalProductos += productoSeleccionado.getPeso();
+                       eleccion = 4;
+
+                   }
+
+               }
+               break;
+           }
+
                      break;
 
 
