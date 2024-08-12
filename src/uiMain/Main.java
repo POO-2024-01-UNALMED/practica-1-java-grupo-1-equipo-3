@@ -10,25 +10,25 @@
  */
 
 
- package uiMain;
+package uiMain;
 
- import java.util.Scanner;
+import java.util.Scanner;
  
- import baseDatos.Cargar;
+import baseDatos.Cargar;
  
  
- /**
+/**
   * La clase 'Main' gestiona el menú principal de la aplicación.
   * 
   * Proporciona métodos para mostrar el menú y manejar las selecciones del usuario.
   */
  
- public class Main {
+public class Main {
      
-     static Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
      
      
-     /**
+    /**
       * Método principal para gestionar el menú de la aplicación.
       * 
       * Permite al usuario navegar entre las diferentes opciones del sistema.
@@ -36,18 +36,18 @@
       * @param args Argumentos de la línea de comandos
       */
  
-     public static void main(String[] args) {
+    public static void main(String[] args) {
  
-         Cargar.cargar();
+        Cargar.cargar();
  
-         int opcion;
+        int opcion;
          
-         do{
-             System.out.println("\nMenú principal Delicia Fresca\n");
-             System.out.println("Ingrese el número de la opción que desea utilizar");
-             System.out.println("1. Envio pedidos");
-             System.out.println("2. Pago de nomina");
-             System.out.println("3. Proveer tiendas");
+        do{
+            System.out.println("\nMenú principal Delicia Fresca\n");
+            System.out.println("Ingrese el número de la opción que desea utilizar");
+            System.out.println("1. Envio pedidos");
+            System.out.println("2. Pago de nomina");
+            System.out.println("3. Proveer tiendas");
              System.out.println("4. Devoluciones de productos");
              System.out.println("5. Evaluación operación");
              System.out.println("6. Salir\n");
