@@ -145,54 +145,54 @@ public class EnvioPedidos  {
                
                if (cuantos > 5 || cuantos < 0){ // Número fuera del rango entre 0 y 5
                    
-                   System.out.println("No es válido, elija un numero menor o igual a 5");
-                   eleccion = 3;
-                   break;
+                  System.out.println("No es válido, elija un numero menor o igual a 5");
+                  eleccion = 3;
+                  break;
 
                }
 
                if (cuantos > tiendaSeleccionada.getListaProductos().size()){ // Se quieren comprar más productos de los que estan disponibles
                    
-                   System.out.println("***La tienda de la que quieres comprar solo tiene " + tiendaSeleccionada.getListaProductos().size() +
-                   ". Entonces te dejaremos comprar " + tiendaSeleccionada.getListaProductos().size() + " productos.");
+                  System.out.println("***La tienda de la que quieres comprar solo tiene " + tiendaSeleccionada.getListaProductos().size() +
+                  ". Entonces te dejaremos comprar " + tiendaSeleccionada.getListaProductos().size() + " productos.");
                    
-                   cuantos = tiendaSeleccionada.getListaProductos().size();
+                  cuantos = tiendaSeleccionada.getListaProductos().size();
 
                }
 
                if (cuantos <= 5 && cuantos > 0){ // Número dentro del rango de 0 a 5 (Rango permitido)
                
-                   for (int i = 0; i < cuantos; i++){
-                   
-                   System.out.println("\nSeleccione el producto que desea enviarle al cliente");
-                   System.out.println("0. Regresar al menu principal");
-                   System.out.println(tiendaSeleccionada.cantidadProductosVentas());
-                   System.out.print("> ");
-                   numProductoSeleccionado = sc.nextInt(); // Se pregunta al usuario
-                   // Se establece el intervalo en el que estan los productos
+                  for (int i = 0; i < cuantos; i++){
+                  
+                  System.out.println("\nSeleccione el producto que desea enviarle al cliente");
+                  System.out.println("0. Regresar al menu principal");
+                  System.out.println(tiendaSeleccionada.cantidadProductosVentas());
+                  System.out.print("> ");
+                  numProductoSeleccionado = sc.nextInt(); // Se pregunta al usuario
+                  // Se establece el intervalo en el que estan los productos
 
-                   if (numProductoSeleccionado == 0) { // Volver al menú anterior 
+                  if (numProductoSeleccionado == 0) { // Volver al menú anterior 
                        
-                       eleccion = 0;
-                       break;
+                     eleccion = 0;
+                     break;
 
-                   }
+                  }
 
-                   if (numProductoSeleccionado > tiendaSeleccionada.getListaProductos().size() || numProductoSeleccionado < 0) { // Una condición o la otra (ó) - Cuando el numero ingresado esta por fuera del rango
+                  if (numProductoSeleccionado > tiendaSeleccionada.getListaProductos().size() || numProductoSeleccionado < 0) { // Una condición o la otra (ó) - Cuando el numero ingresado esta por fuera del rango
                        
-                       System.out.println("Número de producto inválido, por favor seleccione un producto en la lista");
-                       cuantos++;
+                     System.out.println("Número de producto inválido, por favor seleccione un producto en la lista");
+                     cuantos++;
 
-                   } else { // El número ingresado es válido
+                  } else { // El número ingresado es válido
 
-                       productoSeleccionado = tiendaSeleccionada.getListaProductos().get(numProductoSeleccionado - 1);
-                       System.out.print("Ha seleccionado el producto # " + numProductoSeleccionado + " Nombre del producto: " + productoSeleccionado.getNombre());
-                       listaProductosPedidos.add(productoSeleccionado);
-                       tiendaSeleccionada.venderProducto(productoSeleccionado);
-                       PesoTotalProductos += productoSeleccionado.getPeso();
-                       eleccion = 4;
+                     productoSeleccionado = tiendaSeleccionada.getListaProductos().get(numProductoSeleccionado - 1);
+                     System.out.print("Ha seleccionado el producto # " + numProductoSeleccionado + " Nombre del producto: " + productoSeleccionado.getNombre());
+                     listaProductosPedidos.add(productoSeleccionado);
+                     tiendaSeleccionada.venderProducto(productoSeleccionado);
+                     PesoTotalProductos += productoSeleccionado.getPeso();
+                     eleccion = 4;
 
-                   }
+                  }
 
                }
                break;
@@ -230,42 +230,42 @@ public class EnvioPedidos  {
                      eleccion = 4;
                         break;
 
-                    } else { // El número ingresado es válido
+                  } else { // El número ingresado es válido
 
-                        transporteSeleccionado = TipoTransporte.seleccionarTransporte(listaTransFiltrada, numTransporteSeleccionado);
-                        System.out.print("Ha seleccionado el transporte #" + (numTransporteSeleccionado)
-                                + "\nEl pedido se enviará por " + transporteSeleccionado.getTipo().getNombre());
-                        System.out.println("\nDesea aplicar envío gratis?\n 1. Si   2. No");
-                        System.out.print("> ");
-                        transporteSeleccionado.recordarPrecioTransporte();
+                     transporteSeleccionado = TipoTransporte.seleccionarTransporte(listaTransFiltrada, numTransporteSeleccionado);
+                     System.out.print("Ha seleccionado el transporte #" + (numTransporteSeleccionado)
+                        + "\nEl pedido se enviará por " + transporteSeleccionado.getTipo().getNombre());
+                     System.out.println("\nDesea aplicar envío gratis?\n 1. Si   2. No");
+                     System.out.print("> ");
+                     transporteSeleccionado.recordarPrecioTransporte();
                         
-                        // Aplicar envío gratis para el pedido
-                        while(true){
+                     // Aplicar envío gratis para el pedido
+                     while(true){
                             
-                            numEnvioGratis = sc.nextInt();
+                        numEnvioGratis = sc.nextInt();
                             
-                            if (numEnvioGratis == 1){
+                        if (numEnvioGratis == 1){
+                               
+                           Transporte.enviarGratis(transporteSeleccionado);
+                           System.out.println("Su tarifa de envío ha bajado de: $" + transporteSeleccionado.getPrecioTransporte()+ " a $0");
+                           break;
                                 
-                                Transporte.enviarGratis(transporteSeleccionado);
-                                System.out.println("Su tarifa de envío ha bajado de: $" + transporteSeleccionado.getPrecioTransporte()+ " a $0");
-                                break;
-                                
-                            }else if(numEnvioGratis != 2){
+                        }else if(numEnvioGratis != 2){
 
-                                System.out.println("Seleccione un numero dentro del rango");
-                                System.out.print("> ");
+                           System.out.println("Seleccione un numero dentro del rango");
+                           System.out.print("> ");
 
-                            }else{
+                        }else{
 
-                                break;
+                           break;
 
-                            }
                         }
+                     }
 
-                        eleccion = 5;
-                        break;
+                     eleccion = 5;
+                     break;
 
-                    }
+                  }
                 
                
 
