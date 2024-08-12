@@ -98,46 +98,46 @@ public class EnvioPedidos  {
                      break;
  
  
-               case 2: 
-                // seleccionar la tienda
+                case 2: 
+                    // seleccionar la tienda
 
-               System.out.println("\n");
-               System.out.println("Su pedido se enviará desde alguna de estas tiendas, por favor seleccione una:");
-               System.out.println("0. Volver al menu principal");
-               System.out.print(Cargar.fabrica.mostrarTiendas());
+                    System.out.println("\n");
+                    System.out.println("Su pedido se enviará desde alguna de estas tiendas, por favor seleccione una:");
+                    System.out.println("0. Volver al menu principal");
+                    System.out.print(Cargar.fabrica.mostrarTiendas());
 
-                // Seleccionar tienda
-               System.out.println("Seleccione la tienda desde la que desea enviar: ");
+                        // Seleccionar tienda
+                    System.out.println("Seleccione la tienda desde la que desea enviar: ");
 
-                // Entero seleccionado
-               System.out.print("> ");
-               int numTiendaSeleccionada = sc.nextInt();
-                
-               if (numTiendaSeleccionada == 0) { // Volver al menú principal
-                    
-                  eleccion = 0;
-                  break;
+                        // Entero seleccionado
+                    System.out.print("> ");
+                    int numTiendaSeleccionada = sc.nextInt();
+                        
+                    if (numTiendaSeleccionada == 0) { // Volver al menú principal
+                            
+                        eleccion = 0;
+                        break;
 
-               }
+                    }
 
-               else if (numTiendaSeleccionada > Cargar.fabrica.getListaTienda().size() || numTiendaSeleccionada < 0) { // Una condición o la otra (ó) - Cuando el numero ingresado esta por fuera del rango
-                    
-                  System.out.println("Número de tienda inválido, por favor seleccione una tienda en la lista");
-                  eleccion = 2;
-                  break;
+                    else if (numTiendaSeleccionada > Cargar.fabrica.getListaTienda().size() || numTiendaSeleccionada < 0) { // Una condición o la otra (ó) - Cuando el numero ingresado esta por fuera del rango
+                            
+                        System.out.println("Número de tienda inválido, por favor seleccione una tienda en la lista");
+                        eleccion = 2;
+                        break;
 
-               } else { // Número ingresado es válido
+                    } else { // Número ingresado es válido
 
-                  tiendaSeleccionada = Cargar.fabrica.getListaTienda().get(numTiendaSeleccionada - 1);
-                  System.out.println("Has seleccionado la tienda: " + numTiendaSeleccionada);
-                  eleccion = 3;
+                        tiendaSeleccionada = Cargar.fabrica.getListaTienda().get(numTiendaSeleccionada - 1);
+                        System.out.println("Has seleccionado la tienda: " + numTiendaSeleccionada);
+                        eleccion = 3;
 
-               }
-               break;
+                    }
+                    break;
 
 
 
-               case 3: 
+                case 3: 
                // seleccionar el producto
 
                System.out.println("¿Cuantos productos deseas comprar de esta tienda? \n Máximo 5 productos por cliente");
