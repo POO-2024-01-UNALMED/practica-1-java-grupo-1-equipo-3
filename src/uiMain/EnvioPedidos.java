@@ -10,118 +10,118 @@
  */
 
 
- package uiMain;
+package uiMain;
 
- import java.util.Scanner;
- import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.ArrayList;
  
- import baseDatos.Cargar;
- import gestorAplicacion.empresa.Tienda;
- import gestorAplicacion.externo.Cliente;
- import gestorAplicacion.externo.TipoTransporte;
- import gestorAplicacion.externo.Transporte;
- import gestorAplicacion.empresa.Producto;
+import baseDatos.Cargar;
+import gestorAplicacion.empresa.Tienda;
+import gestorAplicacion.externo.Cliente;
+import gestorAplicacion.externo.TipoTransporte;
+import gestorAplicacion.externo.Transporte;
+import gestorAplicacion.empresa.Producto;
  
  
- /**
+/**
   * La clase 'EnvioPedidos' gestiona el envío de pedidos desde las tiendas a los clientes.
   * 
   * Proporciona un método principal que guía al usuario a través del proceso de seleccionar un cliente,
   * una tienda, productos a enviar, y el transporte para realizar el envío.
   */
  
- public class EnvioPedidos  {
+public class EnvioPedidos  {
  
-     public static void envioPedidos() { 
+    public static void envioPedidos() { 
  
-         // Atributos a usar
-         int x = 1; // para manejar el menu
-         int eleccion = 1; 
-         int numProductoSeleccionado = 1;
+        // Atributos a usar
+        int x = 1; // para manejar el menu
+        int eleccion = 1; 
+        int numProductoSeleccionado = 1;
  
-         Scanner sc = new Scanner(System.in);
-         Scanner sc2 = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        Scanner sc2 = new Scanner(System.in);
  
-         Boolean interruptor = true; // Para manejar el ciclo while
-         Cliente clienteSeleccionado = null;
-         Tienda tiendaSeleccionada = null;
-         Producto productoSeleccionado = null;
-         Transporte transporteSeleccionado = null;
-         TipoTransporte tipoTransportes = null;
-         int PesoTotalProductos = 0;
-         int numEnvioGratis=0;
-         ArrayList<Producto> listaProductosPedidos = new ArrayList<Producto>();
+        Boolean interruptor = true; // Para manejar el ciclo while
+        Cliente clienteSeleccionado = null;
+        Tienda tiendaSeleccionada = null;
+        Producto productoSeleccionado = null;
+        Transporte transporteSeleccionado = null;
+        TipoTransporte tipoTransportes = null;
+        int PesoTotalProductos = 0;
+        int numEnvioGratis=0;
+        ArrayList<Producto> listaProductosPedidos = new ArrayList<Producto>();
          
  
-         // Manejo de opciones
-         while (interruptor) {
+        // Manejo de opciones
+        while (interruptor) {
  
-             switch (eleccion) {
+            switch (eleccion) {
                  
-                 case 0:
+                case 0:
                      
-                     interruptor = false;
-                     System.out.println("Has vuelto al menú anterior");
-                     break;
+                    interruptor = false;
+                    System.out.println("Has vuelto al menú anterior");
+                    break;
  
  
-                 case 1: // Seleccionar cliente
+                case 1: // Seleccionar cliente
                      
-                     System.out.print("\nSeleccione el cliente al que desea enviar: \n");
-                     System.out.println("0. Volver al menu anterior \n");
-                     System.out.println(Cliente.mostrarClientes());
+                    System.out.print("\nSeleccione el cliente al que desea enviar: \n");
+                    System.out.println("0. Volver al menu anterior \n");
+                    System.out.println(Cliente.mostrarClientes());
  
-                     // Entero seleccionado
-                     System.out.print("> ");
-                     int numClienteSeleccionado = sc.nextInt(); // Pregunta al usuario
+                    // Entero seleccionado
+                    System.out.print("> ");
+                    int numClienteSeleccionado = sc.nextInt(); // Pregunta al usuario
                      
-                     if (numClienteSeleccionado == 0) { // Volver al menú anterior
+                    if (numClienteSeleccionado == 0) { // Volver al menú anterior
                          
-                         eleccion = 0;
-                         break;
+                        eleccion = 0;
+                        break;
  
-                     }
+                    }
  
-                     if (numClienteSeleccionado > Cliente.getListaClientes().size()) { // Número de cliente mayor a la cantidad de clientes registrados
+                    if (numClienteSeleccionado > Cliente.getListaClientes().size()) { // Número de cliente mayor a la cantidad de clientes registrados
  
-                         System.out.println("Número de cliente inválido, por favor seleccione un cliente en la lista");
-                         eleccion = 1;
-                         break;
+                        System.out.println("Número de cliente inválido, por favor seleccione un cliente en la lista");
+                        eleccion = 1;
+                        break;
  
-                     } else {
+                    } else {
  
-                         clienteSeleccionado = Cliente.getListaClientes().get(numClienteSeleccionado - 1);
-                         System.out.print("Has seleccionado al cliente #" + numClienteSeleccionado + "\nEl cliente es: "
-                                 + clienteSeleccionado.getNombre());
-                         eleccion = 2;
+                        clienteSeleccionado = Cliente.getListaClientes().get(numClienteSeleccionado - 1);
+                        System.out.print("Has seleccionado al cliente #" + numClienteSeleccionado + "\nEl cliente es: "
+                                + clienteSeleccionado.getNombre());
+                        eleccion = 2;
  
-                     }
+                    }
  
  
-                 case 2: // seleccionar la tienda
+                case 2: // seleccionar la tienda
  
-                     System.out.println("\n");
-                     System.out.println("Su pedido se enviará desde alguna de estas tiendas, por favor seleccione una:");
-                     System.out.println("0. Volver al menu principal");
-                     System.out.print(Cargar.fabrica.mostrarTiendas());
+                    System.out.println("\n");
+                    System.out.println("Su pedido se enviará desde alguna de estas tiendas, por favor seleccione una:");
+                    System.out.println("0. Volver al menu principal");
+                    System.out.print(Cargar.fabrica.mostrarTiendas());
  
-                     // Seleccionar tienda
-                     System.out.println("Seleccione la tienda desde la que desea enviar: ");
+                    // Seleccionar tienda
+                    System.out.println("Seleccione la tienda desde la que desea enviar: ");
  
-                     // Entero seleccionado
-                     System.out.print("> ");
-                     int numTiendaSeleccionada = sc.nextInt();
+                    // Entero seleccionado
+                    System.out.print("> ");
+                    int numTiendaSeleccionada = sc.nextInt();
                      
-                     if (numTiendaSeleccionada == 0) { // Volver al menú principal
+                    if (numTiendaSeleccionada == 0) { // Volver al menú principal
                          
-                         eleccion = 0;
-                         break;
+                        eleccion = 0;
+                        break;
  
-                     }
+                    }
  
-                     else if (numTiendaSeleccionada > Cargar.fabrica.getListaTienda().size() || numTiendaSeleccionada < 0) { // Una condición o la otra (ó) - Cuando el numero ingresado esta por fuera del rango
+                    else if (numTiendaSeleccionada > Cargar.fabrica.getListaTienda().size() || numTiendaSeleccionada < 0) { // Una condición o la otra (ó) - Cuando el numero ingresado esta por fuera del rango
                          
-                         System.out.println("Número de tienda inválido, por favor seleccione una tienda en la lista");
+                        System.out.println("Número de tienda inválido, por favor seleccione una tienda en la lista");
                          eleccion = 2;
                          break;
  
