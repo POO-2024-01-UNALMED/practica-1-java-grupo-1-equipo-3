@@ -81,16 +81,16 @@ public class EnvioPedidos  {
 
                if (numClienteSeleccionado > Cliente.getListaClientes().size()) { // Número de cliente mayor a la cantidad de clientes registrados
 
-                   System.out.println("Número de cliente inválido, por favor seleccione un cliente en la lista");
-                   eleccion = 1;
-                   break;
+                  System.out.println("Número de cliente inválido, por favor seleccione un cliente en la lista");
+                  eleccion = 1;
+                  break;
 
                } else {
 
-                   clienteSeleccionado = Cliente.getListaClientes().get(numClienteSeleccionado - 1);
-                   System.out.print("Has seleccionado al cliente #" + numClienteSeleccionado + "\nEl cliente es: "
+                  clienteSeleccionado = Cliente.getListaClientes().get(numClienteSeleccionado - 1);
+                  System.out.print("Has seleccionado al cliente #" + numClienteSeleccionado + "\nEl cliente es: "
                            + clienteSeleccionado.getNombre());
-                   eleccion = 2;
+                  eleccion = 2;
 
                }
 
@@ -101,38 +101,38 @@ public class EnvioPedidos  {
                case 2: 
                 // seleccionar la tienda
 
-                System.out.println("\n");
-                System.out.println("Su pedido se enviará desde alguna de estas tiendas, por favor seleccione una:");
-                System.out.println("0. Volver al menu principal");
-                System.out.print(Cargar.fabrica.mostrarTiendas());
+               System.out.println("\n");
+               System.out.println("Su pedido se enviará desde alguna de estas tiendas, por favor seleccione una:");
+               System.out.println("0. Volver al menu principal");
+               System.out.print(Cargar.fabrica.mostrarTiendas());
 
                 // Seleccionar tienda
-                System.out.println("Seleccione la tienda desde la que desea enviar: ");
+               System.out.println("Seleccione la tienda desde la que desea enviar: ");
 
                 // Entero seleccionado
-                System.out.print("> ");
-                int numTiendaSeleccionada = sc.nextInt();
+               System.out.print("> ");
+               int numTiendaSeleccionada = sc.nextInt();
                 
-                if (numTiendaSeleccionada == 0) { // Volver al menú principal
+               if (numTiendaSeleccionada == 0) { // Volver al menú principal
                     
-                    eleccion = 0;
-                    break;
+                  eleccion = 0;
+                  break;
 
-                }
+               }
 
-                else if (numTiendaSeleccionada > Cargar.fabrica.getListaTienda().size() || numTiendaSeleccionada < 0) { // Una condición o la otra (ó) - Cuando el numero ingresado esta por fuera del rango
+               else if (numTiendaSeleccionada > Cargar.fabrica.getListaTienda().size() || numTiendaSeleccionada < 0) { // Una condición o la otra (ó) - Cuando el numero ingresado esta por fuera del rango
                     
-                    System.out.println("Número de tienda inválido, por favor seleccione una tienda en la lista");
-                    eleccion = 2;
-                    break;
+                  System.out.println("Número de tienda inválido, por favor seleccione una tienda en la lista");
+                  eleccion = 2;
+                  break;
 
-                } else { // Número ingresado es válido
+               } else { // Número ingresado es válido
 
-                    tiendaSeleccionada = Cargar.fabrica.getListaTienda().get(numTiendaSeleccionada - 1);
-                    System.out.println("Has seleccionado la tienda: " + numTiendaSeleccionada);
-                    eleccion = 3;
+                  tiendaSeleccionada = Cargar.fabrica.getListaTienda().get(numTiendaSeleccionada - 1);
+                  System.out.println("Has seleccionado la tienda: " + numTiendaSeleccionada);
+                  eleccion = 3;
 
-                }
+               }
                break;
 
 
