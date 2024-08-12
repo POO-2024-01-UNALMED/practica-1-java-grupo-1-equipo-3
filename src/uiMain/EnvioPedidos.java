@@ -62,7 +62,38 @@ public class EnvioPedidos  {
                break;
 
 
-               case 1: 
+               case 1: // Seleccionar cliente
+                    
+               System.out.print("\nSeleccione el cliente al que desea enviar: \n");
+               System.out.println("0. Volver al menu anterior \n");
+               System.out.println(Cliente.mostrarClientes());
+
+               // Entero seleccionado
+               System.out.print("> ");
+               int numClienteSeleccionado = sc.nextInt(); // Pregunta al usuario
+               
+               if (numClienteSeleccionado == 0) { // Volver al menú anterior
+                   
+                   eleccion = 0;
+                   break;
+
+               }
+
+               if (numClienteSeleccionado > Cliente.getListaClientes().size()) { // Número de cliente mayor a la cantidad de clientes registrados
+
+                   System.out.println("Número de cliente inválido, por favor seleccione un cliente en la lista");
+                   eleccion = 1;
+                   break;
+
+               } else {
+
+                   clienteSeleccionado = Cliente.getListaClientes().get(numClienteSeleccionado - 1);
+                   System.out.print("Has seleccionado al cliente #" + numClienteSeleccionado + "\nEl cliente es: "
+                           + clienteSeleccionado.getNombre());
+                   eleccion = 2;
+
+               }
+
 
                break;
  
