@@ -198,12 +198,76 @@ public class EnvioPedidos  {
                break;
            }
 
+               case 4: 
+                     // seleccionar tipo de transporte
+
+                  System.out.println("\n\nSeleccione en que medio de transporte quiere enviar este producto");
+                  System.out.println("Junto a cada tipo de transporte se encuentra su precio.");
+                  System.out.println(
+                           "\nAdvertencia: Los tipos de transporte han sido filtrados de manera que solo puede seleccionar los que puedan soportar el peso de su producto."
+                           + "\nSu pedido pesa " + PesoTotalProductos + " kilogramos");
+
+                  System.out.println("0. Regresar al menu principal");
+
+                    // Encontrar los transportes posibles 
+                  ArrayList<TipoTransporte> listaTransFiltrada = new ArrayList<TipoTransporte>();
+                  listaTransFiltrada = TipoTransporte.transporteSegunCarga(PesoTotalProductos);
+                  System.out.println(TipoTransporte.mostrarTransporteSegunCarga(listaTransFiltrada));
+                  System.out.println("Seleccione el número del tipo de transporte que desea: ");
+                  System.out.print("> ");
+                  int numTransporteSeleccionado = sc.nextInt();
+                  
+                  if (numTransporteSeleccionado == 0) { // Volver al menú anterior
+                        
+                     eleccion = 0;
                      break;
 
+                  }
 
+                  if (numTransporteSeleccionado > listaTransFiltrada.size() || numTransporteSeleccionado < 0) { // Una condición o la otra (ó) - Cuando el numero ingresado esta por fuera del rango
+                        
+                     System.out.println("Número de transporte inválido, por favor seleccione un producto en la lista");
+                     eleccion = 4;
+                        break;
 
-               case 4: 
-               break;
+                    } else { // El número ingresado es válido
+
+                        transporteSeleccionado = TipoTransporte.seleccionarTransporte(listaTransFiltrada, numTransporteSeleccionado);
+                        System.out.print("Ha seleccionado el transporte #" + (numTransporteSeleccionado)
+                                + "\nEl pedido se enviará por " + transporteSeleccionado.getTipo().getNombre());
+                        System.out.println("\nDesea aplicar envío gratis?\n 1. Si   2. No");
+                        System.out.print("> ");
+                        transporteSeleccionado.recordarPrecioTransporte();
+                        
+                        // Aplicar envío gratis para el pedido
+                        while(true){
+                            
+                            numEnvioGratis = sc.nextInt();
+                            
+                            if (numEnvioGratis == 1){
+                                
+                                Transporte.enviarGratis(transporteSeleccionado);
+                                System.out.println("Su tarifa de envío ha bajado de: $" + transporteSeleccionado.getPrecioTransporte()+ " a $0");
+                                break;
+                                
+                            }else if(numEnvioGratis != 2){
+
+                                System.out.println("Seleccione un numero dentro del rango");
+                                System.out.print("> ");
+
+                            }else{
+
+                                break;
+
+                            }
+                        }
+
+                        eleccion = 5;
+                        break;
+
+                    }
+                
+               
 
       
 
