@@ -10,36 +10,36 @@
  */
 
 
- package uiMain;
+package uiMain;
 
- import java.util.Scanner;
- import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.ArrayList;
  
- import baseDatos.Cargar;
- import gestorAplicacion.empresa.Tienda;
- import gestorAplicacion.externo.Cliente;
- import gestorAplicacion.externo.TipoTransporte;
- import gestorAplicacion.externo.Transporte;
- import gestorAplicacion.empresa.Producto;
+import baseDatos.Cargar;
+import gestorAplicacion.empresa.Tienda;
+import gestorAplicacion.externo.Cliente;
+import gestorAplicacion.externo.TipoTransporte;
+import gestorAplicacion.externo.Transporte;
+import gestorAplicacion.empresa.Producto;
  
  
- /**
+/**
   * La clase 'EnvioPedidos' gestiona el envío de pedidos desde las tiendas a los clientes.
   * 
   * Proporciona un método principal que guía al usuario a través del proceso de seleccionar un cliente,
   * una tienda, productos a enviar, y el transporte para realizar el envío.
   */
  
- public class EnvioPedidos  {
- 
-     public static void envioPedidos() { 
+public class EnvioPedidos  {
 
-     boolean x = false;
+   public static void envioPedidos() { 
+
+   boolean x = false;
  
          // Manejo de opciones
          while (x) {
  
-             switch (1) {
+            switch (1) {
                  
                case 0:
                
@@ -50,27 +50,27 @@
                break;
  
  
-                 case 2: 
-                         break;
+               case 2: 
+               break;
 
- 
- 
-                 case 3: 
+
+
+               case 3: 
                      break;
 
- 
- 
-                 case 4: 
-                         break;
- 
+
+
+               case 4: 
+               break;
+
       
- 
-                 case 5: 
+
+               case 5: 
                              
-                             break;
- 
- 
-     }
+                  break;
+
+
    }
+  }
 }
 }
