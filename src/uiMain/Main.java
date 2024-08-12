@@ -48,61 +48,61 @@ public class Main {
             System.out.println("1. Envio pedidos");
             System.out.println("2. Pago de nomina");
             System.out.println("3. Proveer tiendas");
-             System.out.println("4. Devoluciones de productos");
-             System.out.println("5. Evaluación operación");
-             System.out.println("6. Salir\n");
-             System.out.print("> ");
-             opcion = sc.nextInt();
+            System.out.println("4. Devoluciones de productos");
+            System.out.println("5. Evaluación operación");
+            System.out.println("6. Salir\n");
+            System.out.print("> ");
+            opcion = sc.nextInt();
  
  
-             switch(opcion){
+            switch(opcion){
  
-                 case 1:
+                case 1:
  
-                     EnvioPedidos.envioPedidos();
-                     break;
- 
- 
-                 case 2:
- 
-                     PagoDeNomina.pagoDeNomina();
-                     break;
+                    EnvioPedidos.envioPedidos();
+                    break;
  
  
-                 case 3:
+                case 2:
  
-                     ProveerTiendas.proveerTiendas();
-                     break;
- 
- 
-                 case 4:
- 
-                     DevolucionDeProductos.devolucionDeProductos();
-                     break;
+                    PagoDeNomina.pagoDeNomina();
+                    break;
  
  
-                 case 5:
-                     EvaluacionOperacion.evaluacionOperacion();
-                     break;
+                case 3:
+ 
+                    ProveerTiendas.proveerTiendas();
+                    break;
  
  
-                 case 6:
+                case 4:
  
-                     Cargar.guardar();
+                    DevolucionDeProductos.devolucionDeProductos();
+                    break;
  
-                     System.out.println("Gracias por visitarnos");
-                     System.out.println("Vuelva pronto");
  
-                     break;
+                case 5:
+                    EvaluacionOperacion.evaluacionOperacion();
+                    break;
+ 
+ 
+                case 6:
+ 
+                    Cargar.guardar();
+ 
+                    System.out.println("Gracias por visitarnos");
+                    System.out.println("Vuelva pronto");
+ 
+                    break;
                     
                      
-                 default: // Si ingresa un número diferente al de las opciones mencionadas
-                     System.out.println("\nDigitó una opción incorrecta");
+                default: // Si ingresa un número diferente al de las opciones mencionadas
+                    System.out.println("\nDigitó una opción incorrecta");
                      
-             }
+            }
  
  
-         } while(opcion != 6);
+        } while(opcion != 6);
      
-     }
- }
+    }
+}
