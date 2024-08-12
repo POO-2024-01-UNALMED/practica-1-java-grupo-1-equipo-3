@@ -6,10 +6,10 @@
  * los pagos y devoluciones de dinero, tanto para las cuentas bancarias de los clientes como para las cuentas bancarias de los empleados
  * y la empresa. 
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo, 
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package gestorAplicacion.externo;
 

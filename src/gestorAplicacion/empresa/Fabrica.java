@@ -6,10 +6,10 @@
  * Esta clase resulta fundamental para el funcionamiento del sistema, ya que es usada por todas las funcionalidades,
  * excepto la de evaluación de operación
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo, 
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package gestorAplicacion.empresa;
 

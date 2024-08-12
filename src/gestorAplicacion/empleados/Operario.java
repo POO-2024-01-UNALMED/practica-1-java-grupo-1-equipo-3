@@ -3,10 +3,10 @@
  * de la clase 'Persona' y define las características y comportamientos del operario que es el trabajador 
  * encargado de supervisar y controlar la producción de los diferentes productos en la fábrica.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo, 
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package gestorAplicacion.empleados;
 

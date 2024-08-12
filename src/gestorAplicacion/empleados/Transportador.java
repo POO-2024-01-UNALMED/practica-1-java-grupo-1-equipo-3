@@ -3,10 +3,10 @@
  * de la clase 'Persona' y define las características y comportamientos del transportador que es el trabajador 
  * encargado de transportar productos en determinados transportes.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo, 
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package gestorAplicacion.empleados;
 

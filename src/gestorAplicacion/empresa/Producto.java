@@ -3,10 +3,10 @@
  * y su gestión dentro de la empresa. Incluye la clase 'Producto' que representa un producto con sus atributos
  * y métodos para su manipulación.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo, Santiago Ochoa Quintero,
- * Luis David Ramirez Gonzales, Simón Vasquez Uribe
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
  package gestorAplicacion.empresa;
 

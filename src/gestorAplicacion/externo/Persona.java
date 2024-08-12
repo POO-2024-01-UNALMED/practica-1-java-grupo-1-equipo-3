@@ -4,10 +4,10 @@
  * 
  * Esta clase representa la clase base para 'Operario', 'Transportador' y 'Vendedor'.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo,
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package gestorAplicacion.externo;
 

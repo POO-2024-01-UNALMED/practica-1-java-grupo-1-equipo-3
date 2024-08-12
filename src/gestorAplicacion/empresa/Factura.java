@@ -3,10 +3,10 @@
  * transacciones de compra en la empresa. Esta clase es la encargada de registrar la información importante
  * acerca de las ventas y gestionar las devoluciones de productos.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo,
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package gestorAplicacion.empresa;
 

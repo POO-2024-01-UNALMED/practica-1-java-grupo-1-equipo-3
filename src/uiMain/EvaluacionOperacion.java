@@ -6,10 +6,10 @@
  * Permite ingresar fechas específicas o analizar toda la información disponible,
  * y proporciona análisis de ganancias, promedio diario, porcentajes de aumento y elementos más usados.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo, 
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package uiMain;
 

@@ -3,10 +3,10 @@
  * los diferentes tipos de transporte y sus atributos. Incluye la clase 'TipoTransporte' que define los diferentes
  * tipos de transporte, sus capacidades y costos.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo, 
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package gestorAplicacion.externo;
 

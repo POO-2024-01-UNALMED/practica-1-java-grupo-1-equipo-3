@@ -3,10 +3,10 @@
  * pares de valores, similar a un diccionario. Incluye la clase 'Parejas' que permite almacenar pares de valores
  * <clave, valor> y proporciona métodos para gestionar estos pares.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo, 
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package gestorAplicacion.externo;
 

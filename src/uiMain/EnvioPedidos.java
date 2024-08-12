@@ -5,10 +5,10 @@
  * 
  * Permite seleccionar tiendas, productos, y tipos de transporte para realizar el suministro.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo, 
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package uiMain;
 

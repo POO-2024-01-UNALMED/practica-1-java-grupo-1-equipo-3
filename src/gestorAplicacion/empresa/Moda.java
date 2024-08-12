@@ -3,10 +3,10 @@
  * representa un tipo de dato que define un nombre. Es utilizada para obtener el nombre de los 
  * elementos que se desean analizar y encontrar la moda entre un conjunto de datos.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo, 
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package gestorAplicacion.empresa;
 

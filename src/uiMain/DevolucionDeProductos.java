@@ -6,10 +6,10 @@
  * Permite seleccionar una factura y un producto para devolver, y maneja las interacciones
  * con el cliente y la cuenta bancaria.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo, Santiago Ochoa Quintero,
- * Luis David Ramirez Gonzales, Simón Vasquez Uribe
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package uiMain;
 

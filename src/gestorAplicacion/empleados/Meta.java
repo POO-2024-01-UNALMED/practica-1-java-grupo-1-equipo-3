@@ -3,10 +3,10 @@
  * características y comportamientos de las diferentes metas que se les pueden dar a los empleados, estas metas
  * permiten verificar el cumplimiento de estas metas y dar bonificaciones por su cumplimiento.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo,
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package gestorAplicacion.empleados;
 
