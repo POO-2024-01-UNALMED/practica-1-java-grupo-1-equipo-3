@@ -34,16 +34,33 @@ public class EnvioPedidos  {
 
    public static void envioPedidos() { 
 
-   boolean x = false;
+   // Atributos a usar
+   int x = 1; // para manejar el menu
+   int eleccion = 1; 
+   int numProductoSeleccionado = 1;
+   Scanner sc = new Scanner(System.in);
+   Scanner sc2 = new Scanner(System.in);
+
+   Boolean interruptor = true; // Para manejar el ciclo while
+   Cliente clienteSeleccionado = null;
+   Tienda tiendaSeleccionada = null;
+   Producto productoSeleccionado = null;
+   Transporte transporteSeleccionado = null;
+   TipoTransporte tipoTransportes = null;
+   int PesoTotalProductos = 0;
+   int numEnvioGratis=0;
+   ArrayList<Producto> listaProductosPedidos = new ArrayList<Producto>();
  
          // Manejo de opciones
-         while (x) {
+         while (interruptor) {
  
-            switch (1) {
+            switch (eleccion) {
                  
                case 0:
-               
+               interruptor = false;
+               System.out.println("Has vuelto al menú anterior");
                break;
+
 
                case 1: 
 
