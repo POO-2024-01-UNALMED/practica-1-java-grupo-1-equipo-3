@@ -272,6 +272,68 @@ public class EnvioPedidos  {
       
 
                case 5: 
+                  // retorna factura
+                    
+                  System.out.println("\nDigite el día del mes entre 1 y 30: ");
+                  System.out.print("> ");
+                  int dia = 1;
+                  
+                  while(true){
+
+                      dia = sc.nextInt();
+                      
+                      if (dia >= 1 && dia <=30){
+                          
+                          break;
+
+                      }else{
+
+                          System.out.println("Seleccione un numero dentro del rango");
+                          System.out.print("> ");
+
+                      }
+                  }
+
+                  System.out.println("\n-------------------------------------\n"+ "Factura generada en la tienda " 
+                  +tiendaSeleccionada.getNombre() + "\nA nombre del cliente: " + clienteSeleccionado.getNombre()+"\n" 
+                  +tiendaSeleccionada.enviarPedido(new ArrayList<>(listaProductosPedidos),
+                          transporteSeleccionado, clienteSeleccionado, dia, Cargar.fabrica.getOperario())+"\n-------------------------------------\n\n\n");
+                  
+                  if(numEnvioGratis==1){
+
+                      transporteSeleccionado.reestablecerPrecioTransporte();
+                  
+                  }
+                 
+                      listaProductosPedidos.clear();
+
+                  // Realiza una copia de la listaProductosPedidos
+                  PesoTotalProductos = 0;
+                  System.out.println("¿Desea hacer otro envio o volver al menu principal? ");
+                  System.out.println("0. Volver al menu principal");
+                  System.out.println("1. Realizar otro  envio");
+                  System.out.print("> ");
+                  int opcion = sc2.nextInt();
+
+                  while (true) {
+
+                      if (opcion == 0) {
+                          
+                          eleccion = 0;
+                          interruptor = false;
+                          break;
+
+                      } else if (opcion == 1) {
+                          
+                          eleccion = 1;
+                          break;
+
+                     } else {
+                          
+                          System.out.println(" La opcion que digitó es incorrecta ");
+
+                     }
+                  }
                              
                   break;
 
