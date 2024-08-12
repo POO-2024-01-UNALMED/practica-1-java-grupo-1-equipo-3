@@ -280,32 +280,32 @@ public class EnvioPedidos  {
                   
                   while(true){
 
-                      dia = sc.nextInt();
+                     dia = sc.nextInt();
                       
-                      if (dia >= 1 && dia <=30){
+                     if (dia >= 1 && dia <=30){
                           
-                          break;
+                        break;
 
-                      }else{
+                     }else{
 
-                          System.out.println("Seleccione un numero dentro del rango");
-                          System.out.print("> ");
+                        System.out.println("Seleccione un numero dentro del rango");
+                        System.out.print("> ");
 
-                      }
+                     }
                   }
 
                   System.out.println("\n-------------------------------------\n"+ "Factura generada en la tienda " 
                   +tiendaSeleccionada.getNombre() + "\nA nombre del cliente: " + clienteSeleccionado.getNombre()+"\n" 
                   +tiendaSeleccionada.enviarPedido(new ArrayList<>(listaProductosPedidos),
-                          transporteSeleccionado, clienteSeleccionado, dia, Cargar.fabrica.getOperario())+"\n-------------------------------------\n\n\n");
+                        transporteSeleccionado, clienteSeleccionado, dia, Cargar.fabrica.getOperario())+"\n-------------------------------------\n\n\n");
                   
                   if(numEnvioGratis==1){
 
-                      transporteSeleccionado.reestablecerPrecioTransporte();
+                     transporteSeleccionado.reestablecerPrecioTransporte();
                   
                   }
                  
-                      listaProductosPedidos.clear();
+                     listaProductosPedidos.clear();
 
                   // Realiza una copia de la listaProductosPedidos
                   PesoTotalProductos = 0;
@@ -317,20 +317,20 @@ public class EnvioPedidos  {
 
                   while (true) {
 
-                      if (opcion == 0) {
+                     if (opcion == 0) {
                           
-                          eleccion = 0;
-                          interruptor = false;
-                          break;
+                        eleccion = 0;
+                        interruptor = false;
+                        break;
 
-                      } else if (opcion == 1) {
+                     } else if (opcion == 1) {
                           
-                          eleccion = 1;
-                          break;
+                        eleccion = 1;
+                        break;
 
                      } else {
                           
-                          System.out.println(" La opcion que digitó es incorrecta ");
+                        System.out.println(" La opcion que digitó es incorrecta ");
 
                      }
                   }
