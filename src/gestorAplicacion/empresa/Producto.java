@@ -8,13 +8,13 @@
  *          - Santiago Ochoa Quintero
  */
 
- package gestorAplicacion.empresa;
+package gestorAplicacion.empresa;
 
- import java.io.Serializable;
- import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.ArrayList;
  
  
- /**
+/**
   * La clase 'Producto' representa un producto dentro de la empresa.
   * 
   * Contiene información sobre el nombre, descripción, valor, peso, tamaño, costo de producción, categoría
@@ -23,7 +23,7 @@
   * Proporciona métodos para gestionar estos atributos y para generar una representación en cadena del producto.
   */
  
- public class Producto implements Serializable{
+public class Producto implements Serializable{
      
     // ATRIBUTOS----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
      
@@ -64,20 +64,20 @@
       */
  
     public Producto(String nombre, String descripcion, double valor, double peso, double tamano, double costoProduccion, String categoria) {
-         this.nombre = nombre;
-         this.descripcion = descripcion;
-         this.valor = valor;
-         this.peso = peso;
-         this.tamano = tamano;
-         this.costoProduccion = costoProduccion;
-         this.categoria = categoria.toLowerCase(); //Pone todo el String en letras minusculas
-         numProductos++;
-         listaProductos.add(this); // Agregar este producto a la lista de productos
-         this.devuelto = false;
-     }
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.valor = valor;
+        this.peso = peso;
+        this.tamano = tamano;
+        this.costoProduccion = costoProduccion;
+        this.categoria = categoria.toLowerCase(); //Pone todo el String en letras minusculas
+        numProductos++;
+        listaProductos.add(this); // Agregar este producto a la lista de productos
+        this.devuelto = false;
+    }
  
  
-     /**
+    /**
       * Constructor para los parámetros nombre, valor, peso, tamaño y categoría.
       * 
       *
@@ -93,11 +93,11 @@
       */
  
     public Producto(String nombre, double valor, double peso, double tamano, String categoria){
-         this(nombre, "Sin descripción", valor, peso, tamano, 5.000, categoria);
-     }
+        this(nombre, "Sin descripción", valor, peso, tamano, 5.000, categoria);
+    }
  
  
-     /**
+    /**
       * Constructor sin parámetros.
       */
  
@@ -105,9 +105,9 @@
  
  
  
-     // MÉTODOS-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // MÉTODOS-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  
-     /**
+    /**
       * Genera una representación en cadena del objeto Producto.
       * 
       * @return Una cadena de texto con la información del producto, incluyendo nombre, descripción,
@@ -116,136 +116,136 @@
  
     @Override
     public String toString() {
-         return "\n"
-         + "Nombre:               " + nombre + "\n"
-         + "Descripción:          " + descripcion + "\n"
-         + "Valor:                " + valor + "\n"
-         + "Peso:                 " + peso + "\n"
-         + "Tamaño:               " + tamano + "\n"
-         + "Costo de produccion:  " + costoProduccion + "\n";
-     }
+        return "\n"
+        + "Nombre:               " + nombre + "\n"
+        + "Descripción:          " + descripcion + "\n"
+        + "Valor:                " + valor + "\n"
+        + "Peso:                 " + peso + "\n"
+        + "Tamaño:               " + tamano + "\n"
+        + "Costo de produccion:  " + costoProduccion + "\n";
+    }
  
  
  
-     // GETTERS Y SETTERS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // GETTERS Y SETTERS--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
      
      
-     public int getNumProductos() {
+    public int getNumProductos() {
          
-         return numProductos;
-     }
+        return numProductos;
+    }
  
  
-     public void setNumProductos(int numProductos) {
+    public void setNumProductos(int numProductos) {
          
-         Producto.numProductos = numProductos;
-     }
+        Producto.numProductos = numProductos;
+    }
  
  
-     public static ArrayList<Producto> getListaProductos() {
+    public static ArrayList<Producto> getListaProductos() {
          
-         return listaProductos;
-     }
+        return listaProductos;
+    }
  
  
-     public static void setListaProductos(ArrayList<Producto> listaProductos) {
+    public static void setListaProductos(ArrayList<Producto> listaProductos) {
          
-         Producto.listaProductos = listaProductos;
-     }
+        Producto.listaProductos = listaProductos;
+    }
  
  
-     public String getNombre() {
+    public String getNombre() {
          
-         return nombre;
-     }
+        return nombre;
+    }
  
  
-     public void setNombre(String nombre) {
+    public void setNombre(String nombre) {
          
-         this.nombre = nombre;
-     }
+        this.nombre = nombre;
+    }
  
  
-     public String getDescripcion() {
+    public String getDescripcion() {
          
-         return descripcion;
-     }
+        return descripcion;
+    }
  
  
-     public void setDescripcion(String descripcion) {
+    public void setDescripcion(String descripcion) {
          
-         this.descripcion = descripcion;
-     }
+        this.descripcion = descripcion;
+    }
  
  
-     public double getValor() {
+    public double getValor() {
          
-         return valor;
-     }
+        return valor;
+    }
  
  
-     public void setValor(double valor) {
+    public void setValor(double valor) {
          
-         this.valor = valor;
-     }
+        this.valor = valor;
+    }
  
  
-     public double getPeso() {
+    public double getPeso() {
          
-         return peso;
-     }
+        return peso;
+    }
  
  
-     public void setPeso(double peso) {
+    public void setPeso(double peso) {
          
-         this.peso = peso;
-     }
+        this.peso = peso;
+    }
  
  
-     public double getTamano() {
+    public double getTamano() {
          
-         return tamano;
-     }
+        return tamano;
+    }
  
  
-     public void setTamano(double tamano) {
+    public void setTamano(double tamano) {
          
-         this.tamano = tamano;
-     }
+        this.tamano = tamano;
+    }
  
  
-     public double getCostoProduccion() {
+    public double getCostoProduccion() {
+        
+        return costoProduccion;
+    }
+ 
+ 
+    public void setCostoProduccion(double costoProduccion) {
          
-         return costoProduccion;
-     }
+        this.costoProduccion = costoProduccion;
+    }
  
  
-     public void setCostoProduccion(double costoProduccion) {
+    public String getCategoria() {
          
-         this.costoProduccion = costoProduccion;
-     }
+        return categoria;
+    }
  
  
-     public String getCategoria() {
+    public void setCategoria(String categoria) {
          
-         return categoria;
-     }
+        this.categoria = categoria;
+    }
  
  
-     public void setCategoria(String categoria) {
+    public boolean isDevuelto() {
          
-         this.categoria = categoria;
-     }
+        return devuelto;
+    }
  
  
-     public boolean isDevuelto() {
+    public void setDevuelto(boolean devuelto) {
          
-         return devuelto;
-     }
- 
- 
-     public void setDevuelto(boolean devuelto) {
-         
-         this.devuelto = devuelto;
-     }
- }
+        this.devuelto = devuelto;
+    }
+}
