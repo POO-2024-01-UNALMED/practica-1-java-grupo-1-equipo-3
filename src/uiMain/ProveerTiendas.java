@@ -113,87 +113,87 @@ public class ProveerTiendas {
  
                         if (escanerInt == 0) {
  
-                             eleccion = 1;
-                             break;
-                         }
+                            eleccion = 1;
+                            break;
+                        }
  
-                         if (escanerInt > 0 && escanerInt <= Cargar.fabrica.getListaProductos().size()) {
+                        if (escanerInt > 0 && escanerInt <= Cargar.fabrica.getListaProductos().size()) {
                              
-                             productoSeleccionado = Cargar.fabrica.getListaProductos().get(escanerInt - 1);
-                             eleccion = 3;
-                             break;
+                            productoSeleccionado = Cargar.fabrica.getListaProductos().get(escanerInt - 1);
+                            eleccion = 3;
+                            break;
  
-                         } else {
+                        } else {
  
-                             System.out.print("Por favor seleccione un producto dentro del rango: ");
-                         }
-                     }
+                            System.out.print("Por favor seleccione un producto dentro del rango: ");
+                        }
+                    }
  
-                     break;
+                    break;
  
  
-                 case 3: // Cantidad de productos
+                case 3: // Cantidad de productos
  
-                     System.out.print("\nEscriba la cantidad de productos que desea proveer: ");
-                     int productoEnTiendaPorCategoria = 0;
-                     int productosMaximosEnTiendaPorCategoria = 0;
-                     String categoriaProducto = productoSeleccionado.getCategoria(); // Asumiendo que getCategoria() devuelve un String
+                    System.out.print("\nEscriba la cantidad de productos que desea proveer: ");
+                    int productoEnTiendaPorCategoria = 0;
+                    int productosMaximosEnTiendaPorCategoria = 0;
+                    String categoriaProducto = productoSeleccionado.getCategoria(); // Asumiendo que getCategoria() devuelve un String
  
-                     // Buscar en productosPorCategoria
-                     for (Parejas<String, Integer> par : tiendaSeleccionada.getProductosPorCategoria()) {
+                    // Buscar en productosPorCategoria
+                    for (Parejas<String, Integer> par : tiendaSeleccionada.getProductosPorCategoria()) {
                          
-                         if (par.getKey().equals(categoriaProducto)) {
-                             productoEnTiendaPorCategoria = par.getValue();
-                             break;
-                         }
-                     }
+                        if (par.getKey().equals(categoriaProducto)) {
+                            productoEnTiendaPorCategoria = par.getValue();
+                            break;
+                        }
+                    }
  
-                     // Buscar en cantidadPorCategoria
-                     for (Parejas<String, Integer> par : tiendaSeleccionada.getCantidadPorCategoria()) {
+                    // Buscar en cantidadPorCategoria
+                    for (Parejas<String, Integer> par : tiendaSeleccionada.getCantidadPorCategoria()) {
                          
-                         if (par.getKey().equals(categoriaProducto)) {
-                             productosMaximosEnTiendaPorCategoria = par.getValue();
-                             break;
-                         }
-                     }
+                        if (par.getKey().equals(categoriaProducto)) {
+                            productosMaximosEnTiendaPorCategoria = par.getValue();
+                            break;
+                        }
+                    }
                      
-                     while (true) {
+                    while (true) {
                          
-                         escanerInt = escaner2.nextInt();
+                        escanerInt = escaner2.nextInt();
                          
-                         if (escanerInt == 0){
+                        if (escanerInt == 0){
                              
-                             eleccion = 1;
-                             break;
-                         }
+                            eleccion = 1;
+                            break;
+                        }
  
-                         //Se hace con el fin de evitar que intente mandar mas productos de los que soporta la tienda por la respectiva categoria
-                         else if (escanerInt < 0 || escanerInt <= productosMaximosEnTiendaPorCategoria - productoEnTiendaPorCategoria) {
+                        //Se hace con el fin de evitar que intente mandar mas productos de los que soporta la tienda por la respectiva categoria
+                        else if (escanerInt < 0 || escanerInt <= productosMaximosEnTiendaPorCategoria - productoEnTiendaPorCategoria) {
                              
-                             eleccion = 4;
-                             break;
+                            eleccion = 4;
+                            break;
  
-                         } else {
+                        } else {
                              
-                             System.out.print("Por favor seleccione una cantidad en el limite de la tienda por categoria: ");
-                         }
-                     }
+                            System.out.print("Por favor seleccione una cantidad en el limite de la tienda por categoria: ");
+                        }
+                    }
  
-                     break;
+                    break;
  
                      
-                 case 4: // seleccionar tipo de transporte
+                case 4: // seleccionar tipo de transporte
                      
-                     int PesoTotalProductos = escanerInt * ((int) Math.round(productoSeleccionado.getPeso()));
-                     System.out.println("\n\nSeleccione en que medio de transporte quiere enviar este producto");
-                     System.out.println(
-                             "\nAdvertencia: Los tipos de transporte han sido filtrados de manera que solo puede seleccionar los que puedan soportar el peso de su producto.");
+                    int PesoTotalProductos = escanerInt * ((int) Math.round(productoSeleccionado.getPeso()));
+                    System.out.println("\n\nSeleccione en que medio de transporte quiere enviar este producto");
+                    System.out.println(
+                            "\nAdvertencia: Los tipos de transporte han sido filtrados de manera que solo puede seleccionar los que puedan soportar el peso de su producto.");
  
-                     System.out.println("0. Regresar al menu anterior");
+                    System.out.println("0. Regresar al menu anterior");
  
-                     // TipoTransporte tipoTransportes;
-                     ArrayList<TipoTransporte> listaTransFiltrada = new ArrayList<TipoTransporte>();
-                     listaTransFiltrada = TipoTransporte.transporteSegunCarga(PesoTotalProductos);
+                    // TipoTransporte tipoTransportes;
+                    ArrayList<TipoTransporte> listaTransFiltrada = new ArrayList<TipoTransporte>();
+                    listaTransFiltrada = TipoTransporte.transporteSegunCarga(PesoTotalProductos);
                      // System.out.printlnLoad.tipoTransportes.mostrarTipoTransporteSegunCarga(productoSeleccionado));
                      System.out.println(TipoTransporte.mostrarTransporteSegunCarga(listaTransFiltrada));
                      System.out.println("Seleccione el número del tipo de transporte: ");
