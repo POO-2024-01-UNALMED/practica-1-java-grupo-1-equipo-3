@@ -194,85 +194,85 @@ public class ProveerTiendas {
                     // TipoTransporte tipoTransportes;
                     ArrayList<TipoTransporte> listaTransFiltrada = new ArrayList<TipoTransporte>();
                     listaTransFiltrada = TipoTransporte.transporteSegunCarga(PesoTotalProductos);
-                     // System.out.printlnLoad.tipoTransportes.mostrarTipoTransporteSegunCarga(productoSeleccionado));
-                     System.out.println(TipoTransporte.mostrarTransporteSegunCarga(listaTransFiltrada));
-                     System.out.println("Seleccione el número del tipo de transporte: ");
-                     System.out.print("> ");
+                    // System.out.printlnLoad.tipoTransportes.mostrarTipoTransporteSegunCarga(productoSeleccionado));
+                    System.out.println(TipoTransporte.mostrarTransporteSegunCarga(listaTransFiltrada));
+                    System.out.println("Seleccione el número del tipo de transporte: ");
+                    System.out.print("> ");
  
-                     while(true){
+                    while(true){
  
-                     int numTransporteSeleccionado = escaner2.nextInt();
+                    int numTransporteSeleccionado = escaner2.nextInt();
                      
-                     if (numTransporteSeleccionado == 0) {
+                    if (numTransporteSeleccionado == 0) {
                          
-                         eleccion = 2;
-                         break;
-                     }
+                        eleccion = 2;
+                        break;
+                    }
  
-                     if (numTransporteSeleccionado > listaTransFiltrada.size() || numTransporteSeleccionado < 0) {
+                    if (numTransporteSeleccionado > listaTransFiltrada.size() || numTransporteSeleccionado < 0) {
                          
-                         System.out
-                                 .print("Número de transporte inválido, por favor seleccione un producto en la lista \n> ");
-                     }
+                        System.out
+                                .print("Número de transporte inválido, por favor seleccione un producto en la lista \n> ");
+                    }
  
-                     else {
+                    else {
                          
-                         transporteSeleccionado = TipoTransporte.seleccionarTransporte(listaTransFiltrada,
-                                 numTransporteSeleccionado);
-                         System.out.print("Ha seleccionado el transporte #" + (numTransporteSeleccionado)
-                                 + "\nLa tienda se proveerá por: " + transporteSeleccionado.getTipo().getNombre());
-                         eleccion = 5;
-                         break;
-                     }}
+                        transporteSeleccionado = TipoTransporte.seleccionarTransporte(listaTransFiltrada,
+                                numTransporteSeleccionado);
+                        System.out.print("Ha seleccionado el transporte #" + (numTransporteSeleccionado)
+                                + "\nLa tienda se proveerá por: " + transporteSeleccionado.getTipo().getNombre());
+                        eleccion = 5;
+                        break;
+                    }}
  
-                     break;
+                    break;
  
  
-                 case 5:
+                case 5:
  
-                     listaDeProductos = Cargar.fabrica.cantidadProductos(escanerInt, productoSeleccionado); // meter los productos en el camion
-                     transporteSeleccionado.suministrarProducto(tiendaSeleccionada, listaDeProductos); // Se descargan los productos en la tienda,  luego de comprobar que sea la tienda correcta
+                    listaDeProductos = Cargar.fabrica.cantidadProductos(escanerInt, productoSeleccionado); // meter los productos en el camion
+                    transporteSeleccionado.suministrarProducto(tiendaSeleccionada, listaDeProductos); // Se descargan los productos en la tienda,  luego de comprobar que sea la tienda correcta
  
-                     if (transporteSeleccionado.getTienda().equals(tiendaSeleccionada) == true) {
+                    if (transporteSeleccionado.getTienda().equals(tiendaSeleccionada) == true) {
                          
-                         tiendaSeleccionada.descargarProducto(transporteSeleccionado);
-                         System.out
-                                 .println("\nEl producto fue enviado con exito ahora la tienda tiene \nPRODUCTOS: "
-                                         + tiendaSeleccionada.cantidadProductos());
+                        tiendaSeleccionada.descargarProducto(transporteSeleccionado);
+                        System.out
+                                .println("\nEl producto fue enviado con exito ahora la tienda tiene \nPRODUCTOS: "
+                                        + tiendaSeleccionada.cantidadProductos());
  
-                     } else {
+                    } else {
  
-                         System.out.println("El envio no se pudo realizar a esa tienda");
-                     }
+                        System.out.println("El envio no se pudo realizar a esa tienda");
+                    }
  
-                     // Ciclo final para ver si sale o se reinicia la funcionalidad
-                     System.out.println("\n0.Volver al menu principal" + "\n" + "1. Proveer más tiendas");
-                     System.out.print("> ");
+                    // Ciclo final para ver si sale o se reinicia la funcionalidad
+                    System.out.println("\n0.Volver al menu principal" + "\n" + "1. Proveer más tiendas");
+                    System.out.print("> ");
  
-                     while (true) {
+                    while (true) {
  
-                         escanerInt = escaner2.nextInt();
+                        escanerInt = escaner2.nextInt();
                          
-                         if (escanerInt == 0) {
+                        if (escanerInt == 0) {
                              
-                             eleccion = 0;
-                             break;
+                            eleccion = 0;
+                            break;
  
-                         } else if (escanerInt == 1) {
+                        } else if (escanerInt == 1) {
                              
-                             eleccion = 1;
-                             break;
+                            eleccion = 1;
+                            break;
  
-                         } else {
+                        } else {
                              
-                             System.out.println("Seleccione una de las opciones disponibles: ");
-                         }
-                     }
-                     break;
-             }
+                            System.out.println("Seleccione una de las opciones disponibles: ");
+                        }
+                    }
+                    break;
+            }
  
-         }
+        }
  
-     }
- }
+    }
+}
  
