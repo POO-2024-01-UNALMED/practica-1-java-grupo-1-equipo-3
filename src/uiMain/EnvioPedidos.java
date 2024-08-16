@@ -5,10 +5,10 @@
  * 
  * Permite seleccionar un cliente, una tienda, productos a enviar, y el transporte para realizar el envío.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo, 
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package uiMain;
 

@@ -6,10 +6,10 @@
  * Permite pagar a operarios, transportadores y vendedores, incluyendo la evaluación y bonificación 
  * por metas cumplidas.
  * 
- * AUTORES: Sebastian Estrada Villa, Valentina Luján Robledo, 
- * Luis David Ramirez Gonzales, Santiago Ochoa Quintero
+ * AUTORES: - Sebastian Estrada Villa
+ *          - Valentina Luján Robledo
+ *          - Santiago Ochoa Quintero
  */
-
 
 package uiMain;
 
