@@ -26,7 +26,7 @@ import gestorAplicacion.externo.Parejas;
 import gestorAplicacion.externo.Transporte;
  
  
- /**
+/**
   * La clase 'Tienda' representa una tienda dentro de la empresa.
   * 
   * Contiene información sobre el nombre, el vendedor, la cuenta bancaria, las listas de productos y sus cantidades.
@@ -66,7 +66,7 @@ public class Tienda implements Moda, Serializable{
  
     // CONSTRUCTORES------------------------------------------------------------------------------------------------------------------------------------------------------------
      
-     /**
+    /**
       * Constructor que recibe todos los parámetros.
       * 
       * @param nombre Nombre de la tienda
@@ -85,7 +85,7 @@ public class Tienda implements Moda, Serializable{
     }
  
  
-     /**
+    /**
       * Constructor sin parámetros.
       */
  
