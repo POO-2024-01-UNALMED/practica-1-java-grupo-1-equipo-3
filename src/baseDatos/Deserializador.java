@@ -10,34 +10,34 @@
  *          - Santiago Ochoa Quintero
  */
 
- package baseDatos;
+package baseDatos;
 
- import java.io.FileInputStream;
- import java.io.IOException;
- import java.io.ObjectInputStream;
- import java.io.Serializable;
- import java.util.ArrayList;
- 
- import gestorAplicacion.empleados.Transportador;
- import gestorAplicacion.empleados.Vendedor;
- import gestorAplicacion.empresa.Fabrica;
- import gestorAplicacion.empresa.Factura;
- import gestorAplicacion.empresa.Moda;
- import gestorAplicacion.empresa.Producto;
- import gestorAplicacion.empresa.Tienda;
- import gestorAplicacion.externo.Cliente;
- import gestorAplicacion.externo.Parejas;
- import gestorAplicacion.externo.Transporte;
- 
- 
- /**
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import gestorAplicacion.empleados.Transportador;
+import gestorAplicacion.empleados.Vendedor;
+import gestorAplicacion.empresa.Fabrica;
+import gestorAplicacion.empresa.Factura;
+import gestorAplicacion.empresa.Moda;
+import gestorAplicacion.empresa.Producto;
+import gestorAplicacion.empresa.Tienda;
+import gestorAplicacion.externo.Cliente;
+import gestorAplicacion.externo.Parejas;
+import gestorAplicacion.externo.Transporte;
+
+
+/**
   * La clase 'Deserializador' gestiona la deserialización de objetos desde archivos.
   */
- 
- public class Deserializador {
-     
- 
-     /**
+
+public class Deserializador {
+    
+
+    /**
       * Deserializa un objeto desde un archivo.
       * 
       * @param strArchivo La ruta del archivo desde donde se deserializará el objeto.
@@ -48,28 +48,28 @@
       * 
       * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
       */
- 
-     public static Serializable deserializar(String strArchivo) throws IOException, ClassNotFoundException{
- 
-         FileInputStream fileInputStream;
-         
-         ObjectInputStream objectInputStream;
- 
-         fileInputStream = new FileInputStream(strArchivo);
-             
-         objectInputStream = new ObjectInputStream(fileInputStream);
-         
-         Serializable s = (Serializable) objectInputStream.readObject();
-         
-         objectInputStream.close();
-       
- 
-         return s;
-     }
- 
- 
- 
-     /**
+
+    public static Serializable deserializar(String strArchivo) throws IOException, ClassNotFoundException{
+
+        FileInputStream fileInputStream;
+        
+        ObjectInputStream objectInputStream;
+
+        fileInputStream = new FileInputStream(strArchivo);
+        
+        objectInputStream = new ObjectInputStream(fileInputStream);
+        
+        Serializable s = (Serializable) objectInputStream.readObject();
+        
+        objectInputStream.close();
+    
+
+        return s;
+    }
+
+
+
+    /**
       * Carga las facturas deserializadas desde un archivo.
       * 
       * @return Una lista de objetos 'Factura'.
@@ -78,20 +78,20 @@
       * 
       * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
       */
- 
-     public static ArrayList<Factura> cargarFacturas() throws IOException, ClassNotFoundException{
-         
-         @SuppressWarnings("unchecked") // Para que no saque un error al hacer el .jar 
+
+    public static ArrayList<Factura> cargarFacturas() throws IOException, ClassNotFoundException{
+    
+        @SuppressWarnings("unchecked") // Para que no saque un error al hacer el .jar 
         
-         ArrayList<Factura> facturas = (ArrayList<Factura>) deserializar("src/baseDatos/temp/facturas.txt");
- 
-         
-         return facturas;
-     }
- 
- 
- 
-     /**
+        ArrayList<Factura> facturas = (ArrayList<Factura>) deserializar("src/baseDatos/temp/facturas.txt");
+
+        
+        return facturas;
+    }
+
+
+
+    /**
       * Carga la fábrica deserializada desde un archivo.
       * 
       * @return Un objeto 'Fabrica'.
@@ -100,17 +100,17 @@
       * 
       * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
       */
- 
-     public static Fabrica cargarFabrica() throws IOException, ClassNotFoundException{
- 
-         Fabrica fabrica = (Fabrica) deserializar("src/baseDatos/temp/fabrica.txt");
- 
-         return fabrica;
-     }
- 
- 
- 
-     /**
+
+    public static Fabrica cargarFabrica() throws IOException, ClassNotFoundException{
+
+        Fabrica fabrica = (Fabrica) deserializar("src/baseDatos/temp/fabrica.txt");
+
+        return fabrica;
+    }
+
+
+
+    /**
       * Carga el catálogo deserializado desde un archivo.
       * 
       * @return Una lista de objetos 'Producto'.
@@ -119,8 +119,8 @@
       * 
       * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
       */
- 
-     public static ArrayList<Producto> cargarCatalogo() throws IOException, ClassNotFoundException{
+
+    public static ArrayList<Producto> cargarCatalogo() throws IOException, ClassNotFoundException{
  
          @SuppressWarnings("unchecked")
          
