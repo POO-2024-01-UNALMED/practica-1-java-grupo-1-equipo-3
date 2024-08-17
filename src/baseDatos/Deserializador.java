@@ -121,17 +121,16 @@ public class Deserializador {
       */
 
     public static ArrayList<Producto> cargarCatalogo() throws IOException, ClassNotFoundException{
- 
-         @SuppressWarnings("unchecked")
-         
-         ArrayList<Producto> catalogo = (ArrayList<Producto>) deserializar("src/baseDatos/temp/catalogo.txt");
- 
-         return catalogo;
-     }
- 
- 
- 
-     /**
+
+        @SuppressWarnings("unchecked")
+        
+        ArrayList<Producto> catalogo = (ArrayList<Producto>) deserializar("src/baseDatos/temp/catalogo.txt");
+
+        return catalogo;
+    }
+
+
+    /**
       * Carga los clientes deserializados desde un archivo.
       * 
       * @return Una lista de objetos 'Cliente'.
@@ -140,19 +139,19 @@ public class Deserializador {
       * 
       * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
       */
- 
-     public static ArrayList<Cliente> cargarClientes() throws IOException, ClassNotFoundException{
- 
-         @SuppressWarnings("unchecked")
-         
-         ArrayList<Cliente> clientes= (ArrayList<Cliente>) deserializar("src/baseDatos/temp/clientes.txt");
- 
-         return clientes;
-     }
- 
- 
- 
-     /**
+
+    public static ArrayList<Cliente> cargarClientes() throws IOException, ClassNotFoundException{
+
+        @SuppressWarnings("unchecked")
+        
+        ArrayList<Cliente> clientes= (ArrayList<Cliente>) deserializar("src/baseDatos/temp/clientes.txt");
+
+        return clientes;
+    }
+
+
+
+    /**
       * Carga los vendedores deserializados desde un archivo.
       * 
       * @return Una lista de objetos 'Vendedor'.
@@ -161,19 +160,19 @@ public class Deserializador {
       * 
       * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
       */
- 
-     public static ArrayList<Vendedor> cargarVendedores() throws IOException, ClassNotFoundException{
- 
-         @SuppressWarnings("unchecked")
- 
-         ArrayList<Vendedor> vendedores = (ArrayList<Vendedor>) deserializar("src/baseDatos/temp/vendedores.txt");
- 
-         return vendedores;
-     }
- 
- 
- 
-     /**
+
+    public static ArrayList<Vendedor> cargarVendedores() throws IOException, ClassNotFoundException{
+
+        @SuppressWarnings("unchecked")
+
+        ArrayList<Vendedor> vendedores = (ArrayList<Vendedor>) deserializar("src/baseDatos/temp/vendedores.txt");
+
+        return vendedores;
+    }
+
+
+
+    /**
       * Carga las tiendas deserializadas desde un archivo.
       * 
       * @return Una lista de objetos 'Tienda'.
@@ -182,19 +181,19 @@ public class Deserializador {
       *
       * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
       */
- 
-     public static ArrayList<Tienda> cargarTiendas() throws IOException, ClassNotFoundException{
- 
-         @SuppressWarnings("unchecked")
- 
-         ArrayList<Tienda> tiendas = (ArrayList<Tienda>) deserializar("src/baseDatos/temp/tiendas.txt");
- 
-         return tiendas;
-     }
- 
- 
- 
-     /**
+
+    public static ArrayList<Tienda> cargarTiendas() throws IOException, ClassNotFoundException{
+
+        @SuppressWarnings("unchecked")
+
+        ArrayList<Tienda> tiendas = (ArrayList<Tienda>) deserializar("src/baseDatos/temp/tiendas.txt");
+
+        return tiendas;
+    }
+
+
+
+    /**
       * Carga el transporte deserializado desde un archivo.
       * 
       * @return Un objeto 'Transporte'.
@@ -203,17 +202,17 @@ public class Deserializador {
       * 
       * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
       */
- 
-     public static Transporte cargarTransporte() throws IOException, ClassNotFoundException{
- 
-         Transporte transporte = (Transporte) deserializar("src/baseDatos/temp/transporte.txt");
- 
-         return transporte;
-     }
- 
- 
- 
-     /**
+
+    public static Transporte cargarTransporte() throws IOException, ClassNotFoundException{
+
+        Transporte transporte = (Transporte) deserializar("src/baseDatos/temp/transporte.txt");
+
+        return transporte;
+    }
+
+
+
+    /**
       * Carga los transportadores deserializados desde un archivo.
       * 
       * @return Una lista de objetos 'Transportador'.
@@ -222,19 +221,18 @@ public class Deserializador {
       * 
       * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
       */
- 
-     public static ArrayList<Transportador> cargarTransportadores() throws IOException, ClassNotFoundException{
- 
-         @SuppressWarnings("unchecked")
- 
-         ArrayList<Transportador> transportadores = (ArrayList<Transportador>) deserializar("src/baseDatos/temp/transportadores.txt");
- 
-         return transportadores;
-     }
- 
- 
- 
-     /**
+
+    public static ArrayList<Transportador> cargarTransportadores() throws IOException, ClassNotFoundException{
+
+        @SuppressWarnings("unchecked")
+
+        ArrayList<Transportador> transportadores = (ArrayList<Transportador>) deserializar("src/baseDatos/temp/transportadores.txt");
+
+        return transportadores;
+    }
+
+
+    /**
       * Carga los atributos deserializados desde un archivo.
       * 
       * @return Una lista de objetos 'Parejas<String, Moda>'.
@@ -243,14 +241,14 @@ public class Deserializador {
       * 
       * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
       */
-     
-     public static ArrayList<Parejas<String, Moda>> cargaAtributos() throws IOException, ClassNotFoundException{
- 
-         @SuppressWarnings("unchecked")
- 
-         ArrayList<Parejas<String, Moda>> infoAtributos = (ArrayList<Parejas<String, Moda>>) deserializar("src/baseDatos/temp/infoAtributos.txt");
- 
-         return infoAtributos;
- 
-     }
- }
+    
+    public static ArrayList<Parejas<String, Moda>> cargaAtributos() throws IOException, ClassNotFoundException{
+
+        @SuppressWarnings("unchecked")
+
+        ArrayList<Parejas<String, Moda>> infoAtributos = (ArrayList<Parejas<String, Moda>>) deserializar("src/baseDatos/temp/infoAtributos.txt");
+
+        return infoAtributos;
+
+    }
+}
