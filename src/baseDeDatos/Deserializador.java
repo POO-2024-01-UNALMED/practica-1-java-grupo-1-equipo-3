@@ -10,7 +10,7 @@
  *          - Santiago Ochoa Quintero
  */
 
-package baseDatos;
+package baseDeDatos;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -31,23 +31,23 @@ import gestorAplicacion.externo.Transporte;
 
 
 /**
-  * La clase 'Deserializador' gestiona la deserialización de objetos desde archivos.
-  */
+ * La clase 'Deserializador' gestiona la deserialización de objetos desde archivos.
+ */
 
 public class Deserializador {
     
 
     /**
-      * Deserializa un objeto desde un archivo.
-      * 
-      * @param strArchivo La ruta del archivo desde donde se deserializará el objeto.
-      * 
-      * @return El objeto deserializado.
-      * 
-      * @throws IOException Si ocurre un error de entrada/salida.
-      * 
-      * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
-      */
+     * Deserializa un objeto desde un archivo.
+     * 
+     * @param strArchivo La ruta del archivo desde donde se deserializará el objeto.
+     * 
+     * @return El objeto deserializado.
+     * 
+     * @throws IOException Si ocurre un error de entrada/salida.
+     * 
+     * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
+     */
 
     public static Serializable deserializar(String strArchivo) throws IOException, ClassNotFoundException{
 
@@ -56,13 +56,13 @@ public class Deserializador {
         ObjectInputStream objectInputStream;
 
         fileInputStream = new FileInputStream(strArchivo);
-        
+            
         objectInputStream = new ObjectInputStream(fileInputStream);
         
         Serializable s = (Serializable) objectInputStream.readObject();
         
         objectInputStream.close();
-    
+      
 
         return s;
     }
@@ -70,19 +70,19 @@ public class Deserializador {
 
 
     /**
-      * Carga las facturas deserializadas desde un archivo.
-      * 
-      * @return Una lista de objetos 'Factura'.
-      * 
-      * @throws IOException Si ocurre un error de entrada/salida.
-      * 
-      * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
-      */
+     * Carga las facturas deserializadas desde un archivo.
+     * 
+     * @return Una lista de objetos 'Factura'.
+     * 
+     * @throws IOException Si ocurre un error de entrada/salida.
+     * 
+     * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
+     */
 
     public static ArrayList<Factura> cargarFacturas() throws IOException, ClassNotFoundException{
-    
-        @SuppressWarnings("unchecked") // Para que no saque un error al hacer el .jar 
         
+        @SuppressWarnings("unchecked") // Para que no saque un error al hacer el .jar 
+       
         ArrayList<Factura> facturas = (ArrayList<Factura>) deserializar("src/baseDatos/temp/facturas.txt");
 
         
@@ -92,14 +92,14 @@ public class Deserializador {
 
 
     /**
-      * Carga la fábrica deserializada desde un archivo.
-      * 
-      * @return Un objeto 'Fabrica'.
-      * 
-      * @throws IOException Si ocurre un error de entrada/salida.
-      * 
-      * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
-      */
+     * Carga la fábrica deserializada desde un archivo.
+     * 
+     * @return Un objeto 'Fabrica'.
+     * 
+     * @throws IOException Si ocurre un error de entrada/salida.
+     * 
+     * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
+     */
 
     public static Fabrica cargarFabrica() throws IOException, ClassNotFoundException{
 
@@ -111,14 +111,14 @@ public class Deserializador {
 
 
     /**
-      * Carga el catálogo deserializado desde un archivo.
-      * 
-      * @return Una lista de objetos 'Producto'.
-      * 
-      * @throws IOException Si ocurre un error de entrada/salida.
-      * 
-      * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
-      */
+     * Carga el catálogo deserializado desde un archivo.
+     * 
+     * @return Una lista de objetos 'Producto'.
+     * 
+     * @throws IOException Si ocurre un error de entrada/salida.
+     * 
+     * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
+     */
 
     public static ArrayList<Producto> cargarCatalogo() throws IOException, ClassNotFoundException{
 
@@ -130,15 +130,16 @@ public class Deserializador {
     }
 
 
+
     /**
-      * Carga los clientes deserializados desde un archivo.
-      * 
-      * @return Una lista de objetos 'Cliente'.
-      * 
-      * @throws IOException Si ocurre un error de entrada/salida.
-      * 
-      * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
-      */
+     * Carga los clientes deserializados desde un archivo.
+     * 
+     * @return Una lista de objetos 'Cliente'.
+     * 
+     * @throws IOException Si ocurre un error de entrada/salida.
+     * 
+     * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
+     */
 
     public static ArrayList<Cliente> cargarClientes() throws IOException, ClassNotFoundException{
 
@@ -152,14 +153,14 @@ public class Deserializador {
 
 
     /**
-      * Carga los vendedores deserializados desde un archivo.
-      * 
-      * @return Una lista de objetos 'Vendedor'.
-      * 
-      * @throws IOException Si ocurre un error de entrada/salida.
-      * 
-      * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
-      */
+     * Carga los vendedores deserializados desde un archivo.
+     * 
+     * @return Una lista de objetos 'Vendedor'.
+     * 
+     * @throws IOException Si ocurre un error de entrada/salida.
+     * 
+     * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
+     */
 
     public static ArrayList<Vendedor> cargarVendedores() throws IOException, ClassNotFoundException{
 
@@ -173,14 +174,14 @@ public class Deserializador {
 
 
     /**
-      * Carga las tiendas deserializadas desde un archivo.
-      * 
-      * @return Una lista de objetos 'Tienda'.
-      * 
-      * @throws IOException Si ocurre un error de entrada/salida.
-      *
-      * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
-      */
+     * Carga las tiendas deserializadas desde un archivo.
+     * 
+     * @return Una lista de objetos 'Tienda'.
+     * 
+     * @throws IOException Si ocurre un error de entrada/salida.
+     *
+     * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
+     */
 
     public static ArrayList<Tienda> cargarTiendas() throws IOException, ClassNotFoundException{
 
@@ -194,14 +195,14 @@ public class Deserializador {
 
 
     /**
-      * Carga el transporte deserializado desde un archivo.
-      * 
-      * @return Un objeto 'Transporte'.
-      * 
-      * @throws IOException Si ocurre un error de entrada/salida.
-      * 
-      * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
-      */
+     * Carga el transporte deserializado desde un archivo.
+     * 
+     * @return Un objeto 'Transporte'.
+     * 
+     * @throws IOException Si ocurre un error de entrada/salida.
+     * 
+     * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
+     */
 
     public static Transporte cargarTransporte() throws IOException, ClassNotFoundException{
 
@@ -213,14 +214,14 @@ public class Deserializador {
 
 
     /**
-      * Carga los transportadores deserializados desde un archivo.
-      * 
-      * @return Una lista de objetos 'Transportador'.
-      * 
-      * @throws IOException Si ocurre un error de entrada/salida.
-      * 
-      * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
-      */
+     * Carga los transportadores deserializados desde un archivo.
+     * 
+     * @return Una lista de objetos 'Transportador'.
+     * 
+     * @throws IOException Si ocurre un error de entrada/salida.
+     * 
+     * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
+     */
 
     public static ArrayList<Transportador> cargarTransportadores() throws IOException, ClassNotFoundException{
 
@@ -232,15 +233,16 @@ public class Deserializador {
     }
 
 
+
     /**
-      * Carga los atributos deserializados desde un archivo.
-      * 
-      * @return Una lista de objetos 'Parejas<String, Moda>'.
-      * 
-      * @throws IOException Si ocurre un error de entrada/salida.
-      * 
-      * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
-      */
+     * Carga los atributos deserializados desde un archivo.
+     * 
+     * @return Una lista de objetos 'Parejas<String, Moda>'.
+     * 
+     * @throws IOException Si ocurre un error de entrada/salida.
+     * 
+     * @throws ClassNotFoundException Si la clase del objeto no se encuentra.
+     */
     
     public static ArrayList<Parejas<String, Moda>> cargaAtributos() throws IOException, ClassNotFoundException{
 
@@ -252,3 +254,4 @@ public class Deserializador {
 
     }
 }
+

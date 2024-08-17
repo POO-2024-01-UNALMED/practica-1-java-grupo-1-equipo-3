@@ -15,7 +15,7 @@ package uiMain;
 
 import java.util.Scanner;
  
-import baseDatos.Cargar;
+import baseDeDatos.Cargar;
 import gestorAplicacion.empresa.Factura;
 import gestorAplicacion.empresa.Producto;
 import gestorAplicacion.externo.Cliente;

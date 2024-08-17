@@ -14,7 +14,7 @@ package uiMain;
 
 import java.util.Scanner;
  
-import baseDatos.Cargar;
+import baseDeDatos.Cargar;
  
  
 /**

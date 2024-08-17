@@ -15,7 +15,7 @@ package uiMain;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import baseDatos.Cargar;
+import baseDeDatos.Cargar;
 import gestorAplicacion.empresa.Tienda;
 import gestorAplicacion.externo.Cliente;
 import gestorAplicacion.externo.TipoTransporte;
