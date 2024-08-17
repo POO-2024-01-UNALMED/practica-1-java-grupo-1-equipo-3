@@ -83,7 +83,7 @@ public class Deserializador {
         
         @SuppressWarnings("unchecked") // Para que no saque un error al hacer el .jar 
        
-        ArrayList<Factura> facturas = (ArrayList<Factura>) deserializar("src/baseDatos/temp/facturas.txt");
+        ArrayList<Factura> facturas = (ArrayList<Factura>) deserializar("src/baseDeDatos/temp/facturas.txt");
 
         
         return facturas;
@@ -103,7 +103,7 @@ public class Deserializador {
 
     public static Fabrica cargarFabrica() throws IOException, ClassNotFoundException{
 
-        Fabrica fabrica = (Fabrica) deserializar("src/baseDatos/temp/fabrica.txt");
+        Fabrica fabrica = (Fabrica) deserializar("src/baseDeDatos/temp/fabrica.txt");
 
         return fabrica;
     }
@@ -124,7 +124,7 @@ public class Deserializador {
 
         @SuppressWarnings("unchecked")
         
-        ArrayList<Producto> catalogo = (ArrayList<Producto>) deserializar("src/baseDatos/temp/catalogo.txt");
+        ArrayList<Producto> catalogo = (ArrayList<Producto>) deserializar("src/baseDeDatos/temp/catalogo.txt");
 
         return catalogo;
     }
@@ -145,7 +145,7 @@ public class Deserializador {
 
         @SuppressWarnings("unchecked")
         
-        ArrayList<Cliente> clientes= (ArrayList<Cliente>) deserializar("src/baseDatos/temp/clientes.txt");
+        ArrayList<Cliente> clientes= (ArrayList<Cliente>) deserializar("src/baseDeDatos/temp/clientes.txt");
 
         return clientes;
     }
@@ -166,7 +166,7 @@ public class Deserializador {
 
         @SuppressWarnings("unchecked")
 
-        ArrayList<Vendedor> vendedores = (ArrayList<Vendedor>) deserializar("src/baseDatos/temp/vendedores.txt");
+        ArrayList<Vendedor> vendedores = (ArrayList<Vendedor>) deserializar("src/baseDeDatos/temp/vendedores.txt");
 
         return vendedores;
     }
@@ -187,7 +187,7 @@ public class Deserializador {
 
         @SuppressWarnings("unchecked")
 
-        ArrayList<Tienda> tiendas = (ArrayList<Tienda>) deserializar("src/baseDatos/temp/tiendas.txt");
+        ArrayList<Tienda> tiendas = (ArrayList<Tienda>) deserializar("src/baseDeDatos/temp/tiendas.txt");
 
         return tiendas;
     }
@@ -206,7 +206,7 @@ public class Deserializador {
 
     public static Transporte cargarTransporte() throws IOException, ClassNotFoundException{
 
-        Transporte transporte = (Transporte) deserializar("src/baseDatos/temp/transporte.txt");
+        Transporte transporte = (Transporte) deserializar("src/baseDeDatos/temp/transporte.txt");
 
         return transporte;
     }
@@ -227,7 +227,7 @@ public class Deserializador {
 
         @SuppressWarnings("unchecked")
 
-        ArrayList<Transportador> transportadores = (ArrayList<Transportador>) deserializar("src/baseDatos/temp/transportadores.txt");
+        ArrayList<Transportador> transportadores = (ArrayList<Transportador>) deserializar("src/baseDeDatos/temp/transportadores.txt");
 
         return transportadores;
     }
@@ -248,7 +248,7 @@ public class Deserializador {
 
         @SuppressWarnings("unchecked")
 
-        ArrayList<Parejas<String, Moda>> infoAtributos = (ArrayList<Parejas<String, Moda>>) deserializar("src/baseDatos/temp/infoAtributos.txt");
+        ArrayList<Parejas<String, Moda>> infoAtributos = (ArrayList<Parejas<String, Moda>>) deserializar("src/baseDeDatos/temp/infoAtributos.txt");
 
         return infoAtributos;
 

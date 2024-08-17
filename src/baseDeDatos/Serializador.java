@@ -12,6 +12,7 @@
 
 package baseDeDatos;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -33,32 +34,31 @@ public class Serializador {
      * @param strArchivo La ruta del archivo donde se guardará el objeto serializado.
      */
 
-    public static void serializar(Serializable objeto, String strArchivo){
+	public static void serializar(Serializable objeto, String strArchivo){
 
         ObjectOutputStream objectOutputStream;
-        
         FileOutputStream fileOutputStream;
 
+        try {
+            // Verifica si el archivo ya existe dentro de la carpeta temp
+            File archivo = new File(strArchivo);
 
-        try{
-            
-            fileOutputStream = new FileOutputStream(strArchivo);
-   
+            // Si el archivo no existe, se crea uno nuevo
+            //if (!archivo.exists()) {
+              //  archivo.createNewFile();
+            //}
+
+            fileOutputStream = new FileOutputStream(archivo);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);       
-   
+
             objectOutputStream.writeObject(objeto);
-            
             objectOutputStream.flush();
-            
             objectOutputStream.close();
-   
 
-            }catch(IOException e){
-
-                System.out.println("ERROR: HA OCURRIDO UN ERROR EN LA SERIALIZACIÓN");
-                
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            System.out.println("ERROR: HA OCURRIDO UN ERROR EN LA SERIALIZACIÓN");
+            e.printStackTrace();
+        }
     }
 
 
@@ -69,7 +69,7 @@ public class Serializador {
 
     public static void guardarFacturas(){
 
-        serializar(Cargar.facturas, "src/baseDatos/temp/facturas.txt");
+        serializar(Cargar.facturas, "src/baseDeDatos/temp/facturas.txt");
 
     }
 
@@ -81,7 +81,7 @@ public class Serializador {
 
     public static void guardarTiendas(){
 
-        serializar(Cargar.tiendas, "src/baseDatos/temp/tiendas.txt");
+        serializar(Cargar.tiendas, "src/baseDeDatos/temp/tiendas.txt");
 
     }
 
@@ -93,7 +93,7 @@ public class Serializador {
 
     public static void guardarFabrica(){
 
-        serializar(Cargar.fabrica, "src/baseDatos/temp/fabrica.txt");
+        serializar(Cargar.fabrica, "src/baseDeDatos/temp/fabrica.txt");
     }
 
 
@@ -104,7 +104,7 @@ public class Serializador {
 
     public static void guardarCatalogo(){
 
-        serializar(Cargar.catalogo, "src/baseDatos/temp/catalogo.txt");
+        serializar(Cargar.catalogo, "src/baseDeDatos/temp/catalogo.txt");
     }
 
 
@@ -115,7 +115,7 @@ public class Serializador {
     
     public static void guardarClientes(){
 
-        serializar(Cargar.clientes, "src/baseDatos/temp/clientes.txt");
+        serializar(Cargar.clientes, "src/baseDeDatos/temp/clientes.txt");
     }
 
 
@@ -126,7 +126,7 @@ public class Serializador {
 
     public static void guardarVendedores(){
            
-        serializar(Cargar.vendedores, "src/baseDatos/temp/vendedores.txt");
+        serializar(Cargar.vendedores, "src/baseDeDatos/temp/vendedores.txt");
     }
 
 
@@ -137,7 +137,7 @@ public class Serializador {
 
     public static void guardarTransporte(){
 
-        serializar(Cargar.transporteAbastecer, "src/baseDatos/temp/transporte.txt");
+        serializar(Cargar.transporteAbastecer, "src/baseDeDatos/temp/transporte.txt");
     }
 
 
@@ -148,7 +148,7 @@ public class Serializador {
 
     public static void guardarTransportadores(){
             
-        serializar(Cargar.transportadores, "src/baseDatos/temp/transportadores.txt");
+        serializar(Cargar.transportadores, "src/baseDeDatos/temp/transportadores.txt");
     }
 
 
@@ -159,6 +159,6 @@ public class Serializador {
     
     public static void guardarAtributos(){
             
-        serializar(Cargar.infoAtributos, "src/baseDatos/temp/infoAtributos.txt");
+        serializar(Cargar.infoAtributos, "src/baseDeDatos/temp/infoAtributos.txt");
     }
 }
