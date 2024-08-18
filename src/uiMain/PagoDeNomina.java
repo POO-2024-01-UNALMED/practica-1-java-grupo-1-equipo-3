@@ -187,75 +187,53 @@ public class PagoDeNomina {
                                     boolean verificador5 = true;                        
  
                                     while (verificador5) {
-                                         
                                         System.out.println("\nSeleccione una de las metas");
                                         System.out.print("> ");
                                         int opcMetaEscogida = sc.nextInt();
-                                         
-                                        if (indicesMetasMostradas.contains(opcMetaEscogida)){
-                                             
+                                    
+                                        // Verificación del índice de la meta
+                                        if (opcMetaEscogida <= 0 || opcMetaEscogida > listaMetas.size()) {
+                                            System.out.println("Opción de meta incorrecta. Por favor, seleccione un número válido.");
+                                        } else if (indicesMetasMostradas.contains(opcMetaEscogida)) {
                                             System.out.println("Esta opción ya fue mostrada");
- 
-                                        }else if(trabajadorEscogido.getCumplimientoMetas().get(opcMetaEscogida - 1)==true){
-                                             
+                                        } else if (trabajadorEscogido.getCumplimientoMetas().get(opcMetaEscogida - 1) == true) {
                                             System.out.println("La meta que seleccionó ya fue cumplida y se le ha pagado al trabajador su bonificación");
- 
-                                        }else{
- 
-                                            indicesMetasMostradas.add(opcMetaEscogida);
- 
-                                            if (opcMetaEscogida <= 0 || opcMetaEscogida > listaMetas.size()) {
-                                                System.out.println("Opción de meta incorrecta");
- 
-                                            }else{
- 
-                                                Meta metaEscogida = listaMetas.get(opcMetaEscogida - 1);
-                                                boolean verificadorMeta = metaEscogida.cumplioMeta(indice);
-                                                String estadisticasMeta = metaEscogida.porcentajeCumplimiento(indice);
-                                
-                                                if (verificadorMeta){
- 
-                                                    System.out.println("\nLa meta ha sido cumplida exitósamente");
-                                                    System.out.println("Sumaremos al pago la bonificación por esta meta");
-                                                    valorPorMetas += metaEscogida.getComision();
-                                                    trabajadorEscogido.getCumplimientoMetas().set(opcMetaEscogida - 1,true);  
- 
-                                                } else{
- 
-                                                    System.out.println("\nLa meta aún no ha sido cumplida");
-                                                }
- 
-                                                System.out.println(estadisticasMeta);
- 
-                                                 
+                                        } else {
+                                            // Procesar la meta seleccionada correctamente
+                                            Meta metaEscogida = listaMetas.get(opcMetaEscogida - 1);
+                                            boolean verificadorMeta = metaEscogida.cumplioMeta(indice);
+                                            String estadisticasMeta = metaEscogida.porcentajeCumplimiento(indice);
+                                    
+                                            if (verificadorMeta) {
+                                                System.out.println("\nLa meta ha sido cumplida exitósamente");
+                                                System.out.println("Sumaremos al pago la bonificación por esta meta");
+                                                valorPorMetas += metaEscogida.getComision();
+                                                trabajadorEscogido.getCumplimientoMetas().set(opcMetaEscogida - 1, true);
+                                            } else {
+                                                System.out.println("\nLa meta aún no ha sido cumplida");
                                             }
- 
+                                    
+                                            System.out.println(estadisticasMeta);
                                         }
- 
+                                    
+                                        // Código para continuar o proceder con el pago
                                         boolean verificador6 = true;
- 
                                         while (verificador6) {
- 
                                             System.out.println("\n¿Qué desea hacer?\n 1.Revisar otra meta\n 2.Proceder con el pago");
                                             System.out.print("> ");
                                             int opcContinuar = sc.nextInt();
- 
-                                            if(opcContinuar==1){   
- 
-                                               break;  
- 
-                                            }else if(opcContinuar==2){
- 
+                                    
+                                            if (opcContinuar == 1) {
+                                                break;
+                                            } else if (opcContinuar == 2) {
                                                 verificador5 = false;
                                                 break;
- 
-                                            }else{
- 
+                                            } else {
                                                 System.out.println("Digitó una opción incorrecta");
                                             }
-                                        } 
-                                           
-                                    } 
+                                        }
+                                    }
+                                    
  
                                     verificador4 = false;
                                     break;
