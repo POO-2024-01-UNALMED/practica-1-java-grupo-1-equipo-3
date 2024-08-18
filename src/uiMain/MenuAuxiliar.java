@@ -79,8 +79,8 @@ public class MenuAuxiliar {
       * 
       * @return La opción seleccionada por el usuario
       */
- 
-    public int mostrar(){
+    @SuppressWarnings("resource")
+	public int mostrar(){
  
         System.out.println(enunciado + "\n");
  
@@ -116,8 +116,8 @@ public class MenuAuxiliar {
       * 
       * @return La opción seleccionada por el usuario como cadena en mayúsculas
       */
- 
-    public String mostrarReturnString(){
+    @SuppressWarnings("resource")
+	public String mostrarReturnString(){
  
         System.out.println(enunciado + "\n");
  
@@ -162,7 +162,8 @@ public class MenuAuxiliar {
       * @return El valor ingresado por el usuario dentro de los límites
       */
      
-    public static int ingresarConLimites(int limite1, int limite2){
+    @SuppressWarnings("resource")
+	public static int ingresarConLimites(int limite1, int limite2){
  
         System.out.print("\n> ");
  

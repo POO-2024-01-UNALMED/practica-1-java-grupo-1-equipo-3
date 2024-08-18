@@ -35,7 +35,8 @@ import gestorAplicacion.externo.Persona;
 public class PagoDeNomina {
  
  
-    public static void pagoDeNomina() {
+    @SuppressWarnings("resource")
+	public static void pagoDeNomina() {
  
         // Atributos a usar
         Scanner sc = new Scanner(System.in);

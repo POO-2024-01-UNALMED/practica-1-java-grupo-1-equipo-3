@@ -54,7 +54,8 @@ public class Tienda implements Moda, Serializable{
     private CuentaBancaria cuentaBancaria;
     private ArrayList<Producto> listaProductos = new ArrayList<Producto>();
     private ArrayList<Parejas<Producto, Integer>> cantidadProductos = new ArrayList<>();
-    private ArrayList<Parejas<String, Integer>> cantidadPorCategoria = new ArrayList<>() {{
+    @SuppressWarnings("serial")
+	private ArrayList<Parejas<String, Integer>> cantidadPorCategoria = new ArrayList<>() {{
         add(new Parejas<>("frutas y verduras", new Random().nextInt(51) + 50));
         add(new Parejas<>("panaderia", new Random().nextInt(51) + 50));
         add(new Parejas<>("salsas y mermeladas", new Random().nextInt(51) + 50));
@@ -62,7 +63,6 @@ public class Tienda implements Moda, Serializable{
     }};
     private ArrayList<Parejas<String, Integer>> productosPorCategoria = new ArrayList<>();
     private ArrayList<Producto> productosDevueltos = new ArrayList<>();
- 
  
     // CONSTRUCTORES------------------------------------------------------------------------------------------------------------------------------------------------------------
      

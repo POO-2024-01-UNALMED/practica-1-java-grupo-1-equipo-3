@@ -31,8 +31,8 @@ import gestorAplicacion.empresa.Producto;
   */
 
 public class EnvioPedidos  {
-
-    public static void envioPedidos() { 
+    @SuppressWarnings({ "unused", "resource" })
+	public static void envioPedidos() { 
 
         // Atributos a usar
         int x = 1; // para manejar el menu

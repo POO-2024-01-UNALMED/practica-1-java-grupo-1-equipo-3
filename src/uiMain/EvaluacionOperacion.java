@@ -51,8 +51,8 @@ public class EvaluacionOperacion {
       */
  
     public static int[] ingresarFechas(){
- 
-        Scanner sc = new Scanner(System.in);
+        @SuppressWarnings({ "resource", "unused" })
+		Scanner sc = new Scanner(System.in);
         int opcion = new MenuAuxiliar("REPORTE", new String[]{"Analizar toda la información", 
                                                      "Ingresar fechas específicas"}).mostrar();
         

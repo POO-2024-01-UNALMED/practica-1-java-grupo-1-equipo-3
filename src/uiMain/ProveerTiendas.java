@@ -31,8 +31,8 @@ import gestorAplicacion.externo.Transporte;
 
 public class ProveerTiendas {
     
-    
-    public static void proveerTiendas() {
+    @SuppressWarnings("resource")
+	public static void proveerTiendas() {
 
         // Atributos a usar
         int x = 1; // Para manejar el menu
